@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=4 uid="uid://dfjjuc4nvf7p1"]
+
+[ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
+[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_h5nva"]
+[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_7lwln"]
+[ext_resource type="Texture2D" uid="uid://doxcklavwt0ur" path="res://textures/concrete256_3.png" id="4_gvbmp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
+sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y8onf"]
+sky_material = SubResource("ProceduralSkyMaterial_qxq87")
+
+[sub_resource type="Environment" id="Environment_0mlka"]
+background_mode = 2
+sky = SubResource("Sky_y8onf")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbsbd"]
+albedo_texture = ExtResource("4_gvbmp")
+metallic_specular = 0.0
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yrelc"]
+_surfaces = [{
+"aabb": AABB(-122, -0.5, -8.5, 200, 18.5, 77),
+"attribute_data": PackedByteArray("AAB0wQAAAAAAAHTBAACAPQAAHEEAAIA9AAAcQQAAAAAAAIi/AAAAAAAACUEAAAAAAAAJQQAAgD0AAIi/AACAPQAAiL8AABzBAACIvwAAdEEAAAlBAAB0QQAACUEAABzBAACIvwAAHMEAAAlBAAAcwQAACUEAAHRBAACIvwAAdEEAAIi/AAAAAAAAiL8AAIA9AAAJQQAAgD0AAAlBAAAAAAAAdMEAAAAAAAAcQQAAAAAAABxBAACAPQAAdMEAAIA9AABgvwAAEMAAAGC/AAAAAAAAQD8AAAAAAABAPwAAEMAAAK5AAAAQwAAA2kAAABDAAADaQAAAAAAAAK5AAAAAAAAArkAAAEC/AACuQAAAYD8AANpAAABgPwAA2kAAAEC/AACuQAAAQL8AANpAAABAvwAA2kAAAGA/AACuQAAAYD8AAK5AAAAQwAAArkAAAAAAAADaQAAAAAAAANpAAAAQwAAAYL8AABDAAABAPwAAEMAAAEA/AAAAAAAAYL8AAAAA"),
+"format": 34359742487,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcAGAAZABoAGAAaABsAHAAdAB4AHAAeAB8AIAAhACIAIAAiACMAJAAlACYAJAAmACcAKAApACoAKAAqACsALAAtAC4ALAAuAC8A"),
+"material": SubResource("StandardMaterial3D_mbsbd"),
+"name": "concrete256_3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AAD0wgAAAAAAAAjBAAD0wgAAAL8AAAjBAACcQgAAAL8AAAjBAACcQgAAAAAAAAjBAAD0wgAAAAAAAAjBAAD0wgAAAAAAAIlCAAD0wgAAAL8AAIlCAAD0wgAAAL8AAAjBAACcQgAAAL8AAAjBAAD0wgAAAL8AAAjBAAD0wgAAAL8AAIlCAACcQgAAAL8AAIlCAACcQgAAAAAAAAjBAACcQgAAAAAAAIlCAAD0wgAAAAAAAIlCAAD0wgAAAAAAAAjBAACcQgAAAAAAAAjBAACcQgAAAL8AAAjBAACcQgAAAL8AAIlCAACcQgAAAAAAAIlCAAD0wgAAAAAAAIlCAACcQgAAAAAAAIlCAACcQgAAAL8AAIlCAAD0wgAAAL8AAIlCAADgwAAAkEEAAC5CAADgwAAAAAAAAC5CAADAQAAAAAAAAC5CAADAQAAAkEEAAC5CAADgwAAAkEEAAC5CAADgwAAAkEEAAFpCAADgwAAAAAAAAFpCAADgwAAAAAAAAC5CAADAQAAAAAAAAC5CAADgwAAAAAAAAC5CAADgwAAAAAAAAFpCAADAQAAAAAAAAFpCAADAQAAAkEEAAC5CAADAQAAAkEEAAFpCAADgwAAAkEEAAFpCAADgwAAAkEEAAC5CAADAQAAAkEEAAC5CAADAQAAAAAAAAC5CAADAQAAAAAAAAFpCAADAQAAAkEEAAFpCAADgwAAAkEEAAFpCAADAQAAAkEEAAFpCAADAQAAAAAAAAFpCAADgwAAAAAAAAFpC/////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_i4dte"]
+vertices = PackedVector3Array(-122, 0, -8.5, -122, -0.5, -8.5, 78, -0.5, -8.5, 78, 0, -8.5, -122, 0, -8.5, -122, 0, 68.5, -122, -0.5, 68.5, -122, -0.5, -8.5, 78, -0.5, -8.5, -122, -0.5, -8.5, -122, -0.5, 68.5, 78, -0.5, 68.5, 78, 0, -8.5, 78, 0, 68.5, -122, 0, 68.5, -122, 0, -8.5, 78, 0, -8.5, 78, -0.5, -8.5, 78, -0.5, 68.5, 78, 0, 68.5, -122, 0, 68.5, 78, 0, 68.5, 78, -0.5, 68.5, -122, -0.5, 68.5, -7, 18, 43.5, -7, 0, 43.5, 6, 0, 43.5, 6, 18, 43.5, -7, 18, 43.5, -7, 18, 54.5, -7, 0, 54.5, -7, 0, 43.5, 6, 0, 43.5, -7, 0, 43.5, -7, 0, 54.5, 6, 0, 54.5, 6, 18, 43.5, 6, 18, 54.5, -7, 18, 54.5, -7, 18, 43.5, 6, 18, 43.5, 6, 0, 43.5, 6, 0, 54.5, 6, 18, 54.5, -7, 18, 54.5, 6, 18, 54.5, 6, 0, 54.5, -7, 0, 54.5)
+indices = PackedInt32Array(0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23, 24, 25, 26, 24, 26, 27, 28, 29, 30, 28, 30, 31, 32, 33, 34, 32, 34, 35, 36, 37, 38, 36, 38, 39, 40, 41, 42, 40, 42, 43, 44, 45, 46, 44, 46, 47)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ou2aw"]
+points = PackedVector3Array(-122, 0, -8.5, -122, -0.5, -8.5, 78, -0.5, -8.5, 78, 0, -8.5, -122, 0, 68.5, -122, -0.5, 68.5, 78, -0.5, 68.5, 78, 0, 68.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k4ubo"]
+points = PackedVector3Array(-7, 18, 43.5, -7, 0, 43.5, 6, 0, 43.5, 6, 18, 43.5, -7, 18, 54.5, -7, 0, 54.5, 6, 0, 54.5, 6, 18, 54.5)
+
+[node name="Debug Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0mlka")
+
+[node name="Player" parent="." instance=ExtResource("1_1oa23")]
+
+[node name="FuncGodotMap" type="Node3D" parent="."]
+script = ExtResource("2_h5nva")
+local_map_file = "res://Scenes/Levels/conccell.map"
+map_settings = ExtResource("3_7lwln")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap"]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_yrelc")
+
+[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+occluder = SubResource("ArrayOccluder3D_i4dte")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ou2aw")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_k4ubo")
