@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxwhii81105mp"
+path="res://.godot/imported/PumpActionShotgun.obj-bcbbadb38636dddaf1d8193cd57d4b2f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PumpActionShotgun.obj-bcbbadb38636dddaf1d8193cd57d4b2f.mesh"]
+
+source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/pumpActionShotgun/PumpActionShotgun.obj"
+dest_files=["res://.godot/imported/PumpActionShotgun.obj-bcbbadb38636dddaf1d8193cd57d4b2f.mesh", "res://.godot/imported/PumpActionShotgun.obj-bcbbadb38636dddaf1d8193cd57d4b2f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

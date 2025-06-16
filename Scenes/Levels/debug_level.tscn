@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=13 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_h5nva"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_7lwln"]
 [ext_resource type="Texture2D" uid="uid://doxcklavwt0ur" path="res://textures/concrete256_3.png" id="4_gvbmp"]
-[ext_resource type="PackedScene" uid="uid://dc55544x0vwsu" path="res://Assets/Models/ak74.glb" id="5_v2tf5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -81,6 +80,3 @@ shape = SubResource("ConvexPolygonShape3D_ou2aw")
 
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_k4ubo")
-
-[node name="ak74" parent="." instance=ExtResource("5_v2tf5")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 8.43331, 1.45939, 3.48034)

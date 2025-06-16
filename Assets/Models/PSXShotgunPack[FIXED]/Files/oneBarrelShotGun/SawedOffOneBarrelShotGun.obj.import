@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dqvex1lnaetuy"
+path="res://.godot/imported/SawedOffOneBarrelShotGun.obj-67d6c7cef0dc8415d34aa7cf96ce81cc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SawedOffOneBarrelShotGun.obj-67d6c7cef0dc8415d34aa7cf96ce81cc.mesh"]
+
+source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/oneBarrelShotGun/SawedOffOneBarrelShotGun.obj"
+dest_files=["res://.godot/imported/SawedOffOneBarrelShotGun.obj-67d6c7cef0dc8415d34aa7cf96ce81cc.mesh", "res://.godot/imported/SawedOffOneBarrelShotGun.obj-67d6c7cef0dc8415d34aa7cf96ce81cc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

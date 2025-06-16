@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://fhgtbmrvrjew"]
+
+[ext_resource type="PackedScene" uid="uid://bhucncys8uksm" path="res://Assets/Models/ps1-psx-style-desert-eagle-lowpoly/source/DesertEaglePS1.glb" id="1_16j2h"]
+
+[node name="DesertEaglePS1" instance=ExtResource("1_16j2h")]
+
+[node name="Cube" parent="." index="0"]
+visible = false
+
+[node name="Cylinder_001" parent="." index="6"]
+visible = false
+
+[node name="Cube_006" parent="." index="7"]
+visible = false
+
+[node name="Cube_007" parent="." index="8"]
+visible = false
+
+[node name="Cube_008" parent="." index="9"]
+visible = false
+
+[node name="Cube_009" parent="." index="10"]
+visible = false
+
+[node name="Cube_010" parent="." index="11"]
+visible = false
+
+[node name="Cylinder_002" parent="." index="12"]
+visible = false
+
+[node name="Cube_011" parent="." index="13"]
+visible = false
+
+[node name="Cylinder_003" parent="." index="14"]
+visible = false

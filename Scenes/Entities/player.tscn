@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://rpl5amivov5f"]
+[gd_scene load_steps=31 format=3 uid="uid://rpl5amivov5f"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7gcer"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/CamNode3D.gd" id="2_to3yv"]
+[ext_resource type="PackedScene" uid="uid://cyytai2l1q3fy" path="res://Scenes/Guns/player_deagle.tscn" id="3_nsvod"]
 [ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="4_1o6bh"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/meshinterpolation.gd" id="4_xd1iw"]
 
@@ -494,10 +495,6 @@ target_position = Vector3(0, 0, -2)
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="SwordSpawn" type="Marker3D" parent="CamNode3D/CamSmooth/PCamera"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148851, 0.441268, -0.206084)
-
 [node name="InteractWindowDetect" type="Area3D" parent="CamNode3D/CamSmooth/PCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -0.604)
 collision_layer = 0
@@ -514,6 +511,8 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_d0s5x")
 }
+
+[node name="PlayerDeagle" parent="CamNode3D/CamSmooth/PCamera/WeaponBobble" instance=ExtResource("3_nsvod")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="CamNode3D"]
 
@@ -805,7 +804,6 @@ unique_name_in_owner = true
 target_position = Vector3(0, 1, 0)
 hit_from_inside = true
 
-[connection signal="child_exiting_tree" from="CamNode3D/CamSmooth/PCamera/SwordSpawn" to="." method="_on_sword_spawn_child_exiting_tree"]
 [connection signal="body_entered" from="CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
 [connection signal="body_exited" from="CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
 [connection signal="pressed" from="CamNode3D/CanvasLayer/Deathscreen/Quit" to="." method="_on_quit_pressed"]

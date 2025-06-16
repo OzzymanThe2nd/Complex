@@ -25,6 +25,9 @@ var zoomfov = null
 @onready var checkpoint = self.global_position
 var doublejump_free = true
 @onready var magtext = %magtext
+var default_weapon_spot : Vector3 = Vector3(0,0,0)
+@export var weapon_wobble_amount : float = 0.2
+@export var weapon_rotation_amount : float = 0.05
 
 @warning_ignore("unused_signal")
 signal dead
@@ -66,6 +69,7 @@ func _ready():
 	self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 	%PCamera.transform.basis = Basis() # reset rotation
 	%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+	PlayerStatus.keepplayer = self
 
 func is_too_steep(normal : Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
@@ -183,6 +187,14 @@ func _physics_process(delta):
 	if not _snap_up_stairs_check(delta):
 		move_and_slide()
 	slide_cam_back(delta)
+	cam_tilt(input_dir.x)
+	weapon_tilt(input_dir.x)
+
+func cam_tilt(x):
+	$CamNode3D/CamSmooth.rotation.z = lerp($CamNode3D/CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
+
+func weapon_tilt(x):
+	%WeaponBobble.rotation.z = lerp(%WeaponBobble.rotation.z, -x * weapon_wobble_amount, 0.1)
 
 func footstep():
 	$Footstep.stream = load(footstep_sounds_metal[randi_range(0,3)])

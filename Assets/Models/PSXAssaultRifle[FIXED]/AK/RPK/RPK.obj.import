@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bje5wv52cxr2q"
+path="res://.godot/imported/RPK.obj-932463b544ad5761baa77a68917bb789.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RPK.obj-932463b544ad5761baa77a68917bb789.mesh"]
+
+source_file="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/RPK/RPK.obj"
+dest_files=["res://.godot/imported/RPK.obj-932463b544ad5761baa77a68917bb789.mesh", "res://.godot/imported/RPK.obj-932463b544ad5761baa77a68917bb789.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
