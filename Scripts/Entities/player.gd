@@ -28,6 +28,7 @@ var doublejump_free = true
 var default_weapon_spot : Vector3 = Vector3(0,0,0)
 @export var weapon_wobble_amount : float = 0.2
 @export var weapon_rotation_amount : float = 0.05
+var mouse_location : Vector2
 
 @warning_ignore("unused_signal")
 signal dead
@@ -189,12 +190,18 @@ func _physics_process(delta):
 	slide_cam_back(delta)
 	cam_tilt(input_dir.x)
 	weapon_tilt(input_dir.x)
+	weapon_wobble()
 
 func cam_tilt(x):
 	$CamNode3D/CamSmooth.rotation.z = lerp($CamNode3D/CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
 
 func weapon_tilt(x):
 	%WeaponBobble.rotation.z = lerp(%WeaponBobble.rotation.z, -x * weapon_wobble_amount, 0.1)
+
+func weapon_wobble():
+	mouse_location = lerp(mouse_location, Vector2.ZERO, 0.1)
+	%WeaponBobble.rotation.x = lerp(%WeaponBobble.rotation.x, mouse_location.y * weapon_rotation_amount, 0.1)
+	%WeaponBobble.rotation.y = lerp(%WeaponBobble.rotation.y, mouse_location.x * weapon_rotation_amount, 0.1)
 
 func footstep():
 	$Footstep.stream = load(footstep_sounds_metal[randi_range(0,3)])
@@ -210,6 +217,7 @@ func _input(event):
 			rot_y -= event.relative.y * mouse_sens
 		%PCamera.transform.basis = Basis() # reset rotation
 		%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+		mouse_location = event.relative
 
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("move_jump") and is_on_floor():

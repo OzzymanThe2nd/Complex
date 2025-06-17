@@ -43,7 +43,6 @@ transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 
 [node name="Skeleton3D" parent="Player_Arms/Armature_001" index="0"]
 bones/0/position = Vector3(-0.702125, -3.86454, -4.76837e-07)
 bones/0/rotation = Quaternion(0.0189107, 0.513193, 0.706854, 0.486449)
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.07663, 5.10981, -0.0766295)
 bones/1/rotation = Quaternion(0.175751, 0.011599, 0.132661, 0.975386)
 bones/1/scale = Vector3(1, 1, 1)
@@ -60,7 +59,6 @@ bones/5/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(-0.35563, 0.841114, 0.0443806)
 bones/6/rotation = Quaternion(0.128305, 0.0847001, 0.668005, 0.728103)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(3.81124e-08, 3.53373, 1.08096e-07)
 bones/8/rotation = Quaternion(0.186553, -0.0676742, 0.294551, 0.934804)
 bones/8/scale = Vector3(1, 1, 1)
@@ -117,7 +115,6 @@ bones/28/rotation = Quaternion(-0.0381531, 0.0019228, -0.285778, 0.957534)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/position = Vector3(-1.39773e-07, 2.35405, -5.01186e-07)
 bones/29/rotation = Quaternion(-0.0503083, 0.00858981, 0.0443847, 0.99771)
-bones/29/scale = Vector3(1, 1, 1)
 bones/31/rotation = Quaternion(-0.0210868, 0.00934312, -0.285977, 0.957959)
 bones/31/scale = Vector3(1, 1, 1)
 bones/32/rotation = Quaternion(-0.0153609, 0.0140417, -0.321175, 0.946791)
@@ -158,6 +155,7 @@ bones/43/scale = Vector3(1, 1, 0.999999)
 
 [node name="Cube_001" parent="Player_Arms/Armature_001/Skeleton3D" index="0"]
 material_overlay = SubResource("ShaderMaterial_wbipc")
+cast_shadow = 0
 
 [node name="DesertEaglePS1" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001" index="0" instance=ExtResource("2_8l1gc")]
 transform = Transform3D(1.99897, 0.031454, -0.0560664, -5.2205e-08, 1.74426, 0.978552, 0.0642869, -0.978047, 1.74336, -4.62515, -1.94132, 15.2167)
@@ -165,63 +163,80 @@ transform = Transform3D(1.99897, 0.031454, -0.0560664, -5.2205e-08, 1.74426, 0.9
 [node name="Cube" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="0"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cylinder" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="1"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_001" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="2"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_002" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="3"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_003" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="4"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_004" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="5"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cylinder_001" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="6"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_006" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="7"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_007" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="8"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_008" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="9"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_009" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="10"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_010" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="11"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cylinder_002" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="12"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_011" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="13"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cylinder_003" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="14"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="15"]
 material_overlay = SubResource("ShaderMaterial_h6jbv")
+cast_shadow = 0
 
 [node name="Cube_002" parent="Player_Arms/Armature_001/Skeleton3D" index="1"]
 material_overlay = SubResource("ShaderMaterial_3orc7")
+cast_shadow = 0
 
 [editable path="Player_Arms"]
 [editable path="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
