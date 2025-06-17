@@ -96,7 +96,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -159,7 +159,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CamNode3D/CamSmooth/PCamera:position")
+tracks/4/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -171,7 +171,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
+tracks/5/path = NodePath("GunLayer/CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -183,7 +183,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CamNode3D/CamSmooth:rotation")
+tracks/6/path = NodePath("GunLayer/CamNode3D/CamSmooth:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -259,7 +259,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CamNode3D/CamSmooth/PCamera:position")
+tracks/4/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -287,7 +287,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CamSmooth:rotation")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CamSmooth:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -351,7 +351,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CamNode3D/CamSmooth/PCamera:position")
+tracks/4/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -391,7 +391,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -406,7 +406,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CanvasLayer/LevelEnd/FadeToBlack:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -418,7 +418,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CamNode3D/CanvasLayer/PopUpText:modulate")
+tracks/1/path = NodePath("GunLayer/CamNode3D/CanvasLayer/PopUpText:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -434,7 +434,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CanvasLayer/PopUpText:modulate")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CanvasLayer/PopUpText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -450,7 +450,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamNode3D/CanvasLayer/PopUpText:modulate")
+tracks/0/path = NodePath("GunLayer/CamNode3D/CanvasLayer/PopUpText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -476,48 +476,70 @@ collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
-current_weapon = NodePath("CamNode3D/CamSmooth/PCamera/WeaponBobble/PlayerDeagle")
+current_weapon = NodePath("GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble/PlayerDeagle")
 
-[node name="CamNode3D" type="Node3D" parent="."]
+[node name="GunLayer" type="CanvasLayer" parent="."]
+
+[node name="CamNode3D" type="Node3D" parent="GunLayer"]
 script = ExtResource("2_to3yv")
+follow_target = NodePath("../..")
 
-[node name="CamSmooth" type="Node3D" parent="CamNode3D"]
+[node name="CamSmooth" type="Node3D" parent="GunLayer/CamNode3D"]
 unique_name_in_owner = true
 
-[node name="PCamera" type="Camera3D" parent="CamNode3D/CamSmooth"]
+[node name="PCamera" type="Camera3D" parent="GunLayer/CamNode3D/CamSmooth"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0.796454, -0.396346)
+cull_mask = 1048573
 fov = 90.0
 
-[node name="Interact" type="RayCast3D" parent="CamNode3D/CamSmooth/PCamera"]
+[node name="Interact" type="RayCast3D" parent="GunLayer/CamNode3D/CamSmooth/PCamera"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, -0.00645399, 0.396346)
 target_position = Vector3(0, 0, -2)
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="InteractWindowDetect" type="Area3D" parent="CamNode3D/CamSmooth/PCamera"]
+[node name="InteractWindowDetect" type="Area3D" parent="GunLayer/CamNode3D/CamSmooth/PCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -0.604)
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CamNode3D/CamSmooth/PCamera/InteractWindowDetect"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect"]
 shape = SubResource("BoxShape3D_q3558")
 
-[node name="WeaponBobble" type="Node3D" parent="CamNode3D/CamSmooth/PCamera"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 2.5411e-21, 0, -2.5411e-21, 1, 0, 0, 0)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GunLayer/CamNode3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="Bobbloid" type="AnimationPlayer" parent="CamNode3D/CamSmooth/PCamera/WeaponBobble"]
+[node name="SubViewport" type="SubViewport" parent="GunLayer/CamNode3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+cull_mask = 2
+
+[node name="WeaponBobble" type="Node3D" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0)
+
+[node name="Bobbloid" type="AnimationPlayer" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_d0s5x")
 }
 
-[node name="PlayerDeagle" parent="CamNode3D/CamSmooth/PCamera/WeaponBobble" instance=ExtResource("3_nsvod")]
+[node name="PlayerDeagle" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble" instance=ExtResource("3_nsvod")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="CamNode3D"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="GunLayer/CamNode3D"]
 
-[node name="Pixelate" type="ColorRect" parent="CamNode3D/CanvasLayer2"]
+[node name="Pixelate" type="ColorRect" parent="GunLayer/CamNode3D/CanvasLayer2"]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_8cyek")
@@ -528,9 +550,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="CamNode3D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="GunLayer/CamNode3D"]
 
-[node name="CenterContainer" type="CenterContainer" parent="CamNode3D/CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="GunLayer/CamNode3D/CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -544,12 +566,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Crosshair" type="TextureRect" parent="CamNode3D/CanvasLayer/CenterContainer"]
+[node name="Crosshair" type="TextureRect" parent="GunLayer/CamNode3D/CanvasLayer/CenterContainer"]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Deathscreen" type="Control" parent="CamNode3D/CanvasLayer"]
+[node name="Deathscreen" type="Control" parent="GunLayer/CamNode3D/CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -561,7 +583,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="CamNode3D/CanvasLayer/Deathscreen"]
+[node name="Panel" type="Panel" parent="GunLayer/CamNode3D/CanvasLayer/Deathscreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -576,7 +598,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CamNode3D/CanvasLayer/Deathscreen/Panel"]
+[node name="Label" type="Label" parent="GunLayer/CamNode3D/CanvasLayer/Deathscreen/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -594,7 +616,7 @@ theme_override_font_sizes/font_size = 31
 text = "You Died"
 horizontal_alignment = 1
 
-[node name="Quit" type="Button" parent="CamNode3D/CanvasLayer/Deathscreen"]
+[node name="Quit" type="Button" parent="GunLayer/CamNode3D/CanvasLayer/Deathscreen"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 7
@@ -611,7 +633,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 68
 text = "Quit"
 
-[node name="magtext" type="Label" parent="CamNode3D/CanvasLayer"]
+[node name="magtext" type="Label" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -625,7 +647,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 34
 
-[node name="Health" type="Control" parent="CamNode3D/CanvasLayer" groups=["hud"]]
+[node name="Health" type="Control" parent="GunLayer/CamNode3D/CanvasLayer" groups=["hud"]]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -634,13 +656,13 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="HealthAnims" type="AnimationPlayer" parent="CamNode3D/CanvasLayer/Health"]
+[node name="HealthAnims" type="AnimationPlayer" parent="GunLayer/CamNode3D/CanvasLayer/Health"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_eglyk")
 }
 
-[node name="LevelEnd" type="Control" parent="CamNode3D/CanvasLayer"]
+[node name="LevelEnd" type="Control" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -650,7 +672,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="FadeToBlack" type="ColorRect" parent="CamNode3D/CanvasLayer/LevelEnd"]
+[node name="FadeToBlack" type="ColorRect" parent="GunLayer/CamNode3D/CanvasLayer/LevelEnd"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -661,7 +683,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Pixelate Hud" type="ColorRect" parent="CamNode3D/CanvasLayer"]
+[node name="Pixelate Hud" type="ColorRect" parent="GunLayer/CamNode3D/CanvasLayer"]
 visible = false
 material = SubResource("ShaderMaterial_dhvey")
 anchors_preset = 15
@@ -671,7 +693,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DashText" type="Label" parent="CamNode3D/CanvasLayer"]
+[node name="DashText" type="Label" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8
@@ -688,7 +710,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Press shift to dash"
 
-[node name="PopUpText" type="Label" parent="CamNode3D/CanvasLayer"]
+[node name="PopUpText" type="Label" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
@@ -704,10 +726,10 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Filler"
 
-[node name="PopUpTimer" type="Timer" parent="CamNode3D/CanvasLayer/PopUpText"]
+[node name="PopUpTimer" type="Timer" parent="GunLayer/CamNode3D/CanvasLayer/PopUpText"]
 one_shot = true
 
-[node name="InteractPrompt" type="NinePatchRect" parent="CamNode3D/CanvasLayer"]
+[node name="InteractPrompt" type="NinePatchRect" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 7
@@ -728,7 +750,7 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="InteractText" type="Label" parent="CamNode3D/CanvasLayer/InteractPrompt"]
+[node name="InteractText" type="Label" parent="GunLayer/CamNode3D/CanvasLayer/InteractPrompt"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -805,10 +827,10 @@ unique_name_in_owner = true
 target_position = Vector3(0, 1, 0)
 hit_from_inside = true
 
-[connection signal="body_entered" from="CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
-[connection signal="body_exited" from="CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
-[connection signal="pressed" from="CamNode3D/CanvasLayer/Deathscreen/Quit" to="." method="_on_quit_pressed"]
-[connection signal="timeout" from="CamNode3D/CanvasLayer/PopUpText/PopUpTimer" to="." method="_on_pop_up_timer_timeout"]
+[connection signal="body_entered" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
+[connection signal="body_exited" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
+[connection signal="pressed" from="GunLayer/CamNode3D/CanvasLayer/Deathscreen/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="GunLayer/CamNode3D/CanvasLayer/PopUpText/PopUpTimer" to="." method="_on_pop_up_timer_timeout"]
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_player_anim_animation_finished"]
 [connection signal="timeout" from="DashLength" to="." method="_on_dash_length_timeout"]
 [connection signal="animation_finished" from="HudAnim" to="." method="_on_hud_anim_animation_finished"]

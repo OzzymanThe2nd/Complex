@@ -62,10 +62,11 @@ func _ready():
 	var busid = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(busid,linear_to_db(volpercent/100))
 	%PCamera.fov = basefov
+	%GunCam.fov = basefov
 	%Bobbloid.play("wobble")
 	%Bobbloid.pause()
-	$CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_entered.connect(_on_interact_window_detect_body_entered)
-	$CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_exited.connect(_on_interact_window_detect_body_exited)
+	$GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_entered.connect(_on_interact_window_detect_body_entered)
+	$GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_exited.connect(_on_interact_window_detect_body_exited)
 	await get_tree().process_frame
 	self.transform.basis = Basis()
 	self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
@@ -178,10 +179,14 @@ func _physics_process(delta):
 			trying_uncrouch = false
 			crouch = false
 	if Input.is_action_pressed("lean_left"):
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 45.0, 0.05)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, -0.8, 0.05)
 	elif Input.is_action_pressed("lean_right"):
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -45.0, 0.05)
-	else: %PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, 0.8, 0.05)
+	else:
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.05)
 	if is_on_floor():
 		if stepqueued:
 			footstep()
@@ -200,7 +205,7 @@ func _physics_process(delta):
 	weapon_wobble()
 
 func cam_tilt(x):
-	$CamNode3D/CamSmooth.rotation.z = lerp($CamNode3D/CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
+	%CamSmooth.rotation.z = lerp(%CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
 
 func weapon_tilt(x):
 	%WeaponBobble.rotation.z = lerp(%WeaponBobble.rotation.z, -x * weapon_wobble_amount, 0.1)
