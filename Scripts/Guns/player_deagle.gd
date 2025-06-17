@@ -3,6 +3,7 @@ var player : Node3D
 var default_cast_rot : Vector3 
 var y_spread : float = 0.0
 var x_spread :float = 0.0
+@export var shootable : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerStatus.keepplayer
@@ -17,13 +18,15 @@ func _process(delta: float) -> void:
 		
 
 func shoot():
-	if not $AnimationPlayer.is_playing():
+	if shootable:
+		shootable = false
 		y_spread += %ShootCast.rotation.y + randf_range(-0.5, 0.5)
 		x_spread += %ShootCast.rotation.x + randf_range(-0.4, -0.7)
 		y_spread = clamp(y_spread, -0.5, 0.5)
 		x_spread = clamp(x_spread, -0.5, 0.5)
 		print(y_spread)
 		#print(x_spread)
+		if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
 		$AnimationPlayer.play("shoot")
 		$ShotCooldown.start()
 
@@ -31,3 +34,8 @@ func shoot():
 func _on_shot_cooldown_timeout() -> void:
 	y_spread = default_cast_rot.y
 	x_spread = default_cast_rot.x
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "shoot":
+		shootable = true

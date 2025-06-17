@@ -392,6 +392,18 @@ tracks/47/keys = {
 "update": 0,
 "values": [Vector3(0, -0.46, 0)]
 }
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath(".:shootable")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_3t6rm"]
 resource_name = "shoot"
@@ -753,6 +765,18 @@ tracks/47/keys = {
 "update": 0,
 "values": [Vector3(0, -0.46, 0), Vector3(0, -0.46, 0)]
 }
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath(".:shootable")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4njos"]
 _data = {
@@ -1006,6 +1030,7 @@ libraries = {
 }
 
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="Player_Arms"]
 [editable path="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
