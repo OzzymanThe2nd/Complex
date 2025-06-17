@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cksmlum8i6vq2"]
+
+[ext_resource type="Script" path="res://Scripts/Guns/muzzle_flash.gd" id="1_sccwk"]
+[ext_resource type="Texture2D" uid="uid://tgrt5bss21bj" path="res://Assets/Textures/muzzleflash.png" id="2_5htuw"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1ktb"]
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbfcb"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_5htuw")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pqxly"]
+material = SubResource("StandardMaterial3D_xbfcb")
+size = Vector2(0.5, 0.5)
+
+[node name="Muzzle Flash" type="GPUParticles3D"]
+layers = 2
+emitting = false
+amount = 1
+lifetime = 0.03
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_s1ktb")
+draw_pass_1 = SubResource("QuadMesh_pqxly")
+script = ExtResource("1_sccwk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

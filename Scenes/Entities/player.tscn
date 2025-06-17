@@ -477,6 +477,8 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
 current_weapon = NodePath("GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble/PlayerDeagle")
+weapon_wobble_amount = 0.1
+weapon_rotation_amount = 0.03
 
 [node name="GunLayer" type="CanvasLayer" parent="."]
 

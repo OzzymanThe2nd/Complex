@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4npuw4vamk52"
-path.s3tc="res://.godot/imported/shotgunShellTexture.jpg-e87a9cf7663f278390be3b25a0babe7b.s3tc.ctex"
+path.s3tc="res://.godot/imported/shotgunShellTexture.jpg-33d0dbef95bf8ba71ad962bbb3ee316a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/overUnderShotGun/textures/shotgunShellTexture.jpg"
-dest_files=["res://.godot/imported/shotgunShellTexture.jpg-e87a9cf7663f278390be3b25a0babe7b.s3tc.ctex"]
+source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/overUnderShotGun/Textures/shotgunShellTexture.jpg"
+dest_files=["res://.godot/imported/shotgunShellTexture.jpg-33d0dbef95bf8ba71ad962bbb3ee316a.s3tc.ctex"]
 
 [params]
 

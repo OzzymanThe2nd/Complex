@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do86cx0rg22pn"
-path.s3tc="res://.godot/imported/RPK_Texture_240.png-0fdfc862997c0e67f82f4ba3644654df.s3tc.ctex"
+uid="uid://tgrt5bss21bj"
+path.s3tc="res://.godot/imported/muzzleflash.png-375ce9578cbf210b6ca53b475cc62918.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/Textures/RPK_Texture_240.png"
-dest_files=["res://.godot/imported/RPK_Texture_240.png-0fdfc862997c0e67f82f4ba3644654df.s3tc.ctex"]
+source_file="res://Assets/Textures/muzzleflash.png"
+dest_files=["res://.godot/imported/muzzleflash.png-375ce9578cbf210b6ca53b475cc62918.s3tc.ctex"]
 
 [params]
 

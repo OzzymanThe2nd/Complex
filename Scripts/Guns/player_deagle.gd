@@ -3,6 +3,7 @@ var player : Node3D
 var default_cast_rot : Vector3 
 var y_spread : float = 0.0
 var x_spread :float = 0.0
+@onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @export var shootable : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +25,10 @@ func shoot():
 		x_spread += %ShootCast.rotation.x + randf_range(-0.4, -0.7)
 		y_spread = clamp(y_spread, -0.5, 0.5)
 		x_spread = clamp(x_spread, -0.5, 0.5)
-		print(y_spread)
-		#print(x_spread)
+		var flash = muzzle_flash.instantiate()
+		%FlashSpawner.add_child(flash)
+		flash.follow_point = %FlashSpawner
+		flash.position = %FlashSpawner.position
 		if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
 		$AnimationPlayer.play("shoot")
 		$ShotCooldown.start()
