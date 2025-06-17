@@ -2,6 +2,7 @@ extends CharacterBody3D
 @export var resetinven : bool
 @export var passive_glow : bool
 @onready var maingame = self.get_parent_node_3d()
+@export var current_weapon = Node3D
 var trying_uncrouch : bool = false
 var stored_level
 var stored_coord
@@ -168,13 +169,19 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_just_released("zoom"):
 		pass
-	if Input.is_action_pressed("shoot"):
-		pass
+	if Input.is_action_just_pressed("shoot"):
+		if current_weapon != null:
+			current_weapon.shoot()
 	if trying_uncrouch:
 		if not %CrouchCheck.is_colliding():
 			$PlayerAnim.play("uncrouch")
 			trying_uncrouch = false
 			crouch = false
+	if Input.is_action_pressed("lean_left"):
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 45.0, 0.05)
+	elif Input.is_action_pressed("lean_right"):
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -45.0, 0.05)
+	else: %PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 	if is_on_floor():
 		if stepqueued:
 			footstep()
@@ -210,6 +217,7 @@ func footstep():
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		var rot_z = %PCamera.rotation.z
 		rot_x -= event.relative.x * mouse_sens
 		self.transform.basis = Basis()
 		self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
@@ -217,6 +225,7 @@ func _input(event):
 			rot_y -= event.relative.y * mouse_sens
 		%PCamera.transform.basis = Basis() # reset rotation
 		%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+		%PCamera.rotate_object_local(Vector3(0, 0, 1), rot_z)
 		mouse_location = event.relative
 
 	if event is InputEventKey:
