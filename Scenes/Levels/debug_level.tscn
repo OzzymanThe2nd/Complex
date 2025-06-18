@@ -60,6 +60,7 @@ shadow_enabled = true
 environment = SubResource("Environment_0mlka")
 
 [node name="Player" parent="." instance=ExtResource("1_1oa23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16447, 2.59527)
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
 script = ExtResource("2_h5nva")

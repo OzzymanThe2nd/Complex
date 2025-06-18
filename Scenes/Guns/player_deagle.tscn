@@ -1106,21 +1106,21 @@ layers = 2
 material_overlay = SubResource("ShaderMaterial_h6jbv")
 cast_shadow = 0
 
-[node name="ShootCast" type="RayCast3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
-unique_name_in_owner = true
-transform = Transform3D(0.999852, 0.0167209, 0.00409686, -0.0122116, 0.8566, -0.515837, -0.0121346, 0.51571, 0.856677, 0.0850952, -0.939875, 2.50667)
-target_position = Vector3(0, 0, 200)
-
 [node name="FlashSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
 unique_name_in_owner = true
 transform = Transform3D(0.975396, -0.107865, 0.192269, 0.107865, 0.99411, 0.0104995, -0.192269, 0.0104989, 0.981286, -0.646946, -1.36097, 2.79042)
+
+[node name="ShootCast" type="RayCast3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
+unique_name_in_owner = true
+transform = Transform3D(0.999852, 0.0167209, 0.00409685, -0.0122116, 0.8566, -0.515837, -0.0121346, 0.51571, 0.856677, 0.0850952, -0.939874, 2.50667)
+target_position = Vector3(0, 0, 400)
+collision_mask = 3
+debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="Cube_002" parent="Player_Arms/Armature_001/Skeleton3D" index="1"]
 layers = 2
 material_overlay = SubResource("ShaderMaterial_3orc7")
 cast_shadow = 0
-
-[node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="ShotCooldown" type="Timer" parent="."]
 wait_time = 0.7

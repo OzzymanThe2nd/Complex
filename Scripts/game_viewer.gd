@@ -24,5 +24,7 @@ func change_level(new_level):
 func _process(delta: float) -> void:
 	if loading:
 		if ResourceLoader.THREAD_LOAD_LOADED:
-			$Game.add_child((ResourceLoader.load_threaded_get(loading_destination)).instantiate())
+			var loaded_zone = ResourceLoader.load_threaded_get(loading_destination).instantiate()
+			$Game.add_child(loaded_zone)
+			PlayerStatus.loaded_level = loaded_zone
 			loading = false

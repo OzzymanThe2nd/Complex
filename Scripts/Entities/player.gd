@@ -180,10 +180,10 @@ func _physics_process(delta):
 			crouch = false
 	if Input.is_action_pressed("lean_left"):
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, -0.8, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.05)
 	elif Input.is_action_pressed("lean_right"):
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, 0.8, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.05)
 	else:
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.05)
@@ -203,6 +203,10 @@ func _physics_process(delta):
 	cam_tilt(input_dir.x)
 	weapon_tilt(input_dir.x)
 	weapon_wobble()
+	weapon_sway(velocity.length())
+	%GunCam.transform = %PCamera.transform
+	%GunCam.transform = %GunCam.transform.rotated(Vector3(0,1,0), self.rotation.y)
+	%GunCam.global_position = %PCamera.global_position
 
 func cam_tilt(x):
 	%CamSmooth.rotation.z = lerp(%CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
@@ -214,6 +218,16 @@ func weapon_wobble():
 	mouse_location = lerp(mouse_location, Vector2.ZERO, 0.1)
 	%WeaponBobble.rotation.x = lerp(%WeaponBobble.rotation.x, mouse_location.y * weapon_rotation_amount, 0.1)
 	%WeaponBobble.rotation.y = lerp(%WeaponBobble.rotation.y, mouse_location.x * weapon_rotation_amount, 0.1)
+
+func weapon_sway(velo : float):
+	if velo > 0:
+		var bob_level : float = 0.01
+		var bob_frequency : float = 0.01
+		%WeaponBobble.position.y = lerp(%WeaponBobble.position.y, default_weapon_spot.y + sin(Time.get_ticks_msec() * bob_frequency) * bob_level, 0.1)
+		%WeaponBobble.position.x = lerp(%WeaponBobble.position.x, default_weapon_spot.x + sin(Time.get_ticks_msec() * bob_frequency * 0.5) * bob_level, 0.1)
+	else:
+		%WeaponBobble.position.y = lerp(%WeaponBobble.position.y, default_weapon_spot.y, 0.1)
+		%WeaponBobble.position.x = lerp(%WeaponBobble.position.y, default_weapon_spot.x, 0.1)
 
 func footstep():
 	$Footstep.stream = load(footstep_sounds_metal[randi_range(0,3)])

@@ -525,7 +525,9 @@ render_target_update_mode = 4
 
 [node name="GunCam" type="Camera3D" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.796454, -0.396346)
 cull_mask = 2
+fov = 90.0
 
 [node name="WeaponBobble" type="Node3D" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam"]
 unique_name_in_owner = true
