@@ -36,8 +36,9 @@ func shoot():
 		if target:
 			if target.get_collision_layer() == 1:
 				var decal = bullet_hole.instantiate()
-				decal.global_position = %ShootCast.get_collision_point()
-				#decal.hit_pos = %ShootCast.get_collision_point()
+				var hit_pos = %ShootCast.get_collision_point()
+				decal.hit_pos = hit_pos
+				decal.global_position = hit_pos
 				decal.normal = Vector3(%ShootCast.get_collision_normal())
 				PlayerStatus.loaded_level.add_child(decal)
 			elif target.get_collision_layer() == 2:

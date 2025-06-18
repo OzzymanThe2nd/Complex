@@ -26,6 +26,7 @@ material = SubResource("StandardMaterial3D_d5xiw")
 size = Vector2(0.1, 0.1)
 
 [node name="Decal" type="Decal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.3, 0.3, 0.3)
 texture_albedo = ExtResource("1_76v5g")
 script = ExtResource("2_pg5hr")

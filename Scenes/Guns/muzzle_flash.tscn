@@ -4,13 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://tgrt5bss21bj" path="res://Assets/Textures/muzzleflash.png" id="2_5htuw"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1ktb"]
+angle_min = 1.07288e-05
+angle_max = 360.0
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbfcb"]
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("2_5htuw")
-billboard_mode = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_pqxly"]
 material = SubResource("StandardMaterial3D_xbfcb")
@@ -22,6 +27,7 @@ emitting = false
 amount = 1
 lifetime = 0.03
 one_shot = true
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_s1ktb")
 draw_pass_1 = SubResource("QuadMesh_pqxly")
 script = ExtResource("1_sccwk")
