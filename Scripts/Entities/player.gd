@@ -179,14 +179,14 @@ func _physics_process(delta):
 			trying_uncrouch = false
 			crouch = false
 	if Input.is_action_pressed("lean_left"):
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.05)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
+		%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.08)
 	elif Input.is_action_pressed("lean_right"):
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.05)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
+		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
 	else:
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.05)
+		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
 	if is_on_floor():
 		if stepqueued:
 			footstep()

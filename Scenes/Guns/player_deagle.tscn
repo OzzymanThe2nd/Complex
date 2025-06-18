@@ -1123,7 +1123,7 @@ material_overlay = SubResource("ShaderMaterial_3orc7")
 cast_shadow = 0
 
 [node name="ShotCooldown" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1131,8 +1131,13 @@ libraries = {
 "": SubResource("AnimationLibrary_4njos")
 }
 
+[node name="ShotRecovery" type="Timer" parent="."]
+wait_time = 0.19
+one_shot = true
+
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ShotRecovery" to="." method="_on_shot_recovery_timeout"]
 
 [editable path="Player_Arms"]
 [editable path="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]

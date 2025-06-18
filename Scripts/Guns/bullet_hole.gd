@@ -6,8 +6,15 @@ var hit_pos : Vector3 = Vector3(0,0,0)
 func _ready() -> void:
 	global_transform.origin = hit_pos
 	look_at(hit_pos + normal, Vector3.UP)
+	print(normal)
+	if normal == Vector3(0,0,1) or normal == Vector3(0,0,-1):
+		rotate_x(deg_to_rad(90))
+	elif normal == Vector3(1,0,0) or normal == Vector3(-1,0,0):
+		rotate_z(deg_to_rad(90))
 	$GPUParticles3D.emitting = true
-	print(rotation_degrees)
+	#print(normal)
+	#print(rotation_degrees)
+	
 #
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
