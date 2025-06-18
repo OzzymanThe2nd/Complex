@@ -882,6 +882,7 @@ _data = {
 
 [node name="PlayerDeagle" type="Node3D"]
 script = ExtResource("1_2n2by")
+kickback_level = 0.2
 
 [node name="Player_Arms" parent="." instance=ExtResource("1_8hqox")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.10629, -0.0851705, 0.28595)
