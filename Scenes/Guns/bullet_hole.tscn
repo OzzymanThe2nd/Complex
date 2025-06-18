@@ -40,5 +40,7 @@ process_material = SubResource("ParticleProcessMaterial_mwbnw")
 draw_pass_1 = SubResource("QuadMesh_6v0xp")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

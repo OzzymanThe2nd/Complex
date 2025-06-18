@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 func shoot():
 	if shootable:
 		shootable = false
-		y_spread += rotation.y + randf_range(0.015, 0.035)
+		y_spread += rotation.y + randf_range(0.015, 0.025)
 		x_spread += rotation.z + randf_range(0.2, 0.3)
-		y_spread = clamp(y_spread, -0.5, 0.5)
+		y_spread = clamp(y_spread, -0.5, 0.3)
 		x_spread = clamp(x_spread, -0.5, 0.5)
 		var flash = muzzle_flash.instantiate()
 		%FlashSpawner.add_child(flash)
