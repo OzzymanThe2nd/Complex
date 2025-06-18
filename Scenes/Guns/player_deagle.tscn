@@ -1112,7 +1112,7 @@ transform = Transform3D(0.975396, -0.107865, 0.192269, 0.107865, 0.99411, 0.0104
 
 [node name="ShootCast" type="RayCast3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
 unique_name_in_owner = true
-transform = Transform3D(0.999852, 0.0167209, 0.00409685, -0.0122116, 0.8566, -0.515837, -0.0121346, 0.51571, 0.856677, 0.0850952, -0.939874, 2.50667)
+transform = Transform3D(0.999852, 0.0167209, 0.00409684, -0.0122116, 0.8566, -0.515837, -0.0121346, 0.51571, 0.856677, -0.0421195, 0.995548, -0.943197)
 target_position = Vector3(0, 0, 400)
 collision_mask = 3
 debug_shape_custom_color = Color(0, 1, 0, 1)
