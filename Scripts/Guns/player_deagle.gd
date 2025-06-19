@@ -8,12 +8,14 @@ var x_spread :float = 0.0
 @export var shootable : bool = true
 @export var kickback_level : float = 0.1
 var spot_of_last_shot : Vector3
+var default_arm_pos : Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerStatus.keepplayer
 	default_cast_rot = rotation
 	y_spread = rotation.y
 	x_spread = rotation.z
+	default_arm_pos = $Player_Arms.rotation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,14 +23,19 @@ func _process(delta: float) -> void:
 	rotation.z = lerp(rotation.z, x_spread, 0.035)
 	if $ShotRecovery.time_left != 0:
 		position.z = lerp(position.z, spot_of_last_shot.z + kickback_level, 0.1)
+		position.y = lerp(position.y, spot_of_last_shot.y + kickback_level / 2, 0.1)
+		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, clamp($Player_Arms.rotation.x + 0.1, 0.0, 0.8), 0.1)
 	else:
 		position.z = lerp(position.z, 0.0, 0.1)
+		position.y = lerp(position.y, 0.0, 0.1)
+	if position.z < 0.0001:
+		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.05)
 	#%ShootCast.global_position = %FlashSpawner.global_position
 
 func shoot():
 	if shootable:
 		shootable = false
-		y_spread += rotation.y + randf_range(0.015, 0.025)
+		y_spread += rotation.y + randf_range(-0.015, -0.025)
 		x_spread += rotation.z + randf_range(0.2, 0.3)
 		y_spread = clamp(y_spread, -0.5, 0.3)
 		x_spread = clamp(x_spread, -0.5, 0.5)
