@@ -30,6 +30,7 @@ var default_weapon_spot : Vector3 = Vector3(0,0,0)
 @export var weapon_wobble_amount : float = 0.2
 @export var weapon_rotation_amount : float = 0.05
 var mouse_location : Vector2
+var zooming : bool = false
 
 @warning_ignore("unused_signal")
 signal dead
@@ -143,6 +144,9 @@ func _physics_process(delta):
 		else:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
+		if zooming:
+			velocity.x = velocity.x / 2
+			velocity.z = velocity.z / 2
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED-1.5)
 		velocity.z = move_toward(velocity.z, 0, SPEED-1.5)
@@ -166,10 +170,14 @@ func _physics_process(delta):
 				crouch = false
 			else:
 				trying_uncrouch = true
-	if Input.is_action_pressed("zoom"):
-		pass
+	if Input.is_action_just_pressed("zoom"):
+		if current_weapon:
+			current_weapon.zooming = true
+			zooming = true
 	if Input.is_action_just_released("zoom"):
-		pass
+		if current_weapon:
+			current_weapon.zooming = false
+			zooming = false
 	if Input.is_action_just_pressed("shoot"):
 		if current_weapon != null:
 			current_weapon.shoot()

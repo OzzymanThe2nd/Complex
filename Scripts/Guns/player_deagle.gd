@@ -10,6 +10,7 @@ var x_spread :float = 0.0
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3
 var shoot_direction = null
+var zooming : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerStatus.keepplayer
@@ -20,15 +21,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotation.y = lerp(rotation.y, y_spread, 0.035)
-	rotation.z = lerp(rotation.z, x_spread, 0.035)
+	if not zooming:
+		rotation.y = lerp(rotation.y, y_spread, 0.035)
+		rotation.z = lerp(rotation.z, x_spread, 0.035)
 	if $ShotRecovery.time_left != 0:
 		position.z = lerp(position.z, spot_of_last_shot.z + kickback_level, 0.1)
 		position.y = lerp(position.y, spot_of_last_shot.y + kickback_level / 2, 0.1)
 		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, clamp($Player_Arms.rotation.x + 0.1, 0.0, 0.8), 0.125)
 	else:
-		position.z = lerp(position.z, 0.0, 0.1)
-		position.y = lerp(position.y, 0.0, 0.1)
+		if zooming:
+			position.z = lerp(position.z, 0.0, 0.025)
+			position.x = lerp(position.x, -0.258, 0.035)
+			position.y = lerp(position.y, 0.095, 0.035)
+			$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.01)
+		else:
+			position.x = lerp(position.x, 0.0, 0.1)
+			position.z = lerp(position.z, 0.0, 0.1)
+			position.y = lerp(position.y, 0.0, 0.1)
 	if position.z < 0.0001:
 		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.05)
 		shoot_direction = null

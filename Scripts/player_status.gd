@@ -7,6 +7,11 @@ var current_level : int = 0
 const MAX_HEALTH = 100
 var player_health : int = 100
 var loaded_level
+var bullets_in_deagle : int = 8
+
+func reset_to_default():
+	player_health = 100
+	bullets_in_deagle = 8
 
 func level_change(level, warp_position : Vector3):
 	var load_level = level

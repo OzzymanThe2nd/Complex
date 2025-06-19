@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyytai2l1q3fy"]
+[gd_scene load_steps=14 format=3 uid="uid://cyytai2l1q3fy"]
 
 [ext_resource type="Script" path="res://Scripts/Guns/player_deagle.gd" id="1_2n2by"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="1_8hqox"]
@@ -874,13 +874,18 @@ tracks/52/keys = {
 "values": [Vector3(0.523599, 0, 0), Vector3(0.523599, 2.93804e-09, 2.1508e-09), Vector3(0.523599, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_7c513"]
+resource_name = "ads-ing"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4njos"]
 _data = {
 "RESET": SubResource("Animation_xyxcv"),
+"ads-ing": SubResource("Animation_7c513"),
 "shoot": SubResource("Animation_3t6rm")
 }
 
 [node name="PlayerDeagle" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258242, 0.0951049, 0)
 script = ExtResource("1_2n2by")
 kickback_level = 0.2
 
