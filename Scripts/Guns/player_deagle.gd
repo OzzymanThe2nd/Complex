@@ -9,6 +9,7 @@ var x_spread :float = 0.0
 @export var kickback_level : float = 0.1
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3
+var shoot_direction = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerStatus.keepplayer
@@ -24,20 +25,25 @@ func _process(delta: float) -> void:
 	if $ShotRecovery.time_left != 0:
 		position.z = lerp(position.z, spot_of_last_shot.z + kickback_level, 0.1)
 		position.y = lerp(position.y, spot_of_last_shot.y + kickback_level / 2, 0.1)
-		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, clamp($Player_Arms.rotation.x + 0.1, 0.0, 0.8), 0.1)
+		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, clamp($Player_Arms.rotation.x + 0.1, 0.0, 0.8), 0.125)
 	else:
 		position.z = lerp(position.z, 0.0, 0.1)
 		position.y = lerp(position.y, 0.0, 0.1)
 	if position.z < 0.0001:
 		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.05)
+		shoot_direction = null
 	#%ShootCast.global_position = %FlashSpawner.global_position
 
 func shoot():
 	if shootable:
 		shootable = false
-		y_spread += rotation.y + randf_range(-0.015, -0.025)
+		if shoot_direction == null:
+			if randi_range(0,1) == 0: shoot_direction = "left"
+			else: shoot_direction = "right"
+		elif shoot_direction == "left": y_spread += rotation.y + randf_range(0.105, 0.085)
+		elif shoot_direction == "right": y_spread += rotation.y + randf_range(-0.105, -0.085)
 		x_spread += rotation.z + randf_range(0.2, 0.3)
-		y_spread = clamp(y_spread, -0.5, 0.3)
+		y_spread = clamp(y_spread, -0.5, 0.5)
 		x_spread = clamp(x_spread, -0.5, 0.5)
 		var flash = muzzle_flash.instantiate()
 		%FlashSpawner.add_child(flash)
