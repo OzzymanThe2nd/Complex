@@ -172,15 +172,22 @@ func _physics_process(delta):
 				trying_uncrouch = true
 	if Input.is_action_just_pressed("zoom"):
 		if current_weapon:
-			current_weapon.zooming = true
+			if current_weapon.reloading == false:
+				current_weapon.zooming = true
+			else:
+				current_weapon.zoom_after_reload = true
 			zooming = true
 	if Input.is_action_just_released("zoom"):
 		if current_weapon:
 			current_weapon.zooming = false
+			current_weapon.zoom_after_reload = false
 			zooming = false
 	if Input.is_action_just_pressed("shoot"):
 		if current_weapon != null:
 			current_weapon.shoot()
+	if Input.is_action_just_pressed("reload"):
+		if current_weapon != null:
+			current_weapon.reload()
 	if trying_uncrouch:
 		if not %CrouchCheck.is_colliding():
 			$PlayerAnim.play("uncrouch")
