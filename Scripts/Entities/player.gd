@@ -2,10 +2,11 @@ extends CharacterBody3D
 @export var resetinven : bool
 @export var passive_glow : bool
 @onready var maingame = self.get_parent_node_3d()
-@export var current_weapon = Node3D
+@export var current_weapon : Node3D
 var trying_uncrouch : bool = false
 var stored_level
 var stored_coord
+var deagle_load = preload("res://Scenes/Guns/player_deagle.tscn")
 var stepqueued : bool = false
 var footstep_val : float = 30
 var footstep_sounds_metal = ["res://Assets/Sounds/FootstepMetal1.wav","res://Assets/Sounds/FootstepMetal2.wav","res://Assets/Sounds/FootstepMetal3.wav","res://Assets/Sounds/FootstepMetal4.wav"]
@@ -171,14 +172,14 @@ func _physics_process(delta):
 			else:
 				trying_uncrouch = true
 	if Input.is_action_just_pressed("zoom"):
-		if current_weapon:
+		if current_weapon != null:
 			if current_weapon.reloading == false:
 				current_weapon.zooming = true
 			else:
 				current_weapon.zoom_after_reload = true
 			zooming = true
 	if Input.is_action_just_released("zoom"):
-		if current_weapon:
+		if current_weapon != null:
 			current_weapon.zooming = false
 			current_weapon.zoom_after_reload = false
 			zooming = false
@@ -269,7 +270,10 @@ func _input(event):
 		if Input.is_action_just_pressed("0"):
 			pass
 		elif Input.is_action_just_pressed("1"):
-			pass
+			if current_weapon != null:
+				current_weapon.unequip()
+			else:
+				equip_deagle()
 		elif Input.is_action_just_pressed("2"):
 			pass
 		elif Input.is_action_just_pressed("3"):
@@ -397,6 +401,10 @@ func glowtoggle(x):
 func equip_queued():
 	pass
 
+func equip_deagle():
+	var deagle = deagle_load.instantiate()
+	%WeaponBobble.add_child(deagle)
+	current_weapon = deagle
 
 func check_warp():
 	if PlayerStatus.warp_to != null:

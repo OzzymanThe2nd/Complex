@@ -29,6 +29,10 @@ window/size/mode=3
 
 enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 
+[global_group]
+
+handgun=""
+
 [input]
 
 move_forw={

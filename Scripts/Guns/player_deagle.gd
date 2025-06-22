@@ -5,7 +5,7 @@ var y_spread : float = 0.0
 var x_spread :float = 0.0
 @onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @onready var bullet_hole = preload("res://Scenes/Guns/bullet_hole.tscn")
-@export var shootable : bool = true
+@export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
 var spot_of_last_shot : Vector3
@@ -21,6 +21,10 @@ func _ready() -> void:
 	y_spread = rotation.y
 	x_spread = rotation.z
 	default_arm_pos = $Player_Arms.rotation
+	if PlayerStatus.bullets_in_deagle > 0:
+		$AnimationPlayer.play("equip")
+	else:
+		$AnimationPlayer.play("equip_empty")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -64,7 +68,10 @@ func shoot():
 			flash.follow_point = %FlashSpawner
 			flash.position = %FlashSpawner.position
 			if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
-			$AnimationPlayer.play("shoot")
+			if PlayerStatus.bullets_in_deagle > 1:
+				$AnimationPlayer.play("shoot")
+			else:
+				$AnimationPlayer.play("shoot_final_round")
 			spot_of_last_shot = position
 			var target = %ShootCast.get_collider()
 			if target:
@@ -82,6 +89,14 @@ func shoot():
 		else: #What to do if no ammo
 			pass
 
+func unequip():
+	if $AnimationPlayer.is_playing() == false:
+		shootable = false
+		if PlayerStatus.bullets_in_deagle > 0:
+			$AnimationPlayer.play("unequip")
+		else:
+			$AnimationPlayer.play("unequip_empty")
+
 func reload():
 	reloading = true
 	if $ShotCooldown.time_left == 0 and PlayerStatus.bullets_in_deagle != max_mag:
@@ -89,7 +104,10 @@ func reload():
 			zooming = false
 			zoom_after_reload = true
 		shootable = false
-		$AnimationPlayer.play("reload")
+		if PlayerStatus.bullets_in_deagle > 0:
+			$AnimationPlayer.play("reload")
+		else:
+			$AnimationPlayer.play("reload_empty")
 
 
 func _on_shot_cooldown_timeout() -> void:
@@ -98,15 +116,19 @@ func _on_shot_cooldown_timeout() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "shoot":
+	if anim_name == "shoot" or anim_name == "shoot_final_round":
 		shootable = true
-	if anim_name == "reload":
+	if anim_name == "reload" or anim_name == "reload_empty":
 		PlayerStatus.bullets_in_deagle = max_mag
 		shootable = true
 		reloading = false
 		if zoom_after_reload:
 			zooming = true
 			zoom_after_reload = false
+	if anim_name == "equip" or anim_name == "equip_empty":
+		shootable = true
+	if anim_name == "unequip" or anim_name == "unequip_empty":
+		queue_free()
 
 
 func _on_shot_recovery_timeout() -> void:

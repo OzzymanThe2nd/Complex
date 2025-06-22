@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://rpl5amivov5f"]
+[gd_scene load_steps=30 format=3 uid="uid://rpl5amivov5f"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7gcer"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/CamNode3D.gd" id="2_to3yv"]
-[ext_resource type="PackedScene" uid="uid://cyytai2l1q3fy" path="res://Scenes/Guns/player_deagle.tscn" id="3_nsvod"]
 [ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="4_1o6bh"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/meshinterpolation.gd" id="4_xd1iw"]
 
@@ -470,13 +469,12 @@ _data = {
 
 [sub_resource type="AudioStream" id="AudioStream_7mvji"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("current_weapon") groups=["Persist", "player"]]
+[node name="Player" type="CharacterBody3D" groups=["Persist", "player"]]
 collision_layer = 4
 collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
-current_weapon = NodePath("GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble/PlayerDeagle")
 weapon_wobble_amount = 0.1
 weapon_rotation_amount = 0.03
 
@@ -538,8 +536,6 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_d0s5x")
 }
-
-[node name="PlayerDeagle" parent="GunLayer/CamNode3D/SubViewportContainer/SubViewport/GunCam/WeaponBobble" instance=ExtResource("3_nsvod")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="GunLayer/CamNode3D"]
 
