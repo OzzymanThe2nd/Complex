@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlbd482xt6pj5"]
 
-[ext_resource type="Texture2D" uid="uid://cbjiyayggmxi4" path="res://icon.svg" id="1_76v5g"]
+[ext_resource type="Texture2D" uid="uid://cu2tnek448yx2" path="res://Assets/Textures/bullethole_16.png" id="1_03yrk"]
 [ext_resource type="Script" path="res://Scripts/Guns/bullet_hole.gd" id="2_pg5hr"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwbnw"]
@@ -23,11 +23,11 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_6v0xp"]
 material = SubResource("StandardMaterial3D_d5xiw")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.15, 0.15)
 
 [node name="Decal" type="Decal"]
-size = Vector3(0.3, 0.3, 0.3)
-texture_albedo = ExtResource("1_76v5g")
+size = Vector3(0.1, 0.1, 0.1)
+texture_albedo = ExtResource("1_03yrk")
 script = ExtResource("2_pg5hr")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
