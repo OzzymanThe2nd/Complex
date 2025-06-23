@@ -469,12 +469,13 @@ _data = {
 
 [sub_resource type="AudioStream" id="AudioStream_7mvji"]
 
-[node name="Player" type="CharacterBody3D" groups=["Persist", "player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("current_weapon") groups=["Persist", "player"]]
 collision_layer = 4
 collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
+current_weapon = NodePath("")
 weapon_wobble_amount = 0.1
 weapon_rotation_amount = 0.03
 

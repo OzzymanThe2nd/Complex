@@ -14,6 +14,7 @@ var shoot_direction = null
 var zooming : bool = false
 var zoom_after_reload : bool = false
 var reloading : bool = false
+signal unequiped
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerStatus.keepplayer
@@ -128,6 +129,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "equip" or anim_name == "equip_empty":
 		shootable = true
 	if anim_name == "unequip" or anim_name == "unequip_empty":
+		unequiped.emit()
 		queue_free()
 
 

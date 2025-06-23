@@ -23,7 +23,7 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_6v0xp"]
 material = SubResource("StandardMaterial3D_d5xiw")
-size = Vector2(0.15, 0.15)
+size = Vector2(0.05, 0.05)
 
 [node name="Decal" type="Decal"]
 size = Vector3(0.1, 0.1, 0.1)

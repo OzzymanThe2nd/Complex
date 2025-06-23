@@ -32,6 +32,7 @@ var default_weapon_spot : Vector3 = Vector3(0,0,0)
 @export var weapon_rotation_amount : float = 0.05
 var mouse_location : Vector2
 var zooming : bool = false
+var queued = null
 
 @warning_ignore("unused_signal")
 signal dead
@@ -271,6 +272,7 @@ func _input(event):
 			pass
 		elif Input.is_action_just_pressed("1"):
 			if current_weapon != null:
+				queued = "handgun"
 				current_weapon.unequip()
 			else:
 				equip_deagle()
@@ -282,7 +284,7 @@ func _input(event):
 			pass
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
 		elif Input.is_action_just_pressed("5"):
-			pass
+			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
 		elif Input.is_action_just_pressed("6"):
 			pass
 		elif Input.is_action_just_pressed("7"):
@@ -404,6 +406,7 @@ func equip_queued():
 func equip_deagle():
 	var deagle = deagle_load.instantiate()
 	%WeaponBobble.add_child(deagle)
+	deagle.unequiped.connect(_on_unequipped())
 	current_weapon = deagle
 
 func check_warp():
@@ -446,6 +449,9 @@ func _on_interact_window_detect_body_exited(body: Node3D) -> void:
 func _on_footstep_finished() -> void:
 	$Footstep.volume_db = 0
 
+func _on_unequipped():
+	if queued != null:
+		equip_queued()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

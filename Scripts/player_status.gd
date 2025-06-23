@@ -13,7 +13,7 @@ func reset_to_default():
 	player_health = 100
 	bullets_in_deagle = 8
 
-func level_change(level, warp_position : Vector3):
+func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):
 	var load_level = level
 	warp_to = warp_position
 	#loading_image_appear()
@@ -25,5 +25,7 @@ func level_change(level, warp_position : Vector3):
 	if ResourceLoader.THREAD_LOAD_LOADED:
 		#print(viewer.get_node("Game").get_children())
 		#viewer.get_node("Game").get_children()[0].queue_free()
-		viewer.get_node("Game").add_child((ResourceLoader.load_threaded_get(load_level)).instantiate())
+		var new_level = (ResourceLoader.load_threaded_get(load_level)).instantiate()
+		loaded_level = new_level
+		viewer.get_node("Game").add_child(new_level)
 		#loading_image_clear()

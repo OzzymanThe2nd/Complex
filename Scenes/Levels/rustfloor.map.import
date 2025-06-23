@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://5le0en6jqq68"
+path="res://.godot/imported/rustfloor.map-a1b1b12b668991894d07d4440f36dc0c.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/rustfloor.map"
+dest_files=["res://.godot/imported/rustfloor.map-a1b1b12b668991894d07d4440f36dc0c.tres"]
+
+[params]
+
