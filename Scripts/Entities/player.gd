@@ -406,7 +406,7 @@ func equip_queued():
 func equip_deagle():
 	var deagle = deagle_load.instantiate()
 	%WeaponBobble.add_child(deagle)
-	deagle.unequiped.connect(_on_unequipped())
+	deagle.unequiped.connect(_on_unequipped)
 	current_weapon = deagle
 
 func check_warp():

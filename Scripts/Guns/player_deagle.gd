@@ -69,7 +69,7 @@ func shoot():
 			flash.follow_point = %FlashSpawner
 			flash.position = %FlashSpawner.position
 			if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
-			if PlayerStatus.bullets_in_deagle > 1:
+			if PlayerStatus.bullets_in_deagle > 0:
 				$AnimationPlayer.play("shoot")
 			else:
 				$AnimationPlayer.play("shoot_final_round")

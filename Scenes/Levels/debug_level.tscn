@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=15 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
+[ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_h5nva"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_7lwln"]
 [ext_resource type="Texture2D" uid="uid://doxcklavwt0ur" path="res://textures/concrete256_3.png" id="4_gvbmp"]
+[ext_resource type="PackedScene" uid="uid://drdba6hjmhbb" path="res://Scenes/Menus/pause_menu.tscn" id="6_8t4m1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -50,19 +52,25 @@ points = PackedVector3Array(-122, 0, -8.5, -122, -0.5, -8.5, 78, -0.5, -8.5, 78,
 points = PackedVector3Array(-7, 18, 43.5, -7, 0, 43.5, 6, 0, 43.5, 6, 18, 43.5, -7, 18, 54.5, -7, 0, 54.5, 6, 0, 54.5, 6, 18, 54.5)
 
 [node name="Debug Level" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_7w4g4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+process_mode = 1
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_energy = 0.4
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 1
 environment = SubResource("Environment_0mlka")
 
 [node name="Player" parent="." instance=ExtResource("1_1oa23")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16447, 2.59527)
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
+process_mode = 1
 script = ExtResource("2_h5nva")
 local_map_file = "res://Scenes/Levels/conccell.map"
 map_settings = ExtResource("3_7lwln")
@@ -81,3 +89,7 @@ shape = SubResource("ConvexPolygonShape3D_ou2aw")
 
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_k4ubo")
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_8t4m1")]
+process_mode = 3
+visible = false

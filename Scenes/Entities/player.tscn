@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://rpl5amivov5f"]
+[gd_scene load_steps=31 format=3 uid="uid://rpl5amivov5f"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7gcer"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/CamNode3D.gd" id="2_to3yv"]
 [ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="4_1o6bh"]
+[ext_resource type="Texture2D" uid="uid://b8s3alecsxgvs" path="res://textures/damagered.png" id="4_va571"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/meshinterpolation.gd" id="4_xd1iw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q3558"]
@@ -469,13 +470,12 @@ _data = {
 
 [sub_resource type="AudioStream" id="AudioStream_7mvji"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("current_weapon") groups=["Persist", "player"]]
+[node name="Player" type="CharacterBody3D" groups=["Persist", "player"]]
 collision_layer = 4
 collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
-current_weapon = NodePath("")
 weapon_wobble_amount = 0.1
 weapon_rotation_amount = 0.03
 
@@ -649,19 +649,28 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 34
 
 [node name="Health" type="Control" parent="GunLayer/CamNode3D/CanvasLayer" groups=["hud"]]
+visible = false
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HealthAnims" type="AnimationPlayer" parent="GunLayer/CamNode3D/CanvasLayer/Health"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_eglyk")
 }
+
+[node name="TextureRect" type="TextureRect" parent="GunLayer/CamNode3D/CanvasLayer/Health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_va571")
 
 [node name="LevelEnd" type="Control" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
