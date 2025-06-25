@@ -71,10 +71,35 @@ shader_parameter/pixel_size = 2.0
 
 [sub_resource type="Animation" id="Animation_x5ols"]
 resource_name = "HP bar shake"
-length = 0.5
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(0.203063, 0.203063),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.564706)]
+}
 
 [sub_resource type="Animation" id="Animation_yyfhu"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eglyk"]
 _data = {
@@ -649,7 +674,8 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 34
 
 [node name="Health" type="Control" parent="GunLayer/CamNode3D/CanvasLayer" groups=["hud"]]
-visible = false
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -837,6 +863,10 @@ unique_name_in_owner = true
 target_position = Vector3(0, 1, 0)
 hit_from_inside = true
 
+[node name="HealthRegen" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
 [connection signal="body_entered" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
 [connection signal="body_exited" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
 [connection signal="pressed" from="GunLayer/CamNode3D/CanvasLayer/Deathscreen/Quit" to="." method="_on_quit_pressed"]
@@ -845,3 +875,4 @@ hit_from_inside = true
 [connection signal="timeout" from="DashLength" to="." method="_on_dash_length_timeout"]
 [connection signal="animation_finished" from="HudAnim" to="." method="_on_hud_anim_animation_finished"]
 [connection signal="finished" from="Footstep" to="." method="_on_footstep_finished"]
+[connection signal="timeout" from="HealthRegen" to="." method="_on_health_regen_timeout"]

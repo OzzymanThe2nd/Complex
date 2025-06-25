@@ -290,7 +290,7 @@ func _input(event):
 		elif Input.is_action_just_pressed("7"):
 			pass
 		elif Input.is_action_just_pressed("8"):
-			pass
+			take_damage(10)
 		elif Input.is_action_just_pressed("9"):
 			print(get_tree().root.get_children()[-1].get_children())
 		#elif Input.is_action_just_pressed("f5"):
@@ -330,10 +330,11 @@ func weaponbobble():
 
 
 func take_damage(x):
+	#255 - (2.55 * PlayerStatus.player_health)
 	PlayerStatus.player_health -= x
-	#%heltext.text = "%s" % str(Playerstatus.healthcurrent)
-	#%Hbar.value = Playerstatus.healthcurrent
-	#%HealthAnims.play("HP bar shake")
+	if PlayerStatus.player_health > 0:
+		%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
+		$HealthRegen.start()
 	if PlayerStatus.player_health <= 0:
 		PlayerStatus.player_health = 0
 		#%heltext.text = "%s" % str(PlayerStatus.healthcurrent)
@@ -368,11 +369,14 @@ func travel_with_fade(level, coord):
 	stored_coord = coord
 	$HudAnim.play("FadeToBlack")
 
-func heal(x):
-	if not (PlayerStatus.player_health + x) > PlayerStatus.MAX_HEALTH:
-		PlayerStatus.player_health += x
+func heal():
+	if not (PlayerStatus.player_health + 1) > PlayerStatus.MAX_HEALTH:
+		PlayerStatus.player_health += 1
+		await get_tree().create_timer(0.05).timeout
+		heal()
 	else:
 		PlayerStatus.player_health = 100
+	%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
 
 
 func endlevel():
@@ -458,3 +462,7 @@ func _on_quit_pressed() -> void:
 	if PlayerStatus.keepplayer != null:
 		PlayerStatus.keepplayer.queue_free()
 	#get_tree().change_scene_to_packed(load("res://Scenes/Menus/title.tscn"))
+
+
+func _on_health_regen_timeout() -> void:
+	heal()
