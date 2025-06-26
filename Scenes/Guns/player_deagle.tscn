@@ -3958,9 +3958,6 @@ libraries = {
 wait_time = 0.19
 one_shot = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-fov = 90.0
-
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShotRecovery" to="." method="_on_shot_recovery_timeout"]

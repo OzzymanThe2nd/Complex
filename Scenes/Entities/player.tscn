@@ -72,7 +72,6 @@ shader_parameter/pixel_size = 2.0
 [sub_resource type="Animation" id="Animation_x5ols"]
 resource_name = "HP bar shake"
 length = 2.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,10 +79,10 @@ tracks/0/path = NodePath("TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(0.203063, 0.203063),
+"times": PackedFloat32Array(0, 0.866633, 1.1, 1.9666, 2.2),
+"transitions": PackedFloat32Array(0.755147, 0.755147, 0.755147, 0.755147, 0.755147),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.564706)]
+"values": [Color(1, 1, 1, 0.97044), Color(1, 1, 1, 0.564706), Color(1, 1, 1, 0.564706), Color(1, 1, 1, 0.97044), Color(1, 1, 1, 0.97044)]
 }
 
 [sub_resource type="Animation" id="Animation_yyfhu"]
@@ -870,6 +869,7 @@ one_shot = true
 [connection signal="body_entered" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
 [connection signal="body_exited" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
 [connection signal="pressed" from="GunLayer/CamNode3D/CanvasLayer/Deathscreen/Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="GunLayer/CamNode3D/CanvasLayer/Health/HealthAnims" to="." method="_on_health_anims_animation_finished"]
 [connection signal="timeout" from="GunLayer/CamNode3D/CanvasLayer/PopUpText/PopUpTimer" to="." method="_on_pop_up_timer_timeout"]
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_player_anim_animation_finished"]
 [connection signal="timeout" from="DashLength" to="." method="_on_dash_length_timeout"]

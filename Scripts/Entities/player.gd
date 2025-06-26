@@ -32,6 +32,7 @@ var default_weapon_spot : Vector3 = Vector3(0,0,0)
 @export var weapon_rotation_amount : float = 0.05
 var mouse_location : Vector2
 var zooming : bool = false
+var health_loop_stop : bool = false
 var queued = null
 
 @warning_ignore("unused_signal")
@@ -327,7 +328,11 @@ func weaponbobble():
 	else:
 		%Bobbloid.pause()
 
-
+func make_guns_visible(make_visible : bool = true):
+	if make_visible:
+		%WeaponBobble.visible = true
+	else:
+		%WeaponBobble.visible = false
 
 func take_damage(x):
 	#255 - (2.55 * PlayerStatus.player_health)
@@ -335,6 +340,8 @@ func take_damage(x):
 	if PlayerStatus.player_health > 0:
 		%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
 		$HealthRegen.start()
+		if PlayerStatus.player_health <= 40:
+			%HealthAnims.play("HP bar shake")
 	if PlayerStatus.player_health <= 0:
 		PlayerStatus.player_health = 0
 		#%heltext.text = "%s" % str(PlayerStatus.healthcurrent)
@@ -370,13 +377,15 @@ func travel_with_fade(level, coord):
 	$HudAnim.play("FadeToBlack")
 
 func heal():
-	if not (PlayerStatus.player_health + 1) > PlayerStatus.MAX_HEALTH:
+	if not (PlayerStatus.player_health + 1) > PlayerStatus.MAX_HEALTH and $HealthRegen.time_left == 0:
 		PlayerStatus.player_health += 1
 		await get_tree().create_timer(0.05).timeout
 		heal()
 	else:
 		PlayerStatus.player_health = 100
 	%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
+	if PlayerStatus.player_health > 40:
+		health_loop_stop = true
 
 
 func endlevel():
@@ -466,3 +475,12 @@ func _on_quit_pressed() -> void:
 
 func _on_health_regen_timeout() -> void:
 	heal()
+
+
+func _on_health_anims_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "HP bar shake":
+		if health_loop_stop == true:
+			%HealthAnims.play("RESET")
+			health_loop_stop = false
+		else:
+			%HealthAnims.play("HP bar shake")
