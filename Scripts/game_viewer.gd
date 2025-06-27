@@ -35,3 +35,20 @@ func _process(delta: float) -> void:
 			$Game.add_child(loaded_zone)
 			PlayerStatus.loaded_level = loaded_zone
 			loading = false
+
+func _input(event):
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("quit"):
+			if not loading:
+				if get_tree().paused == false:
+					get_tree().paused = true
+					PlayerStatus.keepplayer.make_guns_visible(false)
+					$PauseMenu.visible = true
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					PlayerStatus.viewer.enable_filter(false)
+				else:
+					get_tree().paused = false
+					PlayerStatus.keepplayer.make_guns_visible()
+					$PauseMenu.visible = false
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					PlayerStatus.viewer.enable_filter()
