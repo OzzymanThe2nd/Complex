@@ -8,6 +8,8 @@ var x_spread :float = 0.0
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
+var shotsounds = ["res://Assets/Sounds/HeavyPistolShot1.wav","res://Assets/Sounds/HeavyPistolShot2.wav","res://Assets/Sounds/HeavyPistolShot3.wav","res://Assets/Sounds/HeavyPistolShot4.wav"]
+var active_shotsounds = []
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3
 var shoot_direction = null
@@ -49,6 +51,9 @@ func _process(delta: float) -> void:
 	if position.z < 0.0001:
 		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.05)
 		shoot_direction = null
+	if active_shotsounds.size() > 1:
+		for i in active_shotsounds.size() - 1:
+			active_shotsounds[i].volume_db -= 0.2
 	#%ShootCast.global_position = %FlashSpawner.global_position
 
 func shoot():
@@ -85,6 +90,12 @@ func shoot():
 					PlayerStatus.loaded_level.add_child(decal)
 				elif target.get_collision_layer() == 2:
 					pass #Lower enemy health, blood splatter decal
+			var gunshot = AudioStreamPlayer.new()
+			gunshot.stream = load(shotsounds[randi_range(0,3)])
+			PlayerStatus.loaded_level.add_child(gunshot)
+			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
+			active_shotsounds.append(gunshot)
+			gunshot.play()
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
@@ -135,3 +146,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_shot_recovery_timeout() -> void:
 	pass # Replace with function body.
+
+func _shotsound_finished(shotsound):
+	shotsound.queue_free()
+	await get_tree().process_frame
+	for i in active_shotsounds:
+		if not is_instance_valid(i):
+			active_shotsounds.erase(i)
+			await get_tree().process_frame
