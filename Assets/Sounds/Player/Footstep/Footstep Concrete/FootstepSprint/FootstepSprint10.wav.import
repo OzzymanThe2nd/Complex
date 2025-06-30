@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://g2rtyi81giqi"
+path="res://.godot/imported/FootstepSprint10.wav-08f4faf72ef4ae9d8e3c608a3bd17424.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepSprint/FootstepSprint10.wav"
+dest_files=["res://.godot/imported/FootstepSprint10.wav-08f4faf72ef4ae9d8e3c608a3bd17424.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

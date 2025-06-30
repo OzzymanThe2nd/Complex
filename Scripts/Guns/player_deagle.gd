@@ -8,7 +8,7 @@ var x_spread :float = 0.0
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
-var shotsounds = ["res://Assets/Sounds/HeavyPistolShot1.wav","res://Assets/Sounds/HeavyPistolShot2.wav","res://Assets/Sounds/HeavyPistolShot3.wav","res://Assets/Sounds/HeavyPistolShot4.wav"]
+var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3

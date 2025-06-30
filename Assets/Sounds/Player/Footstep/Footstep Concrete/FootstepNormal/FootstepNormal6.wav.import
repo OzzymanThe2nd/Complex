@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbfk8x4rake43"
+path="res://.godot/imported/FootstepNormal6.wav-1b44bfae73b69db7da05fc530698608f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal6.wav"
+dest_files=["res://.godot/imported/FootstepNormal6.wav-1b44bfae73b69db7da05fc530698608f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
