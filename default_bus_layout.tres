@@ -2,9 +2,9 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_jgkoo"]
 resource_name = "Reverb"
-room_size = 0.4
-damping = 0.6
-wet = 0.4
+room_size = 0.3
+spread = 0.85
+wet = 0.3
 
 [resource]
 bus/1/name = &"Footsteps"

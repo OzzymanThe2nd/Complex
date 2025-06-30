@@ -5,6 +5,7 @@ var y_spread : float = 0.0
 var x_spread :float = 0.0
 @onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @onready var bullet_hole = preload("res://Scenes/Guns/bullet_hole.tscn")
+@onready var casing = preload("res://Scenes/Guns/casing.tscn")
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
@@ -96,6 +97,9 @@ func shoot():
 			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
 			active_shotsounds.append(gunshot)
 			gunshot.play()
+			var spawned_casing = casing.instantiate()
+			spawned_casing.global_position = %CasingSpawner.global_position
+			%CasingSpawner.add_child(spawned_casing)
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
