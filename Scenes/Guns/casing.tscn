@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Player Functions/meshinterpolation.gd" id="4_f0m3v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgy55"]
-bounce = 0.1
+bounce = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1nip"]
 size = Vector3(0.05, 0.05, 0.12)
@@ -27,6 +27,7 @@ size = Vector3(0.1, 0.1, 0.3)
 [node name="RigidBody3D" type="RigidBody3D"]
 top_level = true
 collision_layer = 0
+mass = 0.9
 physics_material_override = SubResource("PhysicsMaterial_tgy55")
 linear_velocity = Vector3(0, 3, 0)
 script = ExtResource("1_b3l2k")
@@ -54,6 +55,9 @@ shape = SubResource("BoxShape3D_ccgf8")
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625553, 0, 0)
 
 [connection signal="body_entered" from="casing/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

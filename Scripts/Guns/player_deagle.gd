@@ -98,10 +98,9 @@ func shoot():
 			active_shotsounds.append(gunshot)
 			gunshot.play()
 			var spawned_casing = casing.instantiate()
-			%CasingSpawner.add_child(spawned_casing)
 			spawned_casing.global_position = %CasingSpawner.global_position
 			spawned_casing.rotation = PlayerStatus.keepplayer.rotation
-			var default_spawn_rot = %CasingSpawner.rotation
+			%CasingSpawner.add_child(spawned_casing)
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
