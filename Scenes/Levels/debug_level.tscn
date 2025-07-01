@@ -104,4 +104,26 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00115967, -0.22583, -0.000305176)
 shape = SubResource("BoxShape3D_ok7jb")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="elevator"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.38231, 0)
+layers = 3
+light_color = Color(0.805742, 0.804884, 0, 1)
+spot_angle = 90.0
+spot_angle_attenuation = 0.0563283
+
+[node name="OmniLight3D" type="OmniLight3D" parent="elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40976, 3.36042, 0)
+light_color = Color(0.0980392, 0.25098, 1, 1)
+light_energy = 0.1
+light_indirect_energy = 0.1
+omni_range = 1.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="elevator"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.38231, 0)
+visible = false
+layers = 3
+light_color = Color(0.691641, 0.639799, 0.426781, 1)
+spot_angle = 90.0
+spot_angle_attenuation = 0.0563283
+
 [editable path="elevator"]
