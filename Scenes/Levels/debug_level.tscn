@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=16 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_h5nva"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_7lwln"]
 [ext_resource type="Texture2D" uid="uid://doxcklavwt0ur" path="res://textures/concrete256_3.png" id="4_gvbmp"]
+[ext_resource type="PackedScene" uid="uid://cn8dhoq1c1owk" path="res://Assets/Models/elevator.glb" id="6_7v23o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -50,6 +51,9 @@ points = PackedVector3Array(-122, 0, -8.5, -122, -0.5, -8.5, 78, -0.5, -8.5, 78,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k4ubo"]
 points = PackedVector3Array(-7, 18, 43.5, -7, 0, 43.5, 6, 0, 43.5, 6, 18, 43.5, -7, 18, 54.5, -7, 0, 54.5, 6, 0, 54.5, 6, 18, 54.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ok7jb"]
+size = Vector3(4.9928, 0.54834, 4.98792)
+
 [node name="Debug Level" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_7w4g4")
@@ -88,3 +92,16 @@ shape = SubResource("ConvexPolygonShape3D_ou2aw")
 
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_k4ubo")
+
+[node name="elevator" parent="." instance=ExtResource("6_7v23o")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -5.0428, -0.238317, -0.354855)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.45455, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00115967, -0.22583, -0.000305176)
+shape = SubResource("BoxShape3D_ok7jb")
+
+[editable path="elevator"]

@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Player Functions/meshinterpolation.gd" id="4_f0m3v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgy55"]
+bounce = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1nip"]
 size = Vector3(0.05, 0.05, 0.12)
@@ -27,7 +28,7 @@ size = Vector3(0.1, 0.1, 0.3)
 top_level = true
 collision_layer = 0
 physics_material_override = SubResource("PhysicsMaterial_tgy55")
-linear_velocity = Vector3(-1, 1, 0)
+linear_velocity = Vector3(0, 3, 0)
 script = ExtResource("1_b3l2k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -38,14 +39,14 @@ shape = SubResource("BoxShape3D_d1nip")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.2, 0.175)
 
 [node name="Cylinder" parent="casing" index="0"]
-layers = 2
 material_overlay = SubResource("ShaderMaterial_ctmb8")
 script = ExtResource("4_f0m3v")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="casing"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1, -0.875)
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="casing/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0148993, 0.0207642)
 shape = SubResource("BoxShape3D_ccgf8")
 
@@ -54,7 +55,7 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="casing/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="casing"]
