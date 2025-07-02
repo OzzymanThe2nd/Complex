@@ -1,0 +1,265 @@
+[gd_scene load_steps=14 format=3 uid="uid://l03xx1ji2akj"]
+
+[ext_resource type="Script" path="res://Scripts/Environment/elevator.gd" id="1_vsv3s"]
+[ext_resource type="PackedScene" uid="uid://cn8dhoq1c1owk" path="res://Assets/Models/elevator.glb" id="2_nvwic"]
+[ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_nik3f"]
+[ext_resource type="Texture2D" uid="uid://bqavna05mbeqg" path="res://Assets/Models/elevator_elevatortext128.png" id="4_xdcpa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7lw2"]
+size = Vector3(9.8457, 1.95123, 9.90649)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nw0vp"]
+size = Vector3(0.121216, 10.0546, 9.81543)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqpqm"]
+size = Vector3(4.71517, 9.2558, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5hyo"]
+render_priority = 0
+shader = ExtResource("3_nik3f")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.61
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("4_xdcpa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3iwb"]
+size = Vector3(0.0404053, 1.11227, 0.801941)
+
+[sub_resource type="Animation" id="Animation_fwo8a"]
+resource_name = "opening"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Cube_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.8),
+"transitions": PackedFloat32Array(0.812253, 1.36604, 1),
+"update": 0,
+"values": [Vector3(-1.25, 3, 2.45), Vector3(-2.53755, 3, 2.45), Vector3(-3.75, 3, 2.45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Cube_002:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.53333, 1.8),
+"transitions": PackedFloat32Array(1, 5.27803, 1, 1),
+"update": 0,
+"values": [Vector3(1.25, 3, 2.45), Vector3(3.05556, 3, 2.45), Vector3(3.06799, 3, 2.45), Vector3(3.75, 3, 2.45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("elevator/Cube/StaticBody3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.93302, 6, 4.9), Vector3(-7.73607, 6, 4.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("elevator/Cube/StaticBody3D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.53333, 1.8),
+"transitions": PackedFloat32Array(1, 5.27, 1, 1),
+"update": 0,
+"values": [Vector3(2.27928, 6, 4.9), Vector3(5.85836, 6, 4.9), Vector3(5.88316, 6, 4.9), Vector3(7.23493, 6, 4.9)]
+}
+
+[sub_resource type="Animation" id="Animation_fabbo"]
+resource_name = "closing"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Cube_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.3, 1.43333, 1.8),
+"transitions": PackedFloat32Array(1, 0.217638, 0.217638, 1, 1),
+"update": 0,
+"values": [Vector3(-3.75, 3, 2.45), Vector3(-2.12963, 3, 2.45), Vector3(-2.12963, 3, 2.45), Vector3(-1.98421, 3, 2.45), Vector3(-1.25, 3, 2.45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Cube_002:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.8),
+"transitions": PackedFloat32Array(0.812252, 1, 1),
+"update": 0,
+"values": [Vector3(3.75, 3, 2.45), Vector3(3.00926, 3, 2.45), Vector3(1.25, 3, 2.45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("elevator/Cube/StaticBody3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.93302, 6, 4.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("elevator/Cube/StaticBody3D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.27928, 6, 4.9)]
+}
+
+[sub_resource type="Animation" id="Animation_l83tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Cube_002:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.75, 3, 2.45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Cube_001:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.75, 3, 2.45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("elevator/Cube/StaticBody3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-7.80276, 6, 4.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("elevator/Cube/StaticBody3D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.16126, 6, 4.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftwpj"]
+_data = {
+"RESET": SubResource("Animation_l83tt"),
+"closing": SubResource("Animation_fabbo"),
+"opening": SubResource("Animation_fwo8a")
+}
+
+[node name="Elevator" type="Node3D"]
+script = ExtResource("1_vsv3s")
+
+[node name="elevator" parent="." instance=ExtResource("2_nvwic")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="elevator/Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253905, 0.00204468, 0.0142821)
+shape = SubResource("BoxShape3D_w7lw2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96496, 5.98524, -0.10791)
+shape = SubResource("BoxShape3D_nw0vp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92948, 5.98524, -0.10791)
+shape = SubResource("BoxShape3D_nw0vp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0765759, 5.98524, -4.9709)
+shape = SubResource("BoxShape3D_nw0vp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="elevator/Cube" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80276, 6, 4.9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481029, 0.0572209, 0)
+shape = SubResource("BoxShape3D_cqpqm")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="elevator/Cube" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16126, 6, 4.9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/Cube/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0367256, -0.00915504, 0)
+shape = SubResource("BoxShape3D_cqpqm")
+
+[node name="Cube_001" parent="elevator" index="1"]
+transform = Transform3D(1.25, 0, 0, 0, 2.495, 0, 0, 0, 0.05, -3.75, 3, 2.45)
+material_overlay = SubResource("ShaderMaterial_y5hyo")
+
+[node name="Cube_002" parent="elevator" index="2"]
+transform = Transform3D(1.25, 0, 0, 0, 2.495, 0, 0, 0, 0.05, 3.75, 3, 2.45)
+material_overlay = SubResource("ShaderMaterial_y5hyo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24231, 1.85331, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0739136, -0.210556, 0.00741577)
+shape = SubResource("BoxShape3D_l3iwb")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.01966, 0)
+layers = 3
+light_color = Color(0.691641, 0.639799, 0.426781, 1)
+spot_angle = 90.0
+spot_angle_attenuation = 0.0563283
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32807, 1.88305, 0)
+light_color = Color(0.0980392, 0.25098, 1, 1)
+light_energy = 0.4
+light_indirect_energy = 0.1
+omni_range = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftwpj")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="elevator"]

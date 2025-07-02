@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=17 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_7lwln"]
 [ext_resource type="Texture2D" uid="uid://doxcklavwt0ur" path="res://textures/concrete256_3.png" id="4_gvbmp"]
 [ext_resource type="PackedScene" uid="uid://cn8dhoq1c1owk" path="res://Assets/Models/elevator.glb" id="6_7v23o"]
+[ext_resource type="PackedScene" uid="uid://l03xx1ji2akj" path="res://Scenes/Environment/elevator.tscn" id="7_f5ddv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -125,5 +126,8 @@ layers = 3
 light_color = Color(0.691641, 0.639799, 0.426781, 1)
 spot_angle = 90.0
 spot_angle_attenuation = 0.0563283
+
+[node name="Elevator" parent="elevator" instance=ExtResource("7_f5ddv")]
+transform = Transform3D(1.81818, 0, 0, 0, 1.81818, 0, 0, 0, 1.81818, 24.3706, 0.433303, 1.02226)
 
 [editable path="elevator"]

@@ -454,7 +454,7 @@ func _on_pop_up_timer_timeout() -> void:
 
 func _on_interact_window_detect_body_entered(body: Node3D) -> void:
 	body = body.get_parent()
-	if body.has_method("interact") and not body.is_in_group("interact_hidden") or body.has_method("interact_with_player") and not body.is_in_group("interact_hidden") or body.is_in_group("door") and not body.is_in_group("interact_hidden"):
+	if body.has_method("interact") and body.is_in_group("interactable") and not body.is_in_group("interact_hidden") or body.has_method("interact_with_player") and body.is_in_group("interactable") and not body.is_in_group("interact_hidden") or body.is_in_group("door") and not body.is_in_group("interact_hidden"):
 		if body.is_in_group("door"): 
 			for i in 2: body = body.get_parent()
 			if body.is_in_group("interact_hidden"): return
