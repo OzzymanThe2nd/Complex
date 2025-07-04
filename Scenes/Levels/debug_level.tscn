@@ -129,5 +129,9 @@ spot_angle_attenuation = 0.0563283
 
 [node name="Elevator" parent="elevator" instance=ExtResource("7_f5ddv")]
 transform = Transform3D(1.81818, 0, 0, 0, 1.81818, 0, 0, 0, 1.81818, 24.3706, 0.433303, 1.02226)
+shut = false
+
+[node name="Elevator" parent="." instance=ExtResource("7_f5ddv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241048, 2.38419e-07, 2.52716)
 
 [editable path="elevator"]
