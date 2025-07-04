@@ -11,6 +11,9 @@ func interact():
 		shut = true
 		busy = true
 		$AnimationPlayer.play("closing")
+		var player = PlayerStatus.keepplayer
+		player.look_to_dir(Vector3(-2, 180, 0))
+		player.move_to_pos($PlayerMoveSpot.global_position)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	busy = false

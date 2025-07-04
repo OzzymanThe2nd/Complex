@@ -10,6 +10,10 @@ var deagle_load = preload("res://Scenes/Guns/player_deagle.tscn")
 var stepqueued : bool = false
 var footstep_val : float = 6
 var step_sound_type = "concrete"
+var cam_locked : bool = false
+var cam_pan : Vector3 = Vector3(0, 0, 0)
+var move_locked : bool = false
+var move_spot : Vector3 = Vector3(0, 0, 0)
 var footstep_sounds_concrete = ["res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal1.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal2.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal3.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal4.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal5.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal6.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal7.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal8.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal9.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal10.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal11.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal12.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal13.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal14.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal15.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal16.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal17.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal18.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal19.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal20.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal21.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal22.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal23.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal24.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal25.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal26.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal27.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal28.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal29.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal30.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal31.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepNormal/FootstepNormal32.wav"]
 var footstep_sounds_concrete_slow = ["res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk1.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk2.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk3.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk4.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk5.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk6.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk7.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk8.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk9.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk10.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk11.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk12.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk13.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk14.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk15.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk16.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk17.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk18.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk19.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk20.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk21.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk22.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk23.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk24.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk25.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk26.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk27.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk28.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk29.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk30.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk31.wav", "res://Assets/Sounds/Player/Footstep/Footstep Concrete/FootstepWalk/FootstepWalk32.wav"]
 var step_sound_dict = {
@@ -139,6 +143,14 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		stepqueued = true
+	if cam_locked:
+		%PCamera.rotation_degrees.x = lerp(%PCamera.rotation_degrees.x, cam_pan.x, 0.1)
+		rotation_degrees.y = lerp(rotation_degrees.y, cam_pan.y, 0.1)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, cam_pan.z, 0.1)
+	if move_locked:
+		global_position.x = lerp(global_position.x, move_spot.x, 0.1)
+		global_position.y = lerp(global_position.y, move_spot.y, 0.1)
+		global_position.z = lerp(global_position.z, move_spot.z, 0.1)
 	#!Sprint/Dash code: only one at a time, decide what you'd prefer later
 	#var sprint = Input.is_action_pressed("move_sprint")
 	# Get the input direction and handle the movement/deceleration.
@@ -220,7 +232,7 @@ func _physics_process(delta):
 			if footstep_val <= 0:
 				footstep()
 	#weaponbobble()
-	if not _snap_up_stairs_check(delta):
+	if not _snap_up_stairs_check(delta) and not move_locked:
 		move_and_slide()
 	slide_cam_back(delta)
 	cam_tilt(input_dir.x)
@@ -268,16 +280,17 @@ func footstep():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		var rot_z = %PCamera.rotation.z
-		rot_x -= event.relative.x * mouse_sens
-		self.transform.basis = Basis()
-		self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
-		if (rot_y - event.relative.y * mouse_sens) < 1.3 and (rot_y - event.relative.y * mouse_sens) > -1.3:
-			rot_y -= event.relative.y * mouse_sens
-		%PCamera.transform.basis = Basis() # reset rotation
-		%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
-		%PCamera.rotate_object_local(Vector3(0, 0, 1), rot_z)
-		mouse_location = event.relative
+		if cam_locked == false:
+			var rot_z = %PCamera.rotation.z
+			rot_x -= event.relative.x * mouse_sens
+			self.transform.basis = Basis()
+			self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
+			if (rot_y - event.relative.y * mouse_sens) < 1.3 and (rot_y - event.relative.y * mouse_sens) > -1.3:
+				rot_y -= event.relative.y * mouse_sens
+			%PCamera.transform.basis = Basis() # reset rotation
+			%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+			%PCamera.rotate_object_local(Vector3(0, 0, 1), rot_z)
+			mouse_location = event.relative
 
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("move_jump") and is_on_floor():
@@ -299,13 +312,14 @@ func _input(event):
 			pass
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
 		elif Input.is_action_just_pressed("5"):
-			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
+			#PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
+			pass
 		elif Input.is_action_just_pressed("6"):
 			pass
 		elif Input.is_action_just_pressed("7"):
 			pass
 		elif Input.is_action_just_pressed("8"):
-			take_damage(10)
+			pass
 		elif Input.is_action_just_pressed("9"):
 			print(get_tree().root.get_children()[-1].get_children())
 		#elif Input.is_action_just_pressed("f5"):
@@ -332,6 +346,15 @@ func _input(event):
 		#"process_mode" : process_mode
 	#}
 	#return save_dictionary
+
+func look_to_dir(dir : Vector3):
+	cam_locked = true
+	cam_pan = dir
+
+func move_to_pos(pos : Vector3):
+	move_locked = true
+	move_spot = pos
+	
 
 func game_over():
 	emit_signal("dead")
