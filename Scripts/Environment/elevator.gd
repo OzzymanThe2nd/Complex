@@ -19,6 +19,7 @@ func interact():
 		busy = true
 		$AnimationPlayer.play("closing")
 		var player = PlayerStatus.keepplayer
+		player.pause_possible = false
 		if player.current_weapon == null:
 			player.look_to_dir(player_look_to)
 			player.move_to_pos($PlayerMoveSpot.global_position)

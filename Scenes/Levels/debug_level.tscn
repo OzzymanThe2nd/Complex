@@ -71,7 +71,7 @@ environment = SubResource("Environment_0mlka")
 
 [node name="Player" parent="." instance=ExtResource("1_1oa23")]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16447, 2.59527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241048, 1.3, 1.91641)
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
 process_mode = 1

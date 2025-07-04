@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("quit"):
-			if not loading:
+			if not loading and not PlayerStatus.keepplayer.pause_possible == false:
 				if get_tree().paused == false:
 					get_tree().paused = true
 					PlayerStatus.keepplayer.make_guns_visible(false)
