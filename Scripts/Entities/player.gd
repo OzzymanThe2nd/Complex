@@ -27,8 +27,8 @@ const JUMP_VELOCITY = 2.5
 const MAX_STEP_HEIGHT = 0.5
 var snapped_to_stairs = false
 var mouse_sens = 0.0035
-var rot_x = 0
-var rot_y = 0
+@export var rot_x : float = 0
+@export var rot_y : float = 0
 var crouch = false
 var crouchtoggle = true
 var camerapos = null
@@ -81,11 +81,15 @@ func _ready():
 	%Bobbloid.pause()
 	$GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_entered.connect(_on_interact_window_detect_body_entered)
 	$GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_exited.connect(_on_interact_window_detect_body_exited)
-	await get_tree().process_frame
 	self.transform.basis = Basis()
 	self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 	%PCamera.transform.basis = Basis() # reset rotation
 	%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+	await get_tree().process_frame
+	#self.transform.basis = Basis()
+	#self.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
+	#%PCamera.transform.basis = Basis() # reset rotation
+	#%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 	PlayerStatus.keepplayer = self
 
 func is_too_steep(normal : Vector3) -> bool:
