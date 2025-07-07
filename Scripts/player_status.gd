@@ -8,6 +8,7 @@ const MAX_HEALTH = 100
 var player_health : int = 100
 var loaded_level
 var bullets_in_deagle : int = 8
+var deagle_jammed : bool = false
 
 func reset_to_default():
 	player_health = 100

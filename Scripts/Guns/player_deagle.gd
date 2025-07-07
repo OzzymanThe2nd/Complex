@@ -9,6 +9,7 @@ var x_spread :float = 0.0
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
+@export var heat_generated : float = 5.1
 var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
@@ -17,6 +18,8 @@ var shoot_direction = null
 var zooming : bool = false
 var zoom_after_reload : bool = false
 var reloading : bool = false
+var heat : float = 0.0
+var jammed : bool = false
 signal unequiped
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +28,10 @@ func _ready() -> void:
 	y_spread = rotation.y
 	x_spread = rotation.z
 	default_arm_pos = $Player_Arms.rotation
-	if PlayerStatus.bullets_in_deagle > 0:
+	if PlayerStatus.deagle_jammed == true:
+		$AnimationPlayer.play("equip") #Replace with jammed equip
+		jammed = true
+	elif PlayerStatus.bullets_in_deagle > 0:
 		$AnimationPlayer.play("equip")
 	else:
 		$AnimationPlayer.play("equip_empty")
@@ -57,9 +63,16 @@ func _process(delta: float) -> void:
 			active_shotsounds[i].volume_db -= 0.2
 	#%ShootCast.global_position = %FlashSpawner.global_position
 
+func heat_cool():
+	heat -= 0.1
+	if heat < 0.0: heat = 0.0
+	if heat != 0.0:
+		await get_tree().create_timer(0.05).timeout
+		heat_cool()
+
 func shoot():
 	if PlayerStatus.bullets_in_deagle > 0:
-		if shootable:
+		if shootable and not jammed:
 			PlayerStatus.bullets_in_deagle -= 1
 			shootable = false
 			if shoot_direction == null:
@@ -74,9 +87,17 @@ func shoot():
 			%FlashSpawner.add_child(flash)
 			flash.follow_point = %FlashSpawner
 			flash.position = %FlashSpawner.position
+			heat += heat_generated
+			heat_cool()
+			print(heat)
 			if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
 			if PlayerStatus.bullets_in_deagle > 0:
-				$AnimationPlayer.play("shoot")
+				if randi_range(0, 100) < heat:
+					jammed = true
+					PlayerStatus.deagle_jammed = true
+					$AnimationPlayer.play("shoot") #Replace with jammed shot animation
+				else:
+					$AnimationPlayer.play("shoot")
 			else:
 				$AnimationPlayer.play("shoot_final_round")
 			spot_of_last_shot = position
@@ -116,7 +137,9 @@ func unequip():
 
 func reload():
 	reloading = true
-	if $ShotCooldown.time_left == 0 and PlayerStatus.bullets_in_deagle != max_mag:
+	if jammed and $ShotCooldown.time_left == 0:
+		$AnimationPlayer.play("unjam")
+	elif $ShotCooldown.time_left == 0 and PlayerStatus.bullets_in_deagle != max_mag:
 		if zooming:
 			zooming = false
 			zoom_after_reload = true
@@ -147,6 +170,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "unequip" or anim_name == "unequip_empty":
 		unequiped.emit()
 		queue_free()
+	if anim_name == "unjam":
+		jammed = false
+		PlayerStatus.deagle_jammed = false
+		reloading = false
 
 
 func _on_shot_recovery_timeout() -> void:
