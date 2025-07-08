@@ -1,22 +1,26 @@
 extends RigidBody3D
+var energy : bool = true
 
 func _ready() -> void:
-	if global_position.x > $Marker3D.global_position.x:
-		linear_velocity.x = global_position.x - $Marker3D.global_position.x
+	if energy:
+		if global_position.x > $Marker3D.global_position.x:
+			linear_velocity.x = global_position.x - $Marker3D.global_position.x
+		else:
+			linear_velocity.x = $Marker3D.global_position.x - global_position.x
+		if global_position.z > $Marker3D.global_position.z:
+			linear_velocity.z = global_position.z - $Marker3D.global_position.z
+		else:
+			linear_velocity.z = $Marker3D.global_position.z - global_position.z
+		if randi_range(0, 1) == 0:
+			constant_torque.x = 0.01
+			constant_torque.y = 0.01
+			constant_torque.z = 0.01
+		else:
+			constant_torque.x = -0.01
+			constant_torque.y = -0.01
+			constant_torque.z = -0.01
 	else:
-		linear_velocity.x = $Marker3D.global_position.x - global_position.x
-	if global_position.z > $Marker3D.global_position.z:
-		linear_velocity.z = global_position.z - $Marker3D.global_position.z
-	else:
-		linear_velocity.z = $Marker3D.global_position.z - global_position.z
-	if randi_range(0, 1) == 0:
-		constant_torque.x = 0.01
-		constant_torque.y = 0.01
-		constant_torque.z = 0.01
-	else:
-		constant_torque.x = -0.01
-		constant_torque.y = -0.01
-		constant_torque.z = -0.01
+		linear_velocity.y = 0
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

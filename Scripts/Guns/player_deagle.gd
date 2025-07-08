@@ -29,7 +29,7 @@ func _ready() -> void:
 	x_spread = rotation.z
 	default_arm_pos = $Player_Arms.rotation
 	if PlayerStatus.deagle_jammed == true:
-		$AnimationPlayer.play("equip") #Replace with jammed equip
+		$AnimationPlayer.play("equip_jam")
 		jammed = true
 	elif PlayerStatus.bullets_in_deagle > 0:
 		$AnimationPlayer.play("equip")
@@ -95,7 +95,7 @@ func shoot():
 				if randi_range(0, 100) < heat:
 					jammed = true
 					PlayerStatus.deagle_jammed = true
-					$AnimationPlayer.play("shoot") #Replace with jammed shot animation
+					$AnimationPlayer.play("shoot_jam")
 				else:
 					$AnimationPlayer.play("shoot")
 			else:
@@ -118,10 +118,11 @@ func shoot():
 			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
 			active_shotsounds.append(gunshot)
 			gunshot.play()
-			var spawned_casing = casing.instantiate()
-			spawned_casing.global_position = %CasingSpawner.global_position
-			spawned_casing.rotation = PlayerStatus.keepplayer.rotation
-			%CasingSpawner.add_child(spawned_casing)
+			if not jammed:
+				var spawned_casing = casing.instantiate()
+				spawned_casing.global_position = %CasingSpawner.global_position
+				spawned_casing.rotation = PlayerStatus.keepplayer.rotation
+				%CasingSpawner.add_child(spawned_casing)
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
@@ -135,10 +136,18 @@ func unequip():
 		else:
 			$AnimationPlayer.play("unequip_empty")
 
+func spawn_casing(energy : bool = false):
+	var spawned_casing = casing.instantiate()
+	if energy == false:
+		spawned_casing.energy = false
+	spawned_casing.global_position = %CasingSpawner.global_position
+	spawned_casing.rotation = PlayerStatus.keepplayer.rotation
+	%CasingSpawner.add_child(spawned_casing)
+
 func reload():
 	reloading = true
 	if jammed and $ShotCooldown.time_left == 0:
-		$AnimationPlayer.play("unjam")
+		$AnimationPlayer.play("clear_jam")
 	elif $ShotCooldown.time_left == 0 and PlayerStatus.bullets_in_deagle != max_mag:
 		if zooming:
 			zooming = false
@@ -170,7 +179,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "unequip" or anim_name == "unequip_empty":
 		unequiped.emit()
 		queue_free()
-	if anim_name == "unjam":
+	if anim_name == "clear_jam":
 		jammed = false
 		PlayerStatus.deagle_jammed = false
 		reloading = false
