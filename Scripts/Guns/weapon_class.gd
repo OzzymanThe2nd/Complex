@@ -1,4 +1,5 @@
 extends Node3D
+class_name weapon
 var player : Node3D
 var default_cast_rot : Vector3 
 var y_spread : float = 0.0
@@ -20,6 +21,7 @@ var zoom_after_reload : bool = false
 var reloading : bool = false
 var heat : float = 0.0
 var jammed : bool = false
+var current_bullets = 0
 signal unequiped
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,13 +30,24 @@ func _ready() -> void:
 	y_spread = rotation.y
 	x_spread = rotation.z
 	default_arm_pos = $Player_Arms.rotation
-	if PlayerStatus.deagle_jammed == true:
+	set_current_bullets()
+	check_jam_state()
+	set_connections()
+	if jammed == true:
 		$AnimationPlayer.play("equip_jam")
-		jammed = true
-	elif PlayerStatus.bullets_in_deagle > 0:
+	elif current_bullets > 0 and jammed == false:
 		$AnimationPlayer.play("equip")
-	else:
+	elif jammed == false:
 		$AnimationPlayer.play("equip_empty")
+
+func set_connections():
+	pass
+
+func set_current_bullets():
+	pass
+
+func check_jam_state():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -71,9 +84,9 @@ func heat_cool():
 		heat_cool()
 
 func shoot():
-	if PlayerStatus.bullets_in_deagle > 0:
+	if current_bullets > 0:
 		if shootable and not jammed:
-			PlayerStatus.bullets_in_deagle -= 1
+			current_bullets -= 1
 			shootable = false
 			if shoot_direction == null:
 				if randi_range(0,1) == 0: shoot_direction = "left"
@@ -91,10 +104,9 @@ func shoot():
 			heat_cool()
 			print(heat)
 			if $AnimationPlayer.current_animation == "shoot": $AnimationPlayer.stop()
-			if PlayerStatus.bullets_in_deagle > 0:
+			if current_bullets > 0:
 				if randi_range(0, 100) < heat:
 					jammed = true
-					PlayerStatus.deagle_jammed = true
 					$AnimationPlayer.play("shoot_jam")
 				else:
 					$AnimationPlayer.play("shoot")
@@ -131,7 +143,7 @@ func shoot():
 func unequip():
 	if $AnimationPlayer.is_playing() == false:
 		shootable = false
-		if PlayerStatus.bullets_in_deagle > 0:
+		if current_bullets > 0:
 			$AnimationPlayer.play("unequip")
 		else:
 			$AnimationPlayer.play("unequip_empty")
@@ -148,12 +160,12 @@ func reload():
 	reloading = true
 	if jammed and $ShotCooldown.time_left == 0:
 		$AnimationPlayer.play("clear_jam")
-	elif $ShotCooldown.time_left == 0 and PlayerStatus.bullets_in_deagle != max_mag:
+	elif $ShotCooldown.time_left == 0 and current_bullets != max_mag:
 		if zooming:
 			zooming = false
 			zoom_after_reload = true
 		shootable = false
-		if PlayerStatus.bullets_in_deagle > 0:
+		if current_bullets > 0:
 			$AnimationPlayer.play("reload")
 		else:
 			$AnimationPlayer.play("reload_empty")
@@ -168,7 +180,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "shoot" or anim_name == "shoot_final_round":
 		shootable = true
 	if anim_name == "reload" or anim_name == "reload_empty":
-		PlayerStatus.bullets_in_deagle = max_mag
+		current_bullets = max_mag
 		shootable = true
 		reloading = false
 		if zoom_after_reload:
@@ -181,7 +193,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		queue_free()
 	if anim_name == "clear_jam":
 		jammed = false
-		PlayerStatus.deagle_jammed = false
 		reloading = false
 
 
