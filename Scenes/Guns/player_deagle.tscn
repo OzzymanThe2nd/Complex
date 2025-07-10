@@ -397,242 +397,62 @@ tracks/43/keys = PackedFloat32Array(0, 1, -0.28824, -0.0448654, 0.163049, 0.9425
 tracks/44/type = "value"
 tracks/44/imported = false
 tracks/44/enabled = true
-tracks/44/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1:position")
+tracks/44/path = NodePath(".:shootable")
 tracks/44/interp = 1
 tracks/44/loop_wrap = true
 tracks/44/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-4.62515, -1.94132, 15.2167)]
+"update": 1,
+"values": [true]
 }
 tracks/45/type = "value"
 tracks/45/imported = false
 tracks/45/enabled = true
-tracks/45/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1:rotation")
+tracks/45/path = NodePath("Player_Arms:position")
 tracks/45/interp = 1
 tracks/45/loop_wrap = true
 tracks/45/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.511259, -0.0321489, -2.99296e-08)]
+"values": [Vector3(-0.10629, -0.0851705, 0.28595)]
 }
 tracks/46/type = "value"
 tracks/46/imported = false
 tracks/46/enabled = true
-tracks/46/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_003:rotation")
+tracks/46/path = NodePath("Player_Arms:rotation")
 tracks/46/interp = 1
 tracks/46/loop_wrap = true
 tracks/46/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.523599, 0, 0)]
+"values": [Vector3(0, 1.5708, 0)]
 }
 tracks/47/type = "value"
 tracks/47/imported = false
 tracks/47/enabled = true
-tracks/47/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_003:position")
+tracks/47/path = NodePath("Player_Arms/Armature_001:rotation")
 tracks/47/interp = 1
 tracks/47/loop_wrap = true
 tracks/47/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.46, 0)]
+"values": [Vector3(0, 1.5708, 0)]
 }
 tracks/48/type = "value"
 tracks/48/imported = false
 tracks/48/enabled = true
-tracks/48/path = NodePath(".:shootable")
+tracks/48/path = NodePath("Player_Arms/Armature_001/Skeleton3D:rotation")
 tracks/48/interp = 1
 tracks/48/loop_wrap = true
 tracks/48/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/49/type = "value"
-tracks/49/imported = false
-tracks/49/enabled = true
-tracks/49/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_005:rotation")
-tracks/49/interp = 1
-tracks/49/loop_wrap = true
-tracks/49/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.523599, 0, 0)]
-}
-tracks/50/type = "value"
-tracks/50/imported = false
-tracks/50/enabled = true
-tracks/50/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_005:position")
-tracks/50/interp = 1
-tracks/50/loop_wrap = true
-tracks/50/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.46, 0)]
-}
-tracks/51/type = "value"
-tracks/51/imported = false
-tracks/51/enabled = true
-tracks/51/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder:position")
-tracks/51/interp = 1
-tracks/51/loop_wrap = true
-tracks/51/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.46, 0)]
-}
-tracks/52/type = "value"
-tracks/52/imported = false
-tracks/52/enabled = true
-tracks/52/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder:rotation")
-tracks/52/interp = 1
-tracks/52/loop_wrap = true
-tracks/52/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.523599, 0, 0)]
-}
-tracks/53/type = "value"
-tracks/53/imported = false
-tracks/53/enabled = true
-tracks/53/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_001:position")
-tracks/53/interp = 1
-tracks/53/loop_wrap = true
-tracks/53/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.46, 0)]
-}
-tracks/54/type = "value"
-tracks/54/imported = false
-tracks/54/enabled = true
-tracks/54/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cube_001:rotation")
-tracks/54/interp = 1
-tracks/54/loop_wrap = true
-tracks/54/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.523599, 0, 0)]
-}
-tracks/55/type = "value"
-tracks/55/imported = false
-tracks/55/enabled = true
-tracks/55/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder:visible")
-tracks/55/interp = 1
-tracks/55/loop_wrap = true
-tracks/55/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/56/type = "value"
-tracks/56/imported = false
-tracks/56/enabled = true
-tracks/56/path = NodePath("Player_Arms:position")
-tracks/56/interp = 1
-tracks/56/loop_wrap = true
-tracks/56/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.10629, -0.0851705, 0.28595)]
-}
-tracks/57/type = "value"
-tracks/57/imported = false
-tracks/57/enabled = true
-tracks/57/path = NodePath("Player_Arms:rotation")
-tracks/57/interp = 1
-tracks/57/loop_wrap = true
-tracks/57/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0)]
-}
-tracks/58/type = "value"
-tracks/58/imported = false
-tracks/58/enabled = true
-tracks/58/path = NodePath("Player_Arms/Armature_001:rotation")
-tracks/58/interp = 1
-tracks/58/loop_wrap = true
-tracks/58/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0)]
-}
-tracks/59/type = "value"
-tracks/59/imported = false
-tracks/59/enabled = true
-tracks/59/path = NodePath("Player_Arms/Armature_001/Skeleton3D:rotation")
-tracks/59/interp = 1
-tracks/59/loop_wrap = true
-tracks/59/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
-}
-tracks/60/type = "value"
-tracks/60/imported = false
-tracks/60/enabled = true
-tracks/60/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/CasingSpawner:position")
-tracks/60/interp = 1
-tracks/60/loop_wrap = true
-tracks/60/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.00772795, 0.46913, -0.0124025)]
-}
-tracks/61/type = "value"
-tracks/61/imported = false
-tracks/61/enabled = true
-tracks/61/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder2:position")
-tracks/61/interp = 1
-tracks/61/loop_wrap = true
-tracks/61/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.032959, 1.75786, -0.208277)]
-}
-tracks/62/type = "value"
-tracks/62/imported = false
-tracks/62/enabled = true
-tracks/62/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder2:rotation")
-tracks/62/interp = 1
-tracks/62/loop_wrap = true
-tracks/62/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.492934, -3.07312, 3.09358)]
-}
-tracks/63/type = "value"
-tracks/63/imported = false
-tracks/63/enabled = true
-tracks/63/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/Cylinder2:visible")
-tracks/63/interp = 1
-tracks/63/loop_wrap = true
-tracks/63/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_apmmi"]
@@ -5531,7 +5351,7 @@ transform = Transform3D(-0.999483, -1.44355e-08, -0.0321361, -0.0157235, 0.87212
 unique_name_in_owner = true
 
 [node name="Cylinder2" type="MeshInstance3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
-transform = Transform3D(0.998061, 0.0155423, -0.0602737, 0.0422804, -0.879933, 0.473213, -0.045682, -0.474843, -0.878884, -0.032959, 1.75786, -0.208277)
+transform = Transform3D(0.998061, 0.0155423, -0.0602737, 0.0422804, -0.879933, 0.473212, -0.045682, -0.474843, -0.878884, -0.032959, 1.75786, -0.208277)
 visible = false
 layers = 2
 material_overlay = SubResource("ShaderMaterial_xx07t")

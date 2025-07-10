@@ -33,6 +33,7 @@ enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 
 handgun=""
 interactable="Interactable objects"
+rifle=""
 
 [input]
 

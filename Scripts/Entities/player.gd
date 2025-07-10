@@ -7,6 +7,7 @@ var trying_uncrouch : bool = false
 var stored_level
 var stored_coord
 var deagle_load = preload("res://Scenes/Guns/player_deagle.tscn")
+var rifle_load = preload("res://Scenes/Guns/player_ak.tscn")
 var stepqueued : bool = false
 var footstep_val : float = 6
 var step_sound_type = "concrete"
@@ -44,7 +45,12 @@ var mouse_location : Vector2
 var zooming : bool = false
 var health_loop_stop : bool = false
 var queued = null
-
+var call_equip_deagle = Callable(self,"equip_deagle")
+var call_equip_rifle = Callable(self,"equip_rifle")
+var queued_help = {
+	"handgun" : call_equip_deagle,
+	"rifle" : call_equip_rifle
+}
 @warning_ignore("unused_signal")
 signal dead
 @warning_ignore("unused_signal")
@@ -305,12 +311,16 @@ func _input(event):
 			pass
 		elif Input.is_action_just_pressed("1"):
 			if current_weapon != null:
-				queued = "handgun"
+				if not current_weapon.is_in_group("handgun"): queued = "handgun"
 				current_weapon.unequip()
 			else:
 				equip_deagle()
 		elif Input.is_action_just_pressed("2"):
-			pass
+			if current_weapon != null:
+				if not current_weapon.is_in_group("rifle"): queued = "rifle"
+				current_weapon.unequip()
+			else:
+				equip_rifle()
 		elif Input.is_action_just_pressed("3"):
 			pass
 		elif Input.is_action_just_pressed("4"):
@@ -456,13 +466,20 @@ func glowtoggle(x):
 		$OmniLight3D.visible = false
 		
 func equip_queued():
-	pass
+	queued_help[queued].call()
+	queued = null
 
 func equip_deagle():
 	var deagle = deagle_load.instantiate()
 	%WeaponBobble.add_child(deagle)
 	deagle.unequiped.connect(_on_unequipped)
 	current_weapon = deagle
+
+func equip_rifle():
+	var rifle = rifle_load.instantiate()
+	%WeaponBobble.add_child(rifle)
+	rifle.unequiped.connect(_on_unequipped)
+	current_weapon = rifle
 
 func check_warp():
 	if PlayerStatus.warp_to != null:

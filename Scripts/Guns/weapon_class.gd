@@ -11,6 +11,9 @@ var x_spread :float = 0.0
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
 @export var heat_generated : float = 5.1
+@export var zoom_position : Vector3 = Vector3(-0.258, 0.095, 0.0)
+@export var zoom_in_speed : float = 0.035
+@export var zoom_in_z_speed : float = 0.025
 var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
@@ -60,9 +63,9 @@ func _process(delta: float) -> void:
 		$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, clamp($Player_Arms.rotation.x + 0.1, 0.0, 0.8), 0.125)
 	else:
 		if zooming:
-			position.z = lerp(position.z, 0.0, 0.025)
-			position.x = lerp(position.x, -0.258, 0.035)
-			position.y = lerp(position.y, 0.095, 0.035)
+			position.z = lerp(position.z, zoom_position.z, zoom_in_z_speed)
+			position.x = lerp(position.x, zoom_position.x, zoom_in_speed)
+			position.y = lerp(position.y, zoom_position.y, zoom_in_speed)
 			$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.01)
 		else:
 			position.x = lerp(position.x, 0.0, 0.1)
