@@ -215,7 +215,12 @@ func _physics_process(delta):
 			zooming = false
 	if Input.is_action_just_pressed("shoot"):
 		if current_weapon != null:
-			current_weapon.shoot()
+			if not current_weapon.full_auto:
+				current_weapon.shoot()
+	if Input.is_action_pressed("shoot"):
+		if current_weapon != null:
+			if current_weapon.full_auto:
+				current_weapon.shoot()
 	if Input.is_action_just_pressed("reload"):
 		if current_weapon != null:
 			current_weapon.reload()

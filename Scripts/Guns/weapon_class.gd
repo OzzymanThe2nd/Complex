@@ -14,6 +14,7 @@ var x_spread :float = 0.0
 @export var zoom_position : Vector3 = Vector3(-0.258, 0.095, 0.0)
 @export var zoom_in_speed : float = 0.035
 @export var zoom_in_z_speed : float = 0.025
+@export var full_auto : bool = false
 var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
@@ -42,6 +43,8 @@ func _ready() -> void:
 		$AnimationPlayer.play("equip")
 	elif jammed == false:
 		$AnimationPlayer.play("equip_empty")
+	await get_tree().process_frame
+	visible = true
 
 func set_connections():
 	pass

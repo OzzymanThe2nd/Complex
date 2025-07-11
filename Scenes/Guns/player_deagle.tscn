@@ -5099,6 +5099,7 @@ _data = {
 
 [node name="PlayerDeagle" type="Node3D" groups=["handgun"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258242, 0.0951049, 0)
+visible = false
 script = ExtResource("1_m8v0d")
 shootable = true
 
