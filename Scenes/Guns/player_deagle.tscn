@@ -5237,7 +5237,7 @@ material_overlay = SubResource("ShaderMaterial_wbipc")
 cast_shadow = 0
 
 [node name="DesertEaglePS1" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001" index="0" instance=ExtResource("2_8l1gc")]
-transform = Transform3D(1.99897, 0.031454, -0.0560664, -5.2205e-08, 1.74426, 0.978552, 0.0642869, -0.978046, 1.74336, -4.62515, -1.94132, 15.2167)
+transform = Transform3D(1.99897, 0.031454, -0.0560664, -5.2205e-08, 1.74426, 0.978553, 0.0642869, -0.978046, 1.74336, -4.62515, -1.94132, 15.2167)
 
 [node name="Cube" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1" index="0"]
 visible = false

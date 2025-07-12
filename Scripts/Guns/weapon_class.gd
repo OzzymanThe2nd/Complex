@@ -6,7 +6,7 @@ var y_spread : float = 0.0
 var x_spread :float = 0.0
 @onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @onready var bullet_hole = preload("res://Scenes/Guns/bullet_hole.tscn")
-@onready var casing = preload("res://Scenes/Guns/casing.tscn")
+@export var casing = "res://Scenes/Guns/casing.tscn"
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
@@ -29,6 +29,7 @@ var current_bullets = 0
 signal unequiped
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	casing = load(casing)
 	player = PlayerStatus.keepplayer
 	default_cast_rot = rotation
 	y_spread = rotation.y
@@ -137,10 +138,7 @@ func shoot():
 			active_shotsounds.append(gunshot)
 			gunshot.play()
 			if not jammed:
-				var spawned_casing = casing.instantiate()
-				spawned_casing.global_position = %CasingSpawner.global_position
-				spawned_casing.rotation = PlayerStatus.keepplayer.rotation
-				%CasingSpawner.add_child(spawned_casing)
+				spawn_casing(true)
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
@@ -156,6 +154,7 @@ func unequip():
 
 func spawn_casing(energy : bool = false):
 	var spawned_casing = casing.instantiate()
+	spawned_casing.gun_node = self
 	if energy == false:
 		spawned_casing.energy = false
 	spawned_casing.global_position = %CasingSpawner.global_position
@@ -183,7 +182,7 @@ func _on_shot_cooldown_timeout() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "shoot" or anim_name == "shoot_final_round":
+	if anim_name == "shoot" or anim_name == "shoot_final_round" or "shoot_jam":
 		shootable = true
 	if anim_name == "reload" or anim_name == "reload_empty":
 		current_bullets = max_mag
