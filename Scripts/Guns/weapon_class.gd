@@ -6,6 +6,7 @@ var y_spread : float = 0.0
 var x_spread :float = 0.0
 @onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @onready var bullet_hole = preload("res://Scenes/Guns/bullet_hole.tscn")
+@export var heavy : bool = false
 @export var casing = "res://Scenes/Guns/casing.tscn"
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
@@ -15,6 +16,12 @@ var x_spread :float = 0.0
 @export var zoom_in_speed : float = 0.035
 @export var zoom_in_z_speed : float = 0.025
 @export var full_auto : bool = false
+@export var left_recoil_minimum : float = 0.085
+@export var left_recoil_maximum : float = 0.105
+@export var right_recoil_minimum : float = -0.105
+@export var right_recoil_maximum : float = -0.085
+@export var y_spread_minimum : float = -0.5
+@export var y_spread_maximum : float = 0.5
 var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
@@ -68,8 +75,12 @@ func _process(delta: float) -> void:
 	else:
 		if zooming:
 			position.z = lerp(position.z, zoom_position.z, zoom_in_z_speed)
-			position.x = lerp(position.x, zoom_position.x, zoom_in_speed)
-			position.y = lerp(position.y, zoom_position.y, zoom_in_speed)
+			if heavy:
+				position.x = lerp(position.x, zoom_position.x - (y_spread * 3), zoom_in_speed)
+				position.y = lerp(position.y, zoom_position.y + (y_spread), zoom_in_speed)
+			else:
+				position.x = lerp(position.x, zoom_position.x, zoom_in_speed)
+				position.y = lerp(position.y, zoom_position.y, zoom_in_speed)
 			$Player_Arms.rotation.x = lerp($Player_Arms.rotation.x, default_arm_pos.x, 0.01)
 		else:
 			position.x = lerp(position.x, 0.0, 0.1)
@@ -98,10 +109,10 @@ func shoot():
 			if shoot_direction == null:
 				if randi_range(0,1) == 0: shoot_direction = "left"
 				else: shoot_direction = "right"
-			elif shoot_direction == "left": y_spread += rotation.y + randf_range(0.105, 0.085)
-			elif shoot_direction == "right": y_spread += rotation.y + randf_range(-0.105, -0.085)
+			elif shoot_direction == "left": y_spread += rotation.y + randf_range(left_recoil_minimum, left_recoil_maximum)
+			elif shoot_direction == "right": y_spread += rotation.y + randf_range(right_recoil_minimum, right_recoil_maximum)
 			x_spread += rotation.z + randf_range(0.2, 0.3)
-			y_spread = clamp(y_spread, -0.5, 0.5)
+			y_spread = clamp(y_spread, y_spread_minimum, y_spread_maximum)
 			x_spread = clamp(x_spread, -0.5, 0.5)
 			var flash = muzzle_flash.instantiate()
 			%FlashSpawner.add_child(flash)
