@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=20 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cn8dhoq1c1owk" path="res://Assets/Models/elevator.glb" id="6_7v23o"]
 [ext_resource type="PackedScene" uid="uid://l03xx1ji2akj" path="res://Scenes/Environment/elevator.tscn" id="7_f5ddv"]
 [ext_resource type="Texture2D" uid="uid://dshpgnjjp7wa4" path="res://textures/papers_standard.png" id="8_0d0el"]
+[ext_resource type="PackedScene" uid="uid://da5tdlublskg2" path="res://Assets/Models/gammacan.glb" id="9_k7bad"]
+[ext_resource type="PackedScene" uid="uid://c1t0yyq15cuak" path="res://Assets/Models/marton.glb" id="10_wlyiu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -144,5 +146,11 @@ texture_albedo = ExtResource("8_0d0el")
 [node name="Decal" type="Decal" parent="Decal"]
 transform = Transform3D(0.15133, 0, 0.988483, 0, 1, 0, -0.988483, 0, 0.15133, -0.292384, 0, -0.406013)
 texture_albedo = ExtResource("8_0d0el")
+
+[node name="gammacan" parent="." instance=ExtResource("9_k7bad")]
+transform = Transform3D(0.0937968, 0, -0.0346723, 0, 0.1, 0, 0.0346723, 0, 0.0937968, -1.41804, 0, -3.17787)
+
+[node name="marton" parent="." instance=ExtResource("10_wlyiu")]
+transform = Transform3D(-2.8924e-08, -0.661705, -0.749765, 1, -4.37114e-08, 0, -3.27733e-08, -0.749765, 0.661705, -1.01417, 0.051, -3.58856)
 
 [editable path="elevator"]
