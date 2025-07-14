@@ -22,7 +22,7 @@ var x_spread :float = 0.0
 @export var right_recoil_maximum : float = -0.085
 @export var y_spread_minimum : float = -0.5
 @export var y_spread_maximum : float = 0.5
-var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
+@export var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3
@@ -143,7 +143,7 @@ func shoot():
 				elif target.get_collision_layer() == 2:
 					pass #Lower enemy health, blood splatter decal
 			var gunshot = AudioStreamPlayer.new()
-			gunshot.stream = load(shotsounds[randi_range(0,3)])
+			gunshot.stream = load(shotsounds[randi_range(0,(shotsounds.size() - 1))])
 			PlayerStatus.loaded_level.add_child(gunshot)
 			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
 			active_shotsounds.append(gunshot)
