@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 		if zooming:
 			position.z = lerp(position.z, zoom_position.z, zoom_in_z_speed)
 			if heavy:
-				position.x = lerp(position.x, zoom_position.x - (y_spread * 3), zoom_in_speed)
+				position.x = lerp(position.x, zoom_position.x + (x_spread), zoom_in_speed)
 				position.y = lerp(position.y, zoom_position.y + (y_spread), zoom_in_speed)
 			else:
 				position.x = lerp(position.x, zoom_position.x, zoom_in_speed)
