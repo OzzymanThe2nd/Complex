@@ -1,31 +1,52 @@
-[gd_scene load_steps=11 format=4 uid="uid://cf43ak47h522i"]
+[gd_scene load_steps=18 format=4 uid="uid://cf43ak47h522i"]
 
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_7pfxl"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_vjg30"]
 [ext_resource type="Material" uid="uid://dvrpqeh6l21ti" path="res://textures/rustwall.tres" id="3_y3if5"]
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="4_6h1oa"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jt3u3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_18pb0"]
 _surfaces = [{
-"aabb": AABB(-17, -0.5, -39, 68, 0.5, 88.5),
-"attribute_data": PackedByteArray("AAAIwAAAAAAAAAjAAACAPQAAzEAAAIA9AADMQAAAAAAAAJzAAAAAAAAAxkAAAAAAAADGQAAAgD0AAJzAAACAPQAAnMAAAMzAAACcwAAACEAAAMZAAAAIQAAAxkAAAMzAAACcwAAAzMAAAMZAAADMwAAAxkAAAAhAAACcwAAACEAAAJzAAAAAAAAAnMAAAIA9AADGQAAAgD0AAMZAAAAAAAAACMAAAAAAAADMQAAAAAAAAMxAAACAPQAACMAAAIA9"),
+"aabb": AABB(-17, -1, -39, 68, 16.5, 88.5),
+"attribute_data": PackedByteArray("AAAIwAAAAAAAAAjAAACAPQAAzEAAAIA9AADMQAAAAAAAAJzAAAAAAAAAxkAAAAAAAADGQAAAgD0AAJzAAACAPQAAnMAAAMzAAACcwAAACEAAAMZAAAAIQAAAxkAAAMzAAACcwAAAzMAAAMZAAADMwAAAxkAAAAhAAACcwAAACEAAAJzAAAAAAAAAnMAAAIA9AADGQAAAgD0AAMZAAAAAAAAACMAAAAAAAADMQAAAAAAAAMxAAACAPQAACMAAAIA9AAAAvgAA8L8AAAC+AACAPQAAED8AAIA9AAAQPwAA8L8AAKA+AADwvwAAMD8AAPC/AAAwPwAAgD0AAKA+AACAPQAAoD4AABC/AACgPgAAAD4AADA/AAAAPgAAMD8AABC/AACgPgAAEL8AADA/AAAQvwAAMD8AAAA+AACgPgAAAD4AAKA+AADwvwAAoD4AAIA9AAAwPwAAgD0AADA/AADwvwAAAL4AAPC/AAAQPwAA8L8AABA/AACAPQAAAL4AAIA9AABwvwAA8L8AAHC/AACAPQAAAL4AAIA9AAAAvgAA8L8AAOC/AADwvwAAoD4AAPC/AACgPgAAgD0AAOC/AACAPQAA4L8AAAA+AADgvwAAcD8AAKA+AABwPwAAoD4AAAA+AADgvwAAAD4AAKA+AAAAPgAAoD4AAHA/AADgvwAAcD8AAOC/AADwvwAA4L8AAIA9AACgPgAAgD0AAKA+AADwvwAAcL8AAPC/AAAAvgAA8L8AAAC+AACAPQAAcL8AAIA9AAAAvgAA8L8AAAC+AACAPQAAGEAAAIA9AAAYQAAA8L8AAFTAAADwvwAA4L8AAPC/AADgvwAAgD0AAFTAAACAPQAAVMAAABjAAABUwAAAAD4AAOC/AAAAPgAA4L8AABjAAABUwAAAGMAAAOC/AAAYwAAA4L8AAAA+AABUwAAAAD4AAFTAAADwvwAAVMAAAIA9AADgvwAAgD0AAOC/AADwvwAAAL4AAPC/AAAYQAAA8L8AABhAAACAPQAAAL4AAIA9AAAQPwAA8L8AABA/AACAPQAAiD8AAIA9AACIPwAA8L8AAKC/AADwvwAAMD8AAPC/AAAwPwAAgD0AAKC/AACAPQAAoL8AAIi/AACgvwAAEL8AADA/AAAQvwAAMD8AAIi/AACgvwAAiL8AADA/AACIvwAAMD8AABC/AACgvwAAEL8AAKC/AADwvwAAoL8AAIA9AAAwPwAAgD0AADA/AADwvwAAED8AAPC/AACIPwAA8L8AAIg/AACAPQAAED8AAIA9AACIPwAA8L8AAIg/AACAPQAAGEAAAIA9AAAYQAAA8L8AAKC/AADwvwAAMD8AAPC/AAAwPwAAgD0AAKC/AACAPQAAoL8AABjAAACgvwAAiL8AADA/AACIvwAAMD8AABjAAACgvwAAGMAAADA/AAAYwAAAMD8AAIi/AACgvwAAiL8AAKC/AADwvwAAoL8AAIA9AAAwPwAAgD0AADA/AADwvwAAiD8AAPC/AAAYQAAA8L8AABhAAACAPQAAiD8AAIA9AAA0QAAA8L8AADRAAACAPQAAQEAAAIA9AABAQAAA8L8AAFTAAADwvwAAMD8AAPC/AAAwPwAAgD0AAFTAAACAPQAAVMAAAEDAAABUwAAANMAAADA/AAA0wAAAMD8AAEDAAABUwAAAQMAAADA/AABAwAAAMD8AADTAAABUwAAANMAAAFTAAADwvwAAVMAAAIA9AAAwPwAAgD0AADA/AADwvwAANEAAAPC/AABAQAAA8L8AAEBAAACAPQAANEAAAIA9AAAAvgAA8L8AAAC+AADovwAANEAAAOi/AAA0QAAA8L8AAFTAAADwvwAAMD8AAPC/AAAwPwAA6L8AAFTAAADovwAAVMAAADTAAABUwAAAAD4AADA/AAAAPgAAMD8AADTAAABUwAAANMAAADA/AAA0wAAAMD8AAAA+AABUwAAAAD4AAFTAAADwvwAAVMAAAOi/AAAwPwAA6L8AADA/AADwvwAAAL4AAPC/AAA0QAAA8L8AADRAAADovwAAAL4AAOi/"),
 "format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"index_count": 288,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcAGAAZABoAGAAaABsAHAAdAB4AHAAeAB8AIAAhACIAIAAiACMAJAAlACYAJAAmACcAKAApACoAKAAqACsALAAtAC4ALAAuAC8AMAAxADIAMAAyADMANAA1ADYANAA2ADcAOAA5ADoAOAA6ADsAPAA9AD4APAA+AD8AQABBAEIAQABCAEMARABFAEYARABGAEcASABJAEoASABKAEsATABNAE4ATABOAE8AUABRAFIAUABSAFMAVABVAFYAVABWAFcAWABZAFoAWABaAFsAXABdAF4AXABeAF8AYABhAGIAYABiAGMAZABlAGYAZABmAGcAaABpAGoAaABqAGsAbABtAG4AbABuAG8AcABxAHIAcAByAHMAdAB1AHYAdAB2AHcAeAB5AHoAeAB6AHsAfAB9AH4AfAB+AH8AgACBAIIAgACCAIMAhACFAIYAhACGAIcAiACJAIoAiACKAIsAjACNAI4AjACOAI8AkACRAJIAkACSAJMAlACVAJYAlACWAJcAmACZAJoAmACaAJsAnACdAJ4AnACeAJ8AoAChAKIAoACiAKMApAClAKYApACmAKcAqACpAKoAqACqAKsArACtAK4ArACuAK8AsACxALIAsACyALMAtAC1ALYAtAC2ALcAuAC5ALoAuAC6ALsAvAC9AL4AvAC+AL8A"),
 "material": ExtResource("3_y3if5"),
 "name": "rustwall",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AACIwQAAAAAAABzCAACIwQAAAL8AABzCAABMQgAAAL8AABzCAABMQgAAAAAAABzCAACIwQAAAAAAABzCAACIwQAAAAAAAEZCAACIwQAAAL8AAEZCAACIwQAAAL8AABzCAABMQgAAAL8AABzCAACIwQAAAL8AABzCAACIwQAAAL8AAEZCAABMQgAAAL8AAEZCAABMQgAAAAAAABzCAABMQgAAAAAAAEZCAACIwQAAAAAAAEZCAACIwQAAAAAAABzCAABMQgAAAAAAABzCAABMQgAAAL8AABzCAABMQgAAAL8AAEZCAABMQgAAAAAAAEZCAACIwQAAAAAAAEZCAABMQgAAAAAAAEZCAABMQgAAAL8AAEZCAACIwQAAAL8AAEZC/////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+/")
+"vertex_count": 192,
+"vertex_data": PackedByteArray("AACIwQAAAL8AABzCAACIwQAAgL8AABzCAABMQgAAgL8AABzCAABMQgAAAL8AABzCAACIwQAAAL8AABzCAACIwQAAAL8AAEZCAACIwQAAgL8AAEZCAACIwQAAgL8AABzCAABMQgAAgL8AABzCAACIwQAAgL8AABzCAACIwQAAgL8AAEZCAABMQgAAgL8AAEZCAABMQgAAAL8AABzCAABMQgAAAL8AAEZCAACIwQAAAL8AAEZCAACIwQAAAL8AABzCAABMQgAAAL8AABzCAABMQgAAgL8AABzCAABMQgAAgL8AAEZCAABMQgAAAL8AAEZCAACIwQAAAL8AAEZCAABMQgAAAL8AAEZCAABMQgAAgL8AAEZCAACIwQAAgL8AAEZCAACAvwAAcEEAACBAAACAvwAAAL8AACBAAACQQAAAAL8AACBAAACQQAAAcEEAACBAAACAvwAAcEEAACBAAACAvwAAcEEAALBAAACAvwAAAL8AALBAAACAvwAAAL8AACBAAACQQAAAAL8AACBAAACAvwAAAL8AACBAAACAvwAAAL8AALBAAACQQAAAAL8AALBAAACQQAAAcEEAACBAAACQQAAAcEEAALBAAACAvwAAcEEAALBAAACAvwAAcEEAACBAAACQQAAAcEEAACBAAACQQAAAAL8AACBAAACQQAAAAL8AALBAAACQQAAAcEEAALBAAACAvwAAcEEAALBAAACQQAAAcEEAALBAAACQQAAAAL8AALBAAACAvwAAAL8AALBAAADwwAAAcEEAAGDBAADwwAAAAL8AAGDBAACAvwAAAL8AAGDBAACAvwAAcEEAAGDBAADwwAAAcEEAAGDBAADwwAAAcEEAACBAAADwwAAAAL8AACBAAADwwAAAAL8AAGDBAACAvwAAAL8AAGDBAADwwAAAAL8AAGDBAADwwAAAAL8AACBAAACAvwAAAL8AACBAAACAvwAAcEEAAGDBAACAvwAAcEEAACBAAADwwAAAcEEAACBAAADwwAAAcEEAAGDBAACAvwAAcEEAAGDBAACAvwAAAL8AAGDBAACAvwAAAL8AACBAAACAvwAAcEEAACBAAADwwAAAcEEAACBAAACAvwAAcEEAACBAAACAvwAAAL8AACBAAADwwAAAAL8AACBAAACAvwAAcEEAANTBAACAvwAAAL8AANTBAACYQQAAAL8AANTBAACYQQAAcEEAANTBAACAvwAAcEEAANTBAACAvwAAcEEAAGDBAACAvwAAAL8AAGDBAACAvwAAAL8AANTBAACYQQAAAL8AANTBAACAvwAAAL8AANTBAACAvwAAAL8AAGDBAACYQQAAAL8AAGDBAACYQQAAcEEAANTBAACYQQAAcEEAAGDBAACAvwAAcEEAAGDBAACAvwAAcEEAANTBAACYQQAAcEEAANTBAACYQQAAAL8AANTBAACYQQAAAL8AAGDBAACYQQAAcEEAAGDBAACAvwAAcEEAAGDBAACYQQAAcEEAAGDBAACYQQAAAL8AAGDBAACAvwAAAL8AAGDBAACQQAAAcEEAACDBAACQQAAAAL8AACDBAAAIQQAAAL8AACDBAAAIQQAAcEEAACDBAACQQAAAcEEAACDBAACQQAAAcEEAALBAAACQQAAAAL8AALBAAACQQAAAAL8AACDBAAAIQQAAAL8AACDBAACQQAAAAL8AACDBAACQQAAAAL8AALBAAAAIQQAAAL8AALBAAAAIQQAAcEEAACDBAAAIQQAAcEEAALBAAACQQAAAcEEAALBAAACQQAAAcEEAACDBAAAIQQAAcEEAACDBAAAIQQAAAL8AACDBAAAIQQAAAL8AALBAAAAIQQAAcEEAALBAAACQQAAAcEEAALBAAAAIQQAAcEEAALBAAAAIQQAAAL8AALBAAACQQAAAAL8AALBAAAAIQQAAcEEAACDBAAAIQQAAAL8AACDBAACYQQAAAL8AACDBAACYQQAAcEEAACDBAAAIQQAAcEEAACDBAAAIQQAAcEEAALBAAAAIQQAAAL8AALBAAAAIQQAAAL8AACDBAACYQQAAAL8AACDBAAAIQQAAAL8AACDBAAAIQQAAAL8AALBAAACYQQAAAL8AALBAAACYQQAAcEEAACDBAACYQQAAcEEAALBAAAAIQQAAcEEAALBAAAAIQQAAcEEAACDBAACYQQAAcEEAACDBAACYQQAAAL8AACDBAACYQQAAAL8AALBAAACYQQAAcEEAALBAAAAIQQAAcEEAALBAAACYQQAAcEEAALBAAACYQQAAAL8AALBAAAAIQQAAAL8AALBAAAC0QQAAcEEAANTBAAC0QQAAAL8AANTBAADAQQAAAL8AANTBAADAQQAAcEEAANTBAAC0QQAAcEEAANTBAAC0QQAAcEEAALBAAAC0QQAAAL8AALBAAAC0QQAAAL8AANTBAADAQQAAAL8AANTBAAC0QQAAAL8AANTBAAC0QQAAAL8AALBAAADAQQAAAL8AALBAAADAQQAAcEEAANTBAADAQQAAcEEAALBAAAC0QQAAcEEAALBAAAC0QQAAcEEAANTBAADAQQAAcEEAANTBAADAQQAAAL8AANTBAADAQQAAAL8AALBAAADAQQAAcEEAALBAAAC0QQAAcEEAALBAAADAQQAAcEEAALBAAADAQQAAAL8AALBAAAC0QQAAAL8AALBAAACAvwAAeEEAANTBAACAvwAAcEEAANTBAAC0QQAAcEEAANTBAAC0QQAAeEEAANTBAACAvwAAeEEAANTBAACAvwAAeEEAALBAAACAvwAAcEEAALBAAACAvwAAcEEAANTBAAC0QQAAcEEAANTBAACAvwAAcEEAANTBAACAvwAAcEEAALBAAAC0QQAAcEEAALBAAAC0QQAAeEEAANTBAAC0QQAAeEEAALBAAACAvwAAeEEAALBAAACAvwAAeEEAANTBAAC0QQAAeEEAANTBAAC0QQAAcEEAANTBAAC0QQAAcEEAALBAAAC0QQAAeEEAALBAAACAvwAAeEEAALBAAAC0QQAAeEEAALBAAAC0QQAAcEEAALBAAACAvwAAcEEAALBA/////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+//////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
-[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_xiipm"]
-vertices = PackedVector3Array(-17, 0, -39, -17, -0.5, -39, 51, -0.5, -39, 51, 0, -39, -17, 0, -39, -17, 0, 49.5, -17, -0.5, 49.5, -17, -0.5, -39, 51, -0.5, -39, -17, -0.5, -39, -17, -0.5, 49.5, 51, -0.5, 49.5, 51, 0, -39, 51, 0, 49.5, -17, 0, 49.5, -17, 0, -39, 51, 0, -39, 51, -0.5, -39, 51, -0.5, 49.5, 51, 0, 49.5, -17, 0, 49.5, 51, 0, 49.5, 51, -0.5, 49.5, -17, -0.5, 49.5)
-indices = PackedInt32Array(0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23)
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_hg265"]
+vertices = PackedVector3Array(-17, -0.5, -39, -17, -1, -39, 51, -1, -39, 51, -0.5, -39, -17, -0.5, -39, -17, -0.5, 49.5, -17, -1, 49.5, -17, -1, -39, 51, -1, -39, -17, -1, -39, -17, -1, 49.5, 51, -1, 49.5, 51, -0.5, -39, 51, -0.5, 49.5, -17, -0.5, 49.5, -17, -0.5, -39, 51, -0.5, -39, 51, -1, -39, 51, -1, 49.5, 51, -0.5, 49.5, -17, -0.5, 49.5, 51, -0.5, 49.5, 51, -1, 49.5, -17, -1, 49.5, -1, 15, 2.5, -1, -0.5, 2.5, 4.5, -0.5, 2.5, 4.5, 15, 2.5, -1, 15, 2.5, -1, 15, 5.5, -1, -0.5, 5.5, -1, -0.5, 2.5, 4.5, -0.5, 2.5, -1, -0.5, 2.5, -1, -0.5, 5.5, 4.5, -0.5, 5.5, 4.5, 15, 2.5, 4.5, 15, 5.5, -1, 15, 5.5, -1, 15, 2.5, 4.5, 15, 2.5, 4.5, -0.5, 2.5, 4.5, -0.5, 5.5, 4.5, 15, 5.5, -1, 15, 5.5, 4.5, 15, 5.5, 4.5, -0.5, 5.5, -1, -0.5, 5.5, -7.5, 15, -14, -7.5, -0.5, -14, -1, -0.5, -14, -1, 15, -14, -7.5, 15, -14, -7.5, 15, 2.5, -7.5, -0.5, 2.5, -7.5, -0.5, -14, -1, -0.5, -14, -7.5, -0.5, -14, -7.5, -0.5, 2.5, -1, -0.5, 2.5, -1, 15, -14, -1, 15, 2.5, -7.5, 15, 2.5, -7.5, 15, -14, -1, 15, -14, -1, -0.5, -14, -1, -0.5, 2.5, -1, 15, 2.5, -7.5, 15, 2.5, -1, 15, 2.5, -1, -0.5, 2.5, -7.5, -0.5, 2.5, -1, 15, -26.5, -1, -0.5, -26.5, 19, -0.5, -26.5, 19, 15, -26.5, -1, 15, -26.5, -1, 15, -14, -1, -0.5, -14, -1, -0.5, -26.5, 19, -0.5, -26.5, -1, -0.5, -26.5, -1, -0.5, -14, 19, -0.5, -14, 19, 15, -26.5, 19, 15, -14, -1, 15, -14, -1, 15, -26.5, 19, 15, -26.5, 19, -0.5, -26.5, 19, -0.5, -14, 19, 15, -14, -1, 15, -14, 19, 15, -14, 19, -0.5, -14, -1, -0.5, -14, 4.5, 15, -10, 4.5, -0.5, -10, 8.5, -0.5, -10, 8.5, 15, -10, 4.5, 15, -10, 4.5, 15, 5.5, 4.5, -0.5, 5.5, 4.5, -0.5, -10, 8.5, -0.5, -10, 4.5, -0.5, -10, 4.5, -0.5, 5.5, 8.5, -0.5, 5.5, 8.5, 15, -10, 8.5, 15, 5.5, 4.5, 15, 5.5, 4.5, 15, -10, 8.5, 15, -10, 8.5, -0.5, -10, 8.5, -0.5, 5.5, 8.5, 15, 5.5, 4.5, 15, 5.5, 8.5, 15, 5.5, 8.5, -0.5, 5.5, 4.5, -0.5, 5.5, 8.5, 15, -10, 8.5, -0.5, -10, 19, -0.5, -10, 19, 15, -10, 8.5, 15, -10, 8.5, 15, 5.5, 8.5, -0.5, 5.5, 8.5, -0.5, -10, 19, -0.5, -10, 8.5, -0.5, -10, 8.5, -0.5, 5.5, 19, -0.5, 5.5, 19, 15, -10, 19, 15, 5.5, 8.5, 15, 5.5, 8.5, 15, -10, 19, 15, -10, 19, -0.5, -10, 19, -0.5, 5.5, 19, 15, 5.5, 8.5, 15, 5.5, 19, 15, 5.5, 19, -0.5, 5.5, 8.5, -0.5, 5.5, 22.5, 15, -26.5, 22.5, -0.5, -26.5, 24, -0.5, -26.5, 24, 15, -26.5, 22.5, 15, -26.5, 22.5, 15, 5.5, 22.5, -0.5, 5.5, 22.5, -0.5, -26.5, 24, -0.5, -26.5, 22.5, -0.5, -26.5, 22.5, -0.5, 5.5, 24, -0.5, 5.5, 24, 15, -26.5, 24, 15, 5.5, 22.5, 15, 5.5, 22.5, 15, -26.5, 24, 15, -26.5, 24, -0.5, -26.5, 24, -0.5, 5.5, 24, 15, 5.5, 22.5, 15, 5.5, 24, 15, 5.5, 24, -0.5, 5.5, 22.5, -0.5, 5.5, -1, 15.5, -26.5, -1, 15, -26.5, 22.5, 15, -26.5, 22.5, 15.5, -26.5, -1, 15.5, -26.5, -1, 15.5, 5.5, -1, 15, 5.5, -1, 15, -26.5, 22.5, 15, -26.5, -1, 15, -26.5, -1, 15, 5.5, 22.5, 15, 5.5, 22.5, 15.5, -26.5, 22.5, 15.5, 5.5, -1, 15.5, 5.5, -1, 15.5, -26.5, 22.5, 15.5, -26.5, 22.5, 15, -26.5, 22.5, 15, 5.5, 22.5, 15.5, 5.5, -1, 15.5, 5.5, 22.5, 15.5, 5.5, 22.5, 15, 5.5, -1, 15, 5.5)
+indices = PackedInt32Array(0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23, 24, 25, 26, 24, 26, 27, 28, 29, 30, 28, 30, 31, 32, 33, 34, 32, 34, 35, 36, 37, 38, 36, 38, 39, 40, 41, 42, 40, 42, 43, 44, 45, 46, 44, 46, 47, 48, 49, 50, 48, 50, 51, 52, 53, 54, 52, 54, 55, 56, 57, 58, 56, 58, 59, 60, 61, 62, 60, 62, 63, 64, 65, 66, 64, 66, 67, 68, 69, 70, 68, 70, 71, 72, 73, 74, 72, 74, 75, 76, 77, 78, 76, 78, 79, 80, 81, 82, 80, 82, 83, 84, 85, 86, 84, 86, 87, 88, 89, 90, 88, 90, 91, 92, 93, 94, 92, 94, 95, 96, 97, 98, 96, 98, 99, 100, 101, 102, 100, 102, 103, 104, 105, 106, 104, 106, 107, 108, 109, 110, 108, 110, 111, 112, 113, 114, 112, 114, 115, 116, 117, 118, 116, 118, 119, 120, 121, 122, 120, 122, 123, 124, 125, 126, 124, 126, 127, 128, 129, 130, 128, 130, 131, 132, 133, 134, 132, 134, 135, 136, 137, 138, 136, 138, 139, 140, 141, 142, 140, 142, 143, 144, 145, 146, 144, 146, 147, 148, 149, 150, 148, 150, 151, 152, 153, 154, 152, 154, 155, 156, 157, 158, 156, 158, 159, 160, 161, 162, 160, 162, 163, 164, 165, 166, 164, 166, 167, 168, 169, 170, 168, 170, 171, 172, 173, 174, 172, 174, 175, 176, 177, 178, 176, 178, 179, 180, 181, 182, 180, 182, 183, 184, 185, 186, 184, 186, 187, 188, 189, 190, 188, 190, 191)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t33cq"]
-points = PackedVector3Array(-17, 0, -39, -17, -0.5, -39, 51, -0.5, -39, 51, 0, -39, -17, 0, 49.5, -17, -0.5, 49.5, 51, -0.5, 49.5, 51, 0, 49.5)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hma4g"]
+points = PackedVector3Array(-17, -0.5, -39, -17, -1, -39, 51, -1, -39, 51, -0.5, -39, -17, -0.5, 49.5, -17, -1, 49.5, 51, -1, 49.5, 51, -0.5, 49.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_agjcv"]
+points = PackedVector3Array(-1, 15, 2.5, -1, -0.5, 2.5, 4.5, -0.5, 2.5, 4.5, 15, 2.5, -1, 15, 5.5, -1, -0.5, 5.5, 4.5, -0.5, 5.5, 4.5, 15, 5.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4lip8"]
+points = PackedVector3Array(-7.5, 15, -14, -7.5, -0.5, -14, -1, -0.5, -14, -1, 15, -14, -7.5, 15, 2.5, -7.5, -0.5, 2.5, -1, -0.5, 2.5, -1, 15, 2.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yko00"]
+points = PackedVector3Array(-1, 15, -26.5, -1, -0.5, -26.5, 19, -0.5, -26.5, 19, 15, -26.5, -1, 15, -14, -1, -0.5, -14, 19, -0.5, -14, 19, 15, -14)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k155t"]
+points = PackedVector3Array(4.5, 15, -10, 4.5, -0.5, -10, 8.5, -0.5, -10, 8.5, 15, -10, 4.5, 15, 5.5, 4.5, -0.5, 5.5, 8.5, -0.5, 5.5, 8.5, 15, 5.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u7loa"]
+points = PackedVector3Array(8.5, 15, -10, 8.5, -0.5, -10, 19, -0.5, -10, 19, 15, -10, 8.5, 15, 5.5, 8.5, -0.5, 5.5, 19, -0.5, 5.5, 19, 15, 5.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kb8f2"]
+points = PackedVector3Array(22.5, 15, -26.5, 22.5, -0.5, -26.5, 24, -0.5, -26.5, 24, 15, -26.5, 22.5, 15, 5.5, 22.5, -0.5, 5.5, 24, -0.5, 5.5, 24, 15, 5.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x6kai"]
+points = PackedVector3Array(-1, 15.5, -26.5, -1, 15, -26.5, 22.5, 15, -26.5, 22.5, 15.5, -26.5, -1, 15.5, 5.5, -1, 15, 5.5, 22.5, 15, 5.5, 22.5, 15.5, 5.5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t40pu"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -52,13 +73,34 @@ map_settings = ExtResource("2_vjg30")
 collision_mask = 0
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
-mesh = SubResource("ArrayMesh_jt3u3")
+mesh = SubResource("ArrayMesh_18pb0")
 
 [node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
-occluder = SubResource("ArrayOccluder3D_xiipm")
+occluder = SubResource("ArrayOccluder3D_hg265")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_t33cq")
+shape = SubResource("ConvexPolygonShape3D_hma4g")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_agjcv")
+
+[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_4lip8")
+
+[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_yko00")
+
+[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_k155t")
+
+[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_u7loa")
+
+[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_kb8f2")
+
+[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_x6kai")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -69,4 +111,4 @@ shadow_enabled = true
 environment = SubResource("Environment_o5o7g")
 
 [node name="Player" parent="." instance=ExtResource("4_6h1oa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67528, 1, 0)

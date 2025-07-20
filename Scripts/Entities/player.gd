@@ -332,8 +332,7 @@ func _input(event):
 			pass
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
 		elif Input.is_action_just_pressed("5"):
-			#PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
-			pass
+			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
 		elif Input.is_action_just_pressed("6"):
 			pass
 		elif Input.is_action_just_pressed("7"):
