@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=22 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://da5tdlublskg2" path="res://Assets/Models/gammacan.glb" id="9_k7bad"]
 [ext_resource type="PackedScene" uid="uid://c1t0yyq15cuak" path="res://Assets/Models/marton.glb" id="10_wlyiu"]
 [ext_resource type="Texture2D" uid="uid://gqj18o5d5nlk" path="res://textures/nutspray.png" id="11_npanf"]
+[ext_resource type="PackedScene" uid="uid://d1e18qi50fm2p" path="res://Assets/Models/hobo.glb" id="12_owd34"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -158,4 +159,40 @@ transform = Transform3D(-2.8924e-08, -0.661705, -0.749765, 1, -4.37114e-08, 0, -
 transform = Transform3D(-0.991319, 8.69728e-08, -0.131478, 0.131478, -8.22901e-09, -0.991319, -8.72997e-08, -1, -3.27742e-09, -2.01305e-08, 2, 43.5844)
 texture_albedo = ExtResource("11_npanf")
 
+[node name="hobo" parent="." instance=ExtResource("12_owd34")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0924703, 0.0277085, 10.6885)
+
+[node name="Skeleton3D" parent="hobo/Armature" index="0"]
+bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -4.23516e-22, 1)
+bones/6/rotation = Quaternion(4.85669e-07, 1.9529e-07, -0.826895, 0.562356)
+bones/7/rotation = Quaternion(-3.92408e-08, 1.28789e-07, 0.0361577, 0.999346)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-6.41006e-07, -3.25029e-08, 0.715897, 0.698206)
+bones/10/rotation = Quaternion(1.60091e-07, 8.0808e-08, -0.156376, 0.987698)
+bones/11/rotation = Quaternion(7.01567e-08, 6.62006e-08, -0.069579, 0.997576)
+bones/12/rotation = Quaternion(-5.81827e-08, 1.46842e-07, 0.053428, 0.998572)
+bones/13/rotation = Quaternion(-1.18179e-07, 1.23433e-07, 0.110847, 0.993837)
+bones/14/rotation = Quaternion(-2.86607e-07, 5.99121e-08, 0.826896, 0.562356)
+bones/15/rotation = Quaternion(3.93768e-08, 6.13698e-07, -0.0361577, 0.999346)
+bones/16/rotation = Quaternion(-6.7528e-08, -2.35374e-07, 0.0466914, 0.998909)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(7.22899e-07, -1.40234e-07, -0.715897, 0.698206)
+bones/18/rotation = Quaternion(-2.14378e-07, 1.58308e-07, 0.156376, 0.987698)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-6.8197e-08, -2.29933e-07, 0.0695789, 0.997576)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(6.71888e-08, 4.68601e-08, -0.053428, 0.998572)
+bones/21/rotation = Quaternion(1.61872e-07, 2.48147e-07, -0.110847, 0.993837)
+bones/22/rotation = Quaternion(0.732927, 0.0650698, -0.674536, 0.059886)
+bones/22/scale = Vector3(0.999996, 1, 1)
+bones/23/rotation = Quaternion(-0.0356458, -0.0414246, -0.00147883, 0.998504)
+bones/24/rotation = Quaternion(-0.0444062, -1.91653e-07, -6.46189e-10, 0.999014)
+bones/25/rotation = Quaternion(-0.674669, 0.0583601, 0.733072, 0.0634127)
+bones/25/scale = Vector3(0.999989, 1, 1)
+bones/26/rotation = Quaternion(0.0124054, 0.041448, -0.000514678, 0.999064)
+
+[node name="Cube" parent="hobo/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 1.42108e-14, -5.40012e-13, -1.42108e-14, 1, -3.55271e-14, 5.11591e-13, 3.55271e-14, 1, -0.00166178, 1.03498, -0.133967)
+
 [editable path="elevator"]
+[editable path="hobo"]
