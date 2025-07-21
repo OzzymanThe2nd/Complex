@@ -1,15 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://drdba6hjmhbb"]
+[gd_scene load_steps=12 format=3 uid="uid://drdba6hjmhbb"]
 
 [ext_resource type="Texture2D" uid="uid://c0lqns70hs5ff" path="res://textures/1920muckwall.png" id="1_j6r5f"]
 [ext_resource type="Script" path="res://Scripts/Menus/pause_menu.gd" id="1_pwou3"]
+[ext_resource type="Shader" path="res://Shaders/post_processing.gdshader" id="2_xv2xy"]
 [ext_resource type="Texture2D" uid="uid://t211ga3svsfn" path="res://textures/button4x1browndarkened.png" id="3_5kl78"]
 [ext_resource type="Texture2D" uid="uid://clfir4qcc03ft" path="res://textures/button4x1brownblurrededges.png" id="3_lflsv"]
 [ext_resource type="Texture2D" uid="uid://5mw1t7551smq" path="res://textures/button4x1.png" id="4_n3wh0"]
 [ext_resource type="Texture2D" uid="uid://df4ex32yksl0v" path="res://textures/button4x1brownselected.png" id="5_7dp0t"]
-[ext_resource type="Texture2D" uid="uid://dd6d8dsec7pgf" path="res://textures/resigntext.png" id="7_55fyo"]
+[ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="7_o1582"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gheh"]
+shader = ExtResource("2_xv2xy")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xicwu"]
+shader = ExtResource("2_xv2xy")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_scnho"]
+font = ExtResource("7_o1582")
+font_size = 50
+font_color = Color(0.847474, 0.847474, 0.847474, 0.423529)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +41,8 @@ mouse_filter = 2
 script = ExtResource("1_pwou3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8gheh")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +56,7 @@ stretch_mode = 4
 
 [node name="Close" type="TextureButton" parent="."]
 process_mode = 3
+material = SubResource("ShaderMaterial_xicwu")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -52,21 +76,23 @@ texture_disabled = ExtResource("4_n3wh0")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="Close"]
+[node name="Label" type="Label" parent="Close"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -260.5
-offset_top = -53.0
-offset_right = 260.5
-offset_bottom = 53.0
+offset_left = -262.0
+offset_top = -81.6
+offset_right = 120.0
+offset_bottom = 24.4
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_55fyo")
-stretch_mode = 4
+rotation = 0.0254088
+scale = Vector2(3, 3)
+text = "RESIGN"
+label_settings = SubResource("LabelSettings_scnho")
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
