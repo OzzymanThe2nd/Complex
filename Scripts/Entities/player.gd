@@ -510,10 +510,10 @@ func _on_interact_window_detect_body_entered(body: Node3D) -> void:
 		%InteractPrompt.visible = true
 		if "interact_text" in body:
 			var new_text = body.interact_text
-			$CamNode3D/CanvasLayer/InteractPrompt/InteractText.text = new_text
+			$GunLayer/CamNode3D/CanvasLayer/InteractPrompt/InteractText.text = new_text
 		else:
 			var button = str(InputMap.action_get_events("interact")[0].as_text()).split(" ")[0]
-			$CamNode3D/CanvasLayer/InteractPrompt/InteractText.text = "%s: Interact" %[str(button)]
+			$GunLayer/CamNode3D/CanvasLayer/InteractPrompt/InteractText.text = "%s: Interact" %[str(button)]
 
 
 func _on_interact_window_detect_body_exited(body: Node3D) -> void:

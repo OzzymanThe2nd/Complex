@@ -313,7 +313,7 @@ _data = {
 "opening_shut_lights": SubResource("Animation_ycwjq")
 }
 
-[node name="Elevator" type="Node3D"]
+[node name="Elevator" type="Node3D" groups=["interactable"]]
 script = ExtResource("1_vsv3s")
 
 [node name="elevator" parent="." instance=ExtResource("2_nvwic")]
