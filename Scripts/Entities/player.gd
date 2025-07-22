@@ -11,11 +11,12 @@ var rifle_load = preload("res://Scenes/Guns/player_ak.tscn")
 var stepqueued : bool = false
 var footstep_val : float = 6
 var step_sound_type = "concrete"
+@export var instant_cam_snap : bool = false
 @export var cam_locked : bool = false
-var cam_pan : Vector3 = Vector3(0, 0, 0)
+@export var cam_pan : Vector3 = Vector3(0, 0, 0)
 @export var move_locked : bool = false
 var pause_possible : bool = true
-var move_spot : Vector3 = Vector3(0, 0, 0)
+@export var move_spot : Vector3 = Vector3(0, 0, 0)
 var rumble_x_start : float
 var rumble_y_start : float
 var rumble_x_destination : float
@@ -160,9 +161,14 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		stepqueued = true
 	if cam_locked:
-		%PCamera.rotation_degrees.x = lerp(%PCamera.rotation_degrees.x, cam_pan.x, 0.1)
-		rotation_degrees.y = lerp(rotation_degrees.y, cam_pan.y, 0.1)
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, cam_pan.z, 0.1)
+		if instant_cam_snap:
+			%PCamera.rotation_degrees.x = cam_pan.x
+			rotation_degrees.y = cam_pan.y
+			%PCamera.rotation_degrees.z = cam_pan.z
+		else:
+			%PCamera.rotation_degrees.x = lerp(%PCamera.rotation_degrees.x, cam_pan.x, 0.1)
+			rotation_degrees.y = lerp(rotation_degrees.y, cam_pan.y, 0.1)
+			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, cam_pan.z, 0.1)
 	if move_locked:
 		global_position.x = lerp(global_position.x, move_spot.x, 0.1)
 		global_position.y = lerp(global_position.y, move_spot.y, 0.1)
