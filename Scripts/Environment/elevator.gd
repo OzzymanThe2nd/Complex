@@ -31,7 +31,9 @@ func interact():
 		$LevelTransitionTimer.start()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	pass
+	var player = PlayerStatus.keepplayer
+	if anim_name == "closing":
+		player.rumbling = true
 
 
 func _on_level_transition_timer_timeout() -> void:

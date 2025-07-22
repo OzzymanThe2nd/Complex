@@ -780,6 +780,7 @@ one_shot = true
 
 [node name="InteractPrompt" type="NinePatchRect" parent="GunLayer/CamNode3D/CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_hp76b")
 anchors_preset = 7
