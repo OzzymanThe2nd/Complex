@@ -106,6 +106,7 @@ shape = SubResource("ConvexPolygonShape3D_x6kai")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_energy = 0.4
 shadow_enabled = true
+shadow_opacity = 0.45
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o5o7g")

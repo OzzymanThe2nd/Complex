@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://7h8oc30kgr4d"
+path="res://.godot/imported/conccell_title.map-ea8f8502a2fe3671fb2c7a31f6a7438d.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/conccell_title.map"
+dest_files=["res://.godot/imported/conccell_title.map-ea8f8502a2fe3671fb2c7a31f6a7438d.tres"]
+
+[params]
+
