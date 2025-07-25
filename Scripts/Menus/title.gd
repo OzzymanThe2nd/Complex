@@ -5,6 +5,8 @@ var rumble_x_destination : float
 var rumble_y_destination : float
 var loading_path : String = "res://Scenes/game_viewer.tscn"
 var loading : bool = false
+@onready var hide_in_options: Array = [$Start, $Settings, $Close, $TextureRect]
+var options_open : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,3 +40,24 @@ func _on_start_pressed() -> void:
 
 func _on_close_pressed() -> void:
 	get_tree().quit()
+
+func _on_settings_pressed() -> void:
+	swap_screen(true)
+
+func swap_screen(opening_settings: bool = true):
+	if opening_settings:
+		for i in hide_in_options:
+			i.visible = false
+		options_open = true
+	else:
+		for i in hide_in_options:
+			i.visible = true
+		options_open = false
+
+func _input(event):
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("quit"):
+			if options_open:
+				swap_screen(false)
+			else:
+				get_tree().quit()
