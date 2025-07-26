@@ -5,11 +5,15 @@ var rumble_x_destination : float
 var rumble_y_destination : float
 var loading_path : String = "res://Scenes/game_viewer.tscn"
 var loading : bool = false
-@onready var hide_in_options: Array = [$Start, $Settings, $Close, $TextureRect]
+@onready var hide_in_options : Array = [$Start, $Settings, $Close, $TextureRect]
+@onready var wobbling_elements : Array = [$Start, $Settings, $Close]
+var main_title_start_positions : Array
 var options_open : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for i in wobbling_elements:
+		main_title_start_positions.append(i.position)
 	$Game.size.x = DisplayServer.screen_get_size()[0]
 	$Game.size.y = DisplayServer.screen_get_size()[1]
 
@@ -28,6 +32,14 @@ func _process(delta: float) -> void:
 		print(rumble_y_destination)
 	%MenuCam.rotation_degrees.x = lerp(%MenuCam.rotation_degrees.x, rumble_x_start + rumble_x_destination, 0.05)
 	%MenuCam.rotation_degrees.y = lerp(%MenuCam.rotation_degrees.y, rumble_y_start + rumble_y_destination, 0.05)
+	for i in wobbling_elements:
+		var start_position = main_title_start_positions.find(i)
+		var start_x = main_title_start_positions[start_position].x
+		var start_y = main_title_start_positions[start_position].y
+		if i.position.x + (rumble_x_destination / 5) < (start_x + 8) and i.position.x + (rumble_x_destination / 5) > (start_x - 8):
+			i.position.x = i.position.x + (rumble_x_destination / 5)
+		if i.position.y + (rumble_y_destination / 5) < (start_y + 8) and i.position.y + (rumble_y_destination / 5) > (start_y - 8):
+			i.position.y = i.position.y + (rumble_y_destination / 5)
 	if loading:
 		if ResourceLoader.THREAD_LOAD_LOADED:
 			loading = false
