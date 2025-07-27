@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://20kek77vi0x5"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://20kek77vi0x5"]
 
 [ext_resource type="Texture2D" uid="uid://cd4017a24qwd3" path="res://textures/brownslider.png" id="1_t0l2j"]
 [ext_resource type="Texture2D" uid="uid://w8veav3hb3ow" path="res://textures/brownsliderdisabled.png" id="2_34yjf"]
 [ext_resource type="Texture2D" uid="uid://br4yrmqe8vkfj" path="res://textures/brownsliderselected.png" id="3_6a6go"]
 [ext_resource type="Texture2D" uid="uid://dhc2i8js4xc5o" path="res://textures/brownsliderbackground.png" id="4_6p5fq"]
 [ext_resource type="Texture2D" uid="uid://d00ldk3frw3m7" path="res://textures/brownsliderbackgroundselected.png" id="5_lxsuy"]
+[ext_resource type="Texture2D" uid="uid://crvtjbdgvnbq1" path="res://textures/brownsliderbackgrounddisabled.png" id="6_fgv2y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0p8t"]
 texture = ExtResource("4_6p5fq")
@@ -16,11 +17,14 @@ texture = ExtResource("5_lxsuy")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1gyv"]
-bg_color = Color(0.270222, 0.270222, 0.270222, 1)
-border_width_top = 8
-border_width_bottom = 8
-border_color = Color(0.270588, 0.270588, 0.270588, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ru8v6"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("6_fgv2y")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [resource]
 HSlider/icons/grabber = ExtResource("1_t0l2j")
@@ -29,4 +33,4 @@ HSlider/icons/grabber_highlight = ExtResource("3_6a6go")
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_a0p8t")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_p4cym")
-HSlider/styles/slider = SubResource("StyleBoxFlat_r1gyv")
+HSlider/styles/slider = SubResource("StyleBoxTexture_ru8v6")
