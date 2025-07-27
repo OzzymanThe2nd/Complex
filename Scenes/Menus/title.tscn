@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://jkshvwoh02gp"]
+[gd_scene load_steps=25 format=4 uid="uid://jkshvwoh02gp"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/title.gd" id="1_eibuk"]
 [ext_resource type="Shader" path="res://Shaders/post_processing.gdshader" id="2_jokb0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://5mw1t7551smq" path="res://textures/button4x1.png" id="9_auk3o"]
 [ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="10_ye3fy"]
 [ext_resource type="Texture2D" uid="uid://coq1025p0h4om" path="res://textures/complex_title.png" id="11_nk5va"]
+[ext_resource type="Theme" uid="uid://20kek77vi0x5" path="res://Resources/slider.tres" id="12_wc2t8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsnph"]
 shader = ExtResource("2_jokb0")
@@ -265,6 +266,40 @@ grow_horizontal = 0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_nk5va")
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -317.0
+offset_top = -62.9999
+offset_right = 65.0001
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+text = "@lesozzyman"
+label_settings = SubResource("LabelSettings_yjedy")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -8.0
+offset_right = 135.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_wc2t8")
+value = 30.0
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]

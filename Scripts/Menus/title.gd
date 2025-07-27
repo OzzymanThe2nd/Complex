@@ -5,7 +5,7 @@ var rumble_x_destination : float
 var rumble_y_destination : float
 var loading_path : String = "res://Scenes/game_viewer.tscn"
 var loading : bool = false
-@onready var hide_in_options : Array = [$Start, $Settings, $Close, $TextureRect]
+@onready var hide_in_options : Array = [$Start, $Settings, $Close, $TextureRect, $Label]
 @onready var wobbling_elements : Array = [$Start, $Settings, $Close]
 var main_title_start_positions : Array
 var options_open : bool = false
