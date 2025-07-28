@@ -9,6 +9,7 @@ var loading : bool = false
 @onready var wobbling_elements : Array = [$Start, $Settings, $Close]
 var main_title_start_positions : Array
 var options_open : bool = false
+@onready var settings_ui : Array = [$MouseSens, $MasterVolume]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,20 @@ func _ready() -> void:
 		main_title_start_positions.append(i.position)
 	$Game.size.x = DisplayServer.screen_get_size()[0]
 	$Game.size.y = DisplayServer.screen_get_size()[1]
+	var config = ConfigFile.new()
+	var conf = config.load("user://settings.cfg")
+	if conf != OK:
+		config.set_value("Control", "crouchtoggle", false)
+		config.set_value("Control", "mouse_sens", 0.0035)
+		config.set_value("Control", "fov", 90)
+		config.set_value("Sound", "vol", 100)
+		config.set_value("Sound", "sfxvol", 100)
+		config.save("user://settings.cfg")
+	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
+	$MasterVolume.value = config.get_value("Sound","vol")
+	var volpercent = config.get_value("Sound","vol")
+	var sfxvolpercent = config.get_value("Sound","sfxvol")
+	var busid = AudioServer.get_bus_index("Master")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,11 +75,23 @@ func swap_screen(opening_settings: bool = true):
 	if opening_settings:
 		for i in hide_in_options:
 			i.visible = false
+		for i in settings_ui:
+			i.visible = true
 		options_open = true
 	else:
 		for i in hide_in_options:
 			i.visible = true
+		for i in settings_ui:
+			i.visible = false
+		save_options()
 		options_open = false
+
+func save_options():
+	var config = ConfigFile.new()
+	var conf = config.load("user://settings.cfg")
+	config.set_value("Control", "mouse_sens", $MouseSens.value / 10000)
+	config.set_value("Sound", "vol", $MasterVolume.value)
+	config.save("user://settings.cfg")
 
 func _input(event):
 	if event is InputEventKey:
@@ -73,3 +100,11 @@ func _input(event):
 				swap_screen(false)
 			else:
 				get_tree().quit()
+
+
+func _on_mouse_sens_value_changed(value: float) -> void:
+	$MouseSens/MouseSensValue.text = str(value)
+
+
+func _on_master_volume_value_changed(value: float) -> void:
+	$MasterVolume/MasterVolumeValue.text = str(value)
