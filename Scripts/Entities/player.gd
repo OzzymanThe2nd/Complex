@@ -84,9 +84,11 @@ func _ready():
 	basefov = config.get_value("Control","fov")
 	zoomfov = basefov * 0.7
 	var volpercent = config.get_value("Sound","vol")
-	var sfxvolpercent = config.get_value("Sound","sfxvol")
+	var gunvolpercent = config.get_value("Sound","gunvol")
 	var busid = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(busid,linear_to_db(volpercent/100))
+	AudioServer.set_bus_volume_db(busid, linear_to_db(volpercent/100))
+	busid = AudioServer.get_bus_index("World")
+	AudioServer.set_bus_volume_db(busid, linear_to_db(gunvolpercent/100))
 	%PCamera.fov = basefov
 	%GunCam.fov = basefov
 	%Bobbloid.play("wobble")

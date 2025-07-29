@@ -886,7 +886,7 @@ one_shot = true
 
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 volume_db = -14.0
-bus = &"Footsteps"
+bus = &"World"
 
 [connection signal="body_entered" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
 [connection signal="body_exited" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]

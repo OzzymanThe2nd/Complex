@@ -294,12 +294,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -8.0
-offset_right = 135.0
-offset_bottom = 8.0
+offset_left = -274.0
+offset_top = -344.0
+offset_right = 36.0
+offset_bottom = -328.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme = ExtResource("12_wc2t8")
 min_value = 1.0
 value = 30.0
@@ -349,12 +350,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = 28.0
-offset_right = 135.0
-offset_bottom = 44.0
+offset_left = -274.0
+offset_top = -277.0
+offset_right = 36.0
+offset_bottom = -261.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme = ExtResource("12_wc2t8")
 value = 30.0
 rounded = true
@@ -396,8 +398,238 @@ theme_override_font_sizes/font_size = 10
 label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
+[node name="GunVolume" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -210.0
+offset_right = 36.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("12_wc2t8")
+value = 30.0
+rounded = true
+
+[node name="GunVolumeText" type="Label" parent="GunVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -26.5
+offset_right = 87.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "gun volume"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="GunVolumeValue" type="Label" parent="GunVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -9.5
+offset_right = 87.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="WorldVolume" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -143.0
+offset_right = 36.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("12_wc2t8")
+value = 30.0
+rounded = true
+
+[node name="WorldVolumeText" type="Label" parent="WorldVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -26.5
+offset_right = 87.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "world volume"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="WorldVolumeValue" type="Label" parent="WorldVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -9.5
+offset_right = 87.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="VoiceVolume" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -76.0
+offset_right = 36.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("12_wc2t8")
+value = 30.0
+rounded = true
+
+[node name="VoiceVolumeText" type="Label" parent="VoiceVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -26.5
+offset_right = 87.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "voice volume"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="VoiceVolumeValue" type="Label" parent="VoiceVolume"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -9.5
+offset_right = 87.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="FOVSlider" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -411.0
+offset_right = 36.0
+offset_bottom = -395.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("12_wc2t8")
+min_value = 65.0
+max_value = 95.0
+value = 90.0
+rounded = true
+
+[node name="FOVText" type="Label" parent="FOVSlider"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -26.5
+offset_right = 87.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "FOV"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="FOVValue" type="Label" parent="FOVSlider"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -9.5
+offset_right = 87.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="MouseSens" to="." method="_on_mouse_sens_value_changed"]
 [connection signal="value_changed" from="MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="GunVolume" to="." method="_on_gun_volume_value_changed"]
+[connection signal="value_changed" from="WorldVolume" to="." method="_on_world_volume_value_changed"]
+[connection signal="value_changed" from="VoiceVolume" to="." method="_on_voice_volume_value_changed"]
+[connection signal="value_changed" from="FOVSlider" to="." method="_on_fov_slider_value_changed"]

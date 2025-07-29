@@ -9,7 +9,7 @@ var loading : bool = false
 @onready var wobbling_elements : Array = [$Start, $Settings, $Close]
 var main_title_start_positions : Array
 var options_open : bool = false
-@onready var settings_ui : Array = [$MouseSens, $MasterVolume]
+@onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,13 +24,16 @@ func _ready() -> void:
 		config.set_value("Control", "mouse_sens", 0.0035)
 		config.set_value("Control", "fov", 90)
 		config.set_value("Sound", "vol", 100)
-		config.set_value("Sound", "sfxvol", 100)
+		config.set_value("Sound", "worldvol", 100)
+		config.set_value("Sound", "gunvol", 100)
+		config.set_value("Sound", "voicevol", 100)
 		config.save("user://settings.cfg")
 	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
 	$MasterVolume.value = config.get_value("Sound","vol")
-	var volpercent = config.get_value("Sound","vol")
-	var sfxvolpercent = config.get_value("Sound","sfxvol")
-	var busid = AudioServer.get_bus_index("Master")
+	$WorldVolume.value = config.get_value("Sound","worldvol")
+	$GunVolume.value = config.get_value("Sound","gunvol")
+	$VoiceVolume.value = config.get_value("Sound","voicevol")
+	$FOVSlider.value = config.get_value("Control","fov")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,6 +78,7 @@ func swap_screen(opening_settings: bool = true):
 	if opening_settings:
 		for i in hide_in_options:
 			i.visible = false
+		$FOVSlider/FOVValue.text = str($FOVSlider.value)
 		for i in settings_ui:
 			i.visible = true
 		options_open = true
@@ -91,6 +95,9 @@ func save_options():
 	var conf = config.load("user://settings.cfg")
 	config.set_value("Control", "mouse_sens", $MouseSens.value / 10000)
 	config.set_value("Sound", "vol", $MasterVolume.value)
+	config.set_value("Sound", "worldvol", $WorldVolume.value)
+	config.set_value("Sound", "gunvol", $GunVolume.value)
+	config.set_value("Sound", "voicevol", $VoiceVolume.value)
 	config.save("user://settings.cfg")
 
 func _input(event):
@@ -105,6 +112,17 @@ func _input(event):
 func _on_mouse_sens_value_changed(value: float) -> void:
 	$MouseSens/MouseSensValue.text = str(value)
 
-
 func _on_master_volume_value_changed(value: float) -> void:
 	$MasterVolume/MasterVolumeValue.text = str(value)
+
+func _on_gun_volume_value_changed(value: float) -> void:
+	$GunVolume/GunVolumeValue.text = str(value)
+
+func _on_world_volume_value_changed(value: float) -> void:
+	$WorldVolume/WorldVolumeValue.text = str(value)
+
+func _on_voice_volume_value_changed(value: float) -> void:
+	$VoiceVolume/VoiceVolumeValue.text = str(value)
+
+func _on_fov_slider_value_changed(value: float) -> void:
+	$FOVSlider/FOVValue.text = str(value)

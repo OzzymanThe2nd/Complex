@@ -143,6 +143,7 @@ func shoot():
 				elif target.get_collision_layer() == 2:
 					pass #Lower enemy health, blood splatter decal
 			var gunshot = AudioStreamPlayer.new()
+			gunshot.set_bus("Guns")
 			gunshot.stream = load(shotsounds[randi_range(0,(shotsounds.size() - 1))])
 			PlayerStatus.loaded_level.add_child(gunshot)
 			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
