@@ -74,11 +74,19 @@ func _on_close_pressed() -> void:
 func _on_settings_pressed() -> void:
 	swap_screen(true)
 
+func update_settings_text():
+	$FOVSlider/FOVValue.text = str($FOVSlider.value)
+	$VoiceVolume/VoiceVolumeValue.text = str($VoiceVolume.value)
+	$WorldVolume/WorldVolumeValue.text = str($WorldVolume.value)
+	$GunVolume/GunVolumeValue.text = str($GunVolume.value)
+	$MasterVolume/MasterVolumeValue.text = str($MasterVolume.value)
+	$MouseSens/MouseSensValue.text = str($MouseSens.value)
+
 func swap_screen(opening_settings: bool = true):
 	if opening_settings:
 		for i in hide_in_options:
 			i.visible = false
-		$FOVSlider/FOVValue.text = str($FOVSlider.value)
+		update_settings_text()
 		for i in settings_ui:
 			i.visible = true
 		options_open = true

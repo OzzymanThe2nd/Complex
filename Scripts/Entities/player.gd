@@ -69,28 +69,7 @@ func _ready():
 		#Inven.itemsheld = []
 	if passive_glow == false:
 		$OmniLight3D.visible = false
-	var config = ConfigFile.new()
-	var conf = config.load("user://settings.cfg")
-	if conf != OK:
-		config.set_value("Control", "crouchtoggle", false)
-		config.set_value("Control", "mouse_sens", 0.0035)
-		config.set_value("Control", "fov", 90)
-		config.set_value("Sound", "vol", 100)
-		config.set_value("Sound", "sfxvol", 100)
-		config.save("user://settings.cfg")
-	crouchtoggle = config.get_value("Control","crouchtoggle")
-	mouse_sens = config.get_value("Control","mouse_sens")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	basefov = config.get_value("Control","fov")
-	zoomfov = basefov * 0.7
-	var volpercent = config.get_value("Sound","vol")
-	var gunvolpercent = config.get_value("Sound","gunvol")
-	var busid = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(busid, linear_to_db(volpercent/100))
-	busid = AudioServer.get_bus_index("World")
-	AudioServer.set_bus_volume_db(busid, linear_to_db(gunvolpercent/100))
-	%PCamera.fov = basefov
-	%GunCam.fov = basefov
+	settings_update()
 	%Bobbloid.play("wobble")
 	%Bobbloid.pause()
 	$GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect.area_entered.connect(_on_interact_window_detect_body_entered)
@@ -123,7 +102,37 @@ func slide_cam_back(delta):
 	camerapos = %CamSmooth.global_position
 	if %CamSmooth.position.y == 0:
 		camerapos = null
-	
+
+func settings_update():
+	var config = ConfigFile.new()
+	var conf = config.load("user://settings.cfg")
+	#if conf != OK:
+		#config.set_value("Control", "crouchtoggle", false)
+		#config.set_value("Control", "mouse_sens", 0.0035)
+		#config.set_value("Control", "fov", 90)
+		#config.set_value("Sound", "vol", 100)
+		#config.set_value("Sound", "sfxvol", 100)
+		#config.save("user://settings.cfg")
+	crouchtoggle = config.get_value("Control","crouchtoggle")
+	mouse_sens = config.get_value("Control","mouse_sens")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	basefov = config.get_value("Control","fov")
+	zoomfov = basefov * 0.7
+	var volpercent = config.get_value("Sound","vol")
+	var gunvolpercent = config.get_value("Sound","gunvol")
+	var voicevolpercent = config.get_value("Sound","voicevol")
+	var worldvolpercent = config.get_value("Sound","worldvol")
+	var busid = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(busid, linear_to_db(volpercent/100))
+	busid = AudioServer.get_bus_index("Guns")
+	AudioServer.set_bus_volume_db(busid, linear_to_db(gunvolpercent/100))
+	busid = AudioServer.get_bus_index("World")
+	AudioServer.set_bus_volume_db(busid, linear_to_db(worldvolpercent/100))
+	busid = AudioServer.get_bus_index("Voices")
+	AudioServer.set_bus_volume_db(busid, linear_to_db(voicevolpercent/100))
+	%PCamera.fov = basefov
+	%GunCam.fov = basefov
+
 func _snap_up_stairs_check(delta) -> bool:
 	if not is_on_floor() and not snapped_to_stairs: return false
 	# Don't snap stairs if trying to jump, also no need to check for stairs ahead if not moving
