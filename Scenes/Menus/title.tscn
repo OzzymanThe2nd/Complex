@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://jkshvwoh02gp"]
+[gd_scene load_steps=27 format=4 uid="uid://jkshvwoh02gp"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/title.gd" id="1_eibuk"]
 [ext_resource type="Shader" path="res://Shaders/post_processing.gdshader" id="2_jokb0"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="10_ye3fy"]
 [ext_resource type="Texture2D" uid="uid://coq1025p0h4om" path="res://textures/complex_title.png" id="11_nk5va"]
 [ext_resource type="Theme" uid="uid://20kek77vi0x5" path="res://Resources/slider.tres" id="12_wc2t8"]
+[ext_resource type="Theme" uid="uid://db13mnk3utl08" path="res://Resources/button.tres" id="14_6totx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsnph"]
 shader = ExtResource("2_jokb0")
@@ -283,11 +284,10 @@ offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
-text = "@lesozzyman"
+text = "build ver. \"reschmas\""
 label_settings = ExtResource("10_toa3t")
 
 [node name="MouseSens" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -343,7 +343,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="MasterVolume" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -399,7 +398,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="GunVolume" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -455,7 +453,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="WorldVolume" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -511,7 +508,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="VoiceVolume" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -567,7 +563,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="FOVSlider" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -624,6 +619,69 @@ theme_override_font_sizes/font_size = 10
 label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
+[node name="Control_Bindings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -20.0
+offset_right = 346.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interact" type="Control" parent="Control_Bindings"]
+anchors_preset = 0
+offset_right = 271.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control_Bindings/Interact"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("14_6totx")
+text = "E"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/Interact"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control_Bindings/Interact/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "interact"
+label_settings = SubResource("LabelSettings_dybmh")
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
@@ -633,3 +691,4 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="WorldVolume" to="." method="_on_world_volume_value_changed"]
 [connection signal="value_changed" from="VoiceVolume" to="." method="_on_voice_volume_value_changed"]
 [connection signal="value_changed" from="FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="pressed" from="Control_Bindings/Interact/Button" to="." method="_on_button_pressed"]

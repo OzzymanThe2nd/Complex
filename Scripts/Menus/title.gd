@@ -9,6 +9,7 @@ var loading : bool = false
 @onready var wobbling_elements : Array = [$Start, $Settings, $Close]
 var main_title_start_positions : Array
 var options_open : bool = false
+var active_button = null
 @onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider]
 
 # Called when the node enters the scene tree for the first time.
@@ -111,10 +112,14 @@ func save_options():
 func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("quit"):
-			if options_open:
+			if active_button != null:
+				active_button = null
+			elif options_open:
 				swap_screen(false)
 			else:
 				get_tree().quit()
+		if active_button != null:
+			pass
 
 
 func _on_mouse_sens_value_changed(value: float) -> void:
@@ -134,3 +139,6 @@ func _on_voice_volume_value_changed(value: float) -> void:
 
 func _on_fov_slider_value_changed(value: float) -> void:
 	$FOVSlider/FOVValue.text = str(value)
+
+func _on_button_pressed(pressed_button: Button) -> void:
+	active_button = pressed_button
