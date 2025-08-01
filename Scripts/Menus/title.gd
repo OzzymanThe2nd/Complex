@@ -10,7 +10,7 @@ var loading : bool = false
 var main_title_start_positions : Array
 var options_open : bool = false
 var active_button = null
-@onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider]
+@onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,10 +45,8 @@ func _process(delta: float) -> void:
 		rumble_y_start = %MenuCam.rotation_degrees.y
 	if snapped(%MenuCam.rotation_degrees.x, 0.01) == snapped(rumble_x_start + rumble_x_destination, 0.01) or rumble_x_destination == 0:
 		rumble_x_destination = randf_range(-0.1, 0.1)
-		print(rumble_x_destination)
 	if snapped(%MenuCam.rotation_degrees.y, 0.01) == snapped(rumble_y_start + rumble_y_destination, 0.01) or rumble_y_destination == 0:
 		rumble_y_destination = randf_range(-0.1, 0.1)
-		print(rumble_y_destination)
 	%MenuCam.rotation_degrees.x = lerp(%MenuCam.rotation_degrees.x, rumble_x_start + rumble_x_destination, 0.05)
 	%MenuCam.rotation_degrees.y = lerp(%MenuCam.rotation_degrees.y, rumble_y_start + rumble_y_destination, 0.05)
 	for i in wobbling_elements:
@@ -119,7 +117,17 @@ func _input(event):
 			else:
 				get_tree().quit()
 		if active_button != null:
-			pass
+			var control_helper : Dictionary = {}
+			for action in InputMap.get_actions():
+				for event_act in InputMap.action_get_events(action):
+					control_helper[event_act.as_text()] = action
+			if control_helper.keys().has(event.as_text()):
+				InputMap.action_erase_events(control_helper[event.as_text()])
+			InputMap.action_erase_events(active_button.get_parent().name)
+			InputMap.action_add_event(active_button.get_parent().name, event)
+			active_button.text = event.as_text()
+			active_button = null
+			print(InputMap.get_actions())
 
 
 func _on_mouse_sens_value_changed(value: float) -> void:
@@ -140,5 +148,7 @@ func _on_voice_volume_value_changed(value: float) -> void:
 func _on_fov_slider_value_changed(value: float) -> void:
 	$FOVSlider/FOVValue.text = str(value)
 
-func _on_button_pressed(pressed_button: Button) -> void:
-	active_button = pressed_button
+func _on_interact_pressed() -> void:
+	active_button = $Control_Bindings/interact/Button
+	print(active_button)
+	print(active_button.name)

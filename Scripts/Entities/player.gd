@@ -311,10 +311,8 @@ func rumble():
 		rumble_y_start = %PCamera.position.y
 	if snapped(%PCamera.position.x, 0.01) == snapped(rumble_x_start + rumble_x_destination, 0.01) or rumble_x_destination == 0:
 		rumble_x_destination = randf_range(-0.025, 0.025)
-		print(rumble_x_destination)
 	if snapped(%PCamera.position.y, 0.01) == snapped(rumble_y_start + rumble_y_destination, 0.01) or rumble_y_destination == 0:
 		rumble_y_destination = randf_range(-0.025, 0.025)
-		print(rumble_y_destination)
 	%PCamera.position.x = lerp(%PCamera.position.x, rumble_x_start + rumble_x_destination, 0.2)
 	%PCamera.position.y = lerp(%PCamera.position.y, rumble_y_start + rumble_y_destination, 0.2)
 
