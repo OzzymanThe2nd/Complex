@@ -10,6 +10,7 @@ var loading : bool = false
 var main_title_start_positions : Array
 var options_open : bool = false
 var active_button = null
+@export var set_controls : Array[String] = []
 @onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings]
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +29,7 @@ func _ready() -> void:
 		config.set_value("Sound", "worldvol", 100)
 		config.set_value("Sound", "gunvol", 100)
 		config.set_value("Sound", "voicevol", 100)
+		config.set_value("Bind", "interact", "F")
 		config.save("user://settings.cfg")
 	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
 	$MasterVolume.value = config.get_value("Sound","vol")
@@ -35,6 +37,11 @@ func _ready() -> void:
 	$GunVolume.value = config.get_value("Sound","gunvol")
 	$VoiceVolume.value = config.get_value("Sound","voicevol")
 	$FOVSlider.value = config.get_value("Control","fov")
+	for bind in set_controls:
+		var new_bind = InputEventKey.new()
+		new_bind.keycode = OS.find_keycode_from_string(config.get_value("Bind", bind))
+		InputMap.action_erase_events(bind)
+		InputMap.action_add_event(bind, new_bind)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -105,6 +112,7 @@ func save_options():
 	config.set_value("Sound", "worldvol", $WorldVolume.value)
 	config.set_value("Sound", "gunvol", $GunVolume.value)
 	config.set_value("Sound", "voicevol", $VoiceVolume.value)
+	#config.set_value("Bind", "interact", InputMap.action_get_events("interact")[0])
 	config.save("user://settings.cfg")
 
 func _input(event):
@@ -125,9 +133,13 @@ func _input(event):
 				InputMap.action_erase_events(control_helper[event.as_text()])
 			InputMap.action_erase_events(active_button.get_parent().name)
 			InputMap.action_add_event(active_button.get_parent().name, event)
+			print(event)
 			active_button.text = event.as_text()
+			var config = ConfigFile.new()
+			var conf = config.load("user://settings.cfg")
+			config.set_value("Bind", active_button.get_parent().name, event.as_text())
+			config.save("user://settings.cfg")
 			active_button = null
-			print(InputMap.get_actions())
 
 
 func _on_mouse_sens_value_changed(value: float) -> void:
@@ -150,5 +162,3 @@ func _on_fov_slider_value_changed(value: float) -> void:
 
 func _on_interact_pressed() -> void:
 	active_button = $Control_Bindings/interact/Button
-	print(active_button)
-	print(active_button.name)
