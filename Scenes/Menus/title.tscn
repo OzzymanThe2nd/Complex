@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="10_ye3fy"]
 [ext_resource type="Texture2D" uid="uid://coq1025p0h4om" path="res://textures/complex_title.png" id="11_nk5va"]
 [ext_resource type="Theme" uid="uid://20kek77vi0x5" path="res://Resources/slider.tres" id="12_wc2t8"]
-[ext_resource type="Theme" uid="uid://db13mnk3utl08" path="res://Resources/button.tres" id="14_6totx"]
+[ext_resource type="Theme" uid="uid://s4fgevfhw84d" path="res://Resources/styledbutton.tres" id="14_5rv4y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsnph"]
 shader = ExtResource("2_jokb0")
@@ -86,7 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eibuk")
-set_controls = ["interact"]
+set_controls = Array[String](["interact"])
 
 [node name="Game" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_tsnph")
@@ -513,7 +513,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="VoiceVolume" type="HSlider" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -627,7 +626,6 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="Control_Bindings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -660,7 +658,9 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("14_6totx")
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
 text = "F"
 
 [node name="Panel" type="Panel" parent="Control_Bindings/interact"]
@@ -672,6 +672,7 @@ offset_top = -20.0
 offset_right = 120.0
 offset_bottom = 20.0
 grow_vertical = 2
+theme = ExtResource("14_5rv4y")
 
 [node name="Label" type="Label" parent="Control_Bindings/interact/Panel"]
 texture_filter = 1
@@ -691,6 +692,64 @@ scale = Vector2(1.2, 1.2)
 text = "interact"
 label_settings = SubResource("LabelSettings_dybmh")
 
+[node name="move_jump" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/move_jump" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/move_jump"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/move_jump/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "jump"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
@@ -701,3 +760,4 @@ label_settings = SubResource("LabelSettings_dybmh")
 [connection signal="value_changed" from="VoiceVolume" to="." method="_on_voice_volume_value_changed"]
 [connection signal="value_changed" from="FOVSlider" to="." method="_on_fov_slider_value_changed"]
 [connection signal="pressed" from="Control_Bindings/interact/Button" to="." method="_on_interact_pressed"]
+[connection signal="pressed" from="Control_Bindings/move_jump/Button" to="." method="_on_move_jump_pressed"]

@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://s4fgevfhw84d"]
+
+[ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="1_d1qll"]
+[ext_resource type="Texture2D" uid="uid://5mw1t7551smq" path="res://textures/button4x1.png" id="2_c1joe"]
+[ext_resource type="Texture2D" uid="uid://t211ga3svsfn" path="res://textures/button4x1browndarkened.png" id="2_rd1i0"]
+[ext_resource type="Texture2D" uid="uid://df4ex32yksl0v" path="res://textures/button4x1brownselected.png" id="3_b5583"]
+[ext_resource type="Texture2D" uid="uid://c1mi0idk3w6r6" path="res://textures/button4x1brown.png" id="4_6vu3s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibiq7"]
+texture = ExtResource("2_c1joe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3fn3u"]
+texture = ExtResource("2_rd1i0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y31m5"]
+texture = ExtResource("3_b5583")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvvkx"]
+texture = ExtResource("4_6vu3s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqohh"]
+texture = ExtResource("4_6vu3s")
+
+[resource]
+Button/colors/font_color = Color(0.847059, 0.847059, 0.847059, 0.623529)
+Button/fonts/font = ExtResource("1_d1qll")
+Button/styles/disabled = SubResource("StyleBoxTexture_ibiq7")
+Button/styles/focus = SubResource("StyleBoxTexture_3fn3u")
+Button/styles/hover = SubResource("StyleBoxTexture_y31m5")
+Button/styles/normal = SubResource("StyleBoxTexture_hvvkx")
+Panel/styles/panel = SubResource("StyleBoxTexture_aqohh")

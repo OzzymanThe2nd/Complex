@@ -12,6 +12,7 @@ var options_open : bool = false
 var active_button = null
 @export var set_controls : Array[String] = []
 @onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings]
+@onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +43,7 @@ func _ready() -> void:
 		new_bind.keycode = OS.find_keycode_from_string(config.get_value("Bind", bind))
 		InputMap.action_erase_events(bind)
 		InputMap.action_add_event(bind, new_bind)
+	update_button_text()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,12 +99,23 @@ func swap_screen(opening_settings: bool = true):
 			i.visible = true
 		options_open = true
 	else:
+		active_button = null
 		for i in hide_in_options:
 			i.visible = true
 		for i in settings_ui:
 			i.visible = false
 		save_options()
 		options_open = false
+
+func update_button_text():
+	for i in buttons:
+		var action = InputMap.action_get_events(i.get_parent().name)
+		action = action[0].as_text()
+		if action.ends_with(" (Physical)"):
+			var delete_from = action.find(" (Physical)")
+			action = action.erase(delete_from, 11)
+		i.text = action
+		
 
 func save_options():
 	var config = ConfigFile.new()
@@ -133,7 +146,6 @@ func _input(event):
 				InputMap.action_erase_events(control_helper[event.as_text()])
 			InputMap.action_erase_events(active_button.get_parent().name)
 			InputMap.action_add_event(active_button.get_parent().name, event)
-			print(event)
 			active_button.text = event.as_text()
 			var config = ConfigFile.new()
 			var conf = config.load("user://settings.cfg")
@@ -162,3 +174,6 @@ func _on_fov_slider_value_changed(value: float) -> void:
 
 func _on_interact_pressed() -> void:
 	active_button = $Control_Bindings/interact/Button
+
+func _on_move_jump_pressed() -> void:
+	active_button = $Control_Bindings/move_jump/Button
