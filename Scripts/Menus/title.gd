@@ -12,7 +12,7 @@ var options_open : bool = false
 var active_button = null
 @export var set_controls : Array[String] = []
 @onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings]
-@onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button]
+@onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button, $Control_Bindings/lean_left/Button, $Control_Bindings/lean_right/Button, $Control_Bindings/move_forw/Button, $Control_Bindings/move_left/Button, $Control_Bindings/move_right/Button, $Control_Bindings/move_back/Button, $"Control_Bindings/1/Button", $"Control_Bindings/2/Button", $"Control_Bindings/3/Button", $"Control_Bindings/0/Button"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -177,3 +177,33 @@ func _on_interact_pressed() -> void:
 
 func _on_move_jump_pressed() -> void:
 	active_button = $Control_Bindings/move_jump/Button
+
+func _on_lean_left_pressed() -> void:
+	active_button = $Control_Bindings/lean_left/Button
+
+func _on_lean_right_pressed() -> void:
+	active_button = $Control_Bindings/lean_right/Button
+
+func _on_move_forw_pressed() -> void:
+	active_button = $Control_Bindings/move_forw/Button
+
+func _on_move_left_pressed() -> void:
+	active_button = $Control_Bindings/move_left/Button
+
+func _on_move_right_pressed() -> void:
+	active_button = $Control_Bindings/move_right/Button
+
+func _on_move_back_pressed() -> void:
+	active_button = $Control_Bindings/move_back/Button
+
+func _on_1_pressed() -> void:
+	active_button = $"Control_Bindings/1/Button"
+
+func _on_2_pressed() -> void:
+	active_button = $"Control_Bindings/2/Button"
+
+func _on_3_pressed() -> void:
+	active_button = $"Control_Bindings/3/Button"
+
+func _on_0_pressed() -> void:
+	active_button = $"Control_Bindings/0/Button"

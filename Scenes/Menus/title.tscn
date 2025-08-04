@@ -513,6 +513,7 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="VoiceVolume" type="HSlider" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -626,6 +627,7 @@ label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
 [node name="Control_Bindings" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -750,6 +752,585 @@ text = "jump"
 label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
+[node name="lean_left" type="Control" parent="Control_Bindings"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 54.0
+offset_right = 271.0
+offset_bottom = 94.0
+
+[node name="Button" type="Button" parent="Control_Bindings/lean_left" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/lean_left"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/lean_left/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "lean left"
+label_settings = SubResource("LabelSettings_dybmh")
+
+[node name="lean_right" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_top = 54.0
+offset_bottom = 94.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/lean_right" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/lean_right"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/lean_right/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -12.0
+offset_right = 42.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "lean right"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="move_forw" type="Control" parent="Control_Bindings"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 108.0
+offset_right = 271.0
+offset_bottom = 148.0
+
+[node name="Button" type="Button" parent="Control_Bindings/move_forw" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/move_forw"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/move_forw/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "forward"
+label_settings = SubResource("LabelSettings_dybmh")
+
+[node name="move_left" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_top = 108.0
+offset_bottom = 148.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/move_left" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/move_left"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/move_left/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "left"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="move_right" type="Control" parent="Control_Bindings"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 162.0
+offset_right = 271.0
+offset_bottom = 202.0
+
+[node name="Button" type="Button" parent="Control_Bindings/move_right" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/move_right"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/move_right/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "right"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="move_back" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_top = 162.0
+offset_bottom = 202.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/move_back" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/move_back"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/move_back/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "back"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="1" type="Control" parent="Control_Bindings"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 216.0
+offset_right = 271.0
+offset_bottom = 256.0
+
+[node name="Button" type="Button" parent="Control_Bindings/1" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/1/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "slot 1"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="2" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_top = 216.0
+offset_bottom = 256.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/2" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/2/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "slot 2"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="3" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 250.0
+offset_right = 271.0
+offset_bottom = 290.0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control_Bindings/3" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/3/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "slot 3"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="0" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = 250.0
+offset_bottom = 290.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control_Bindings/0" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/0"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/0/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "unequip"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
@@ -761,3 +1342,13 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="FOVSlider" to="." method="_on_fov_slider_value_changed"]
 [connection signal="pressed" from="Control_Bindings/interact/Button" to="." method="_on_interact_pressed"]
 [connection signal="pressed" from="Control_Bindings/move_jump/Button" to="." method="_on_move_jump_pressed"]
+[connection signal="pressed" from="Control_Bindings/lean_left/Button" to="." method="_on_lean_left_pressed"]
+[connection signal="pressed" from="Control_Bindings/lean_right/Button" to="." method="_on_lean_right_pressed"]
+[connection signal="pressed" from="Control_Bindings/move_forw/Button" to="." method="_on_move_forw_pressed"]
+[connection signal="pressed" from="Control_Bindings/move_left/Button" to="." method="_on_move_left_pressed"]
+[connection signal="pressed" from="Control_Bindings/move_right/Button" to="." method="_on_move_right_pressed"]
+[connection signal="pressed" from="Control_Bindings/move_back/Button" to="." method="_on_move_back_pressed"]
+[connection signal="pressed" from="Control_Bindings/1/Button" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="Control_Bindings/2/Button" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="Control_Bindings/3/Button" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="Control_Bindings/0/Button" to="." method="_on_0_pressed"]
