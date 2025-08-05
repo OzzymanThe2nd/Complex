@@ -34,6 +34,9 @@ var heat : float = 0.0
 var jammed : bool = false
 var current_bullets = 0
 signal unequiped
+signal just_shot
+signal reload_ended
+signal ready_to_fire
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	casing = load(casing)
@@ -105,6 +108,7 @@ func shoot():
 	if current_bullets > 0:
 		if shootable and not jammed:
 			current_bullets -= 1
+			just_shot.emit()
 			shootable = false
 			if shoot_direction == null:
 				if randi_range(0,1) == 0: shoot_direction = "left"
@@ -203,8 +207,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if zoom_after_reload:
 			zooming = true
 			zoom_after_reload = false
+		reload_ended.emit()
 	if anim_name == "equip" or anim_name == "equip_empty":
 		shootable = true
+		ready_to_fire.emit()
 	if anim_name == "unequip" or anim_name == "unequip_empty":
 		unequiped.emit()
 		queue_free()

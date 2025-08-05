@@ -285,7 +285,7 @@ offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
-text = "build ver. \"reschmas\""
+text = "dist build ver. 0.02 \"bi-morph\""
 label_settings = ExtResource("10_toa3t")
 
 [node name="MouseSens" type="HSlider" parent="."]
@@ -1331,6 +1331,107 @@ text = "unequip"
 label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
+[node name="reload" type="Control" parent="Control_Bindings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = 284.0
+offset_right = 135.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="Control_Bindings/reload" groups=["buttons"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -20.0
+offset_right = 23.5
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+action_mode = 0
+text = "F"
+
+[node name="Panel" type="Panel" parent="Control_Bindings/reload"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -20.0
+offset_right = 96.5
+offset_bottom = 20.0
+grow_vertical = 2
+theme = ExtResource("14_5rv4y")
+
+[node name="Label" type="Label" parent="Control_Bindings/reload/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -12.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+text = "reload"
+label_settings = SubResource("LabelSettings_dybmh")
+horizontal_alignment = 1
+
+[node name="Back" type="TextureButton" parent="."]
+process_mode = 3
+visible = false
+material = SubResource("ShaderMaterial_q4ftb")
+layout_mode = 1
+offset_left = 80.0
+offset_top = 114.0
+offset_right = 899.2
+offset_bottom = 318.8
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("6_pqwl6")
+texture_pressed = ExtResource("7_agfcd")
+texture_hover = ExtResource("8_4e5v5")
+texture_disabled = ExtResource("9_auk3o")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Back"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -81.6
+offset_right = 120.0
+offset_bottom = 24.4
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0303408
+scale = Vector2(3, 3)
+text = "back"
+label_settings = ExtResource("10_toa3t")
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
@@ -1352,3 +1453,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="Control_Bindings/2/Button" to="." method="_on_2_pressed"]
 [connection signal="pressed" from="Control_Bindings/3/Button" to="." method="_on_3_pressed"]
 [connection signal="pressed" from="Control_Bindings/0/Button" to="." method="_on_0_pressed"]
+[connection signal="pressed" from="Control_Bindings/reload/Button" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

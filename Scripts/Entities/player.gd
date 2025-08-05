@@ -513,13 +513,43 @@ func equip_deagle():
 	var deagle = deagle_load.instantiate()
 	%WeaponBobble.add_child(deagle)
 	deagle.unequiped.connect(_on_unequipped)
+	deagle.just_shot.connect(_gun_shot)
+	deagle.reload_ended.connect(_gun_reload)
+	deagle.ready_to_fire.connect(_gun_readied)
 	current_weapon = deagle
 
 func equip_rifle():
 	var rifle = rifle_load.instantiate()
 	%WeaponBobble.add_child(rifle)
 	rifle.unequiped.connect(_on_unequipped)
+	rifle.just_shot.connect(_gun_shot)
+	rifle.reload_ended.connect(_gun_reload)
+	rifle.ready_to_fire.connect(_gun_readied)
 	current_weapon = rifle
+
+func handgun_ammo_count_update():
+	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	var reset_hud = %BulletCounter.get_children()
+	for i in reset_hud: i.queue_free()
+	for i in range(PlayerStatus.bullets_in_deagle):
+		var new_label = Label.new()
+		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		new_label.text = ".357 Hollow Point Round"
+		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		new_label.PRESET_CENTER_RIGHT
+		%BulletCounter.add_child(new_label)
+
+func rifle_ammo_count_update():
+	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	var reset_hud = %BulletCounter.get_children()
+	for i in reset_hud: i.queue_free()
+	for i in range(PlayerStatus.bullets_in_rifle):
+		var new_label = Label.new()
+		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		new_label.text = "5.45x45 Hollow Point Round"
+		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		new_label.PRESET_CENTER_RIGHT
+		%BulletCounter.add_child(new_label)
 
 func check_warp():
 	if PlayerStatus.warp_to != null:
@@ -531,11 +561,9 @@ func _on_hud_anim_animation_finished(anim_name: StringName) -> void:
 		PlayerStatus.level_change(stored_level, stored_coord)
 		get_parent().queue_free()
 
-
 func _on_pop_up_timer_timeout() -> void:
 	if $HudAnim.is_playing() == false:
 		$HudAnim.play("TextFadeAway")
-
 
 func _on_interact_window_detect_body_entered(body: Node3D) -> void:
 	body = body.get_parent()
@@ -563,8 +591,20 @@ func _on_footstep_finished() -> void:
 	#$Footstep.volume_db = 0
 
 func _on_unequipped():
+	$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = false
 	if queued != null:
 		equip_queued()
+
+func _gun_shot():
+	%BulletCounter.get_children()[-1].queue_free()
+
+func _gun_reload():
+	if current_weapon.name == "PlayerDeagle": handgun_ammo_count_update()
+	elif current_weapon.name == "PlayerRifle": rifle_ammo_count_update()
+
+func _gun_readied():
+	if current_weapon.name == "PlayerDeagle": handgun_ammo_count_update()
+	elif current_weapon.name == "PlayerRifle": rifle_ammo_count_update()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

@@ -819,6 +819,27 @@ text = "Interact"
 label_settings = SubResource("LabelSettings_lxquc")
 horizontal_alignment = 1
 
+[node name="ScrollContainer" type="ScrollContainer" parent="GunLayer/CamNode3D/CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -120.0
+offset_right = -180.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="BulletCounter" type="VBoxContainer" parent="GunLayer/CamNode3D/CanvasLayer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wx2fv")
 

@@ -11,8 +11,8 @@ var main_title_start_positions : Array
 var options_open : bool = false
 var active_button = null
 @export var set_controls : Array[String] = []
-@onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings]
-@onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button, $Control_Bindings/lean_left/Button, $Control_Bindings/lean_right/Button, $Control_Bindings/move_forw/Button, $Control_Bindings/move_left/Button, $Control_Bindings/move_right/Button, $Control_Bindings/move_back/Button, $"Control_Bindings/1/Button", $"Control_Bindings/2/Button", $"Control_Bindings/3/Button", $"Control_Bindings/0/Button"]
+@onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings, $Back]
+@onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button, $Control_Bindings/lean_left/Button, $Control_Bindings/lean_right/Button, $Control_Bindings/move_forw/Button, $Control_Bindings/move_left/Button, $Control_Bindings/move_right/Button, $Control_Bindings/move_back/Button, $"Control_Bindings/1/Button", $"Control_Bindings/2/Button", $"Control_Bindings/3/Button", $"Control_Bindings/0/Button", $Control_Bindings/reload/Button]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -207,3 +207,11 @@ func _on_3_pressed() -> void:
 
 func _on_0_pressed() -> void:
 	active_button = $"Control_Bindings/0/Button"
+
+func _on_reload_pressed() -> void:
+	active_button = $Control_Bindings/reload/Button
+
+func _on_back_pressed() -> void:
+	if active_button != null:
+		active_button = null
+	swap_screen(false)

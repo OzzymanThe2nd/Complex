@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cb83xo2ooeiwf"]
+
+[ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="1_wu2vf"]
+
+[resource]
+font = ExtResource("1_wu2vf")
+font_size = 10
+font_color = Color(0.847474, 0.847474, 0.847474, 0.423529)
