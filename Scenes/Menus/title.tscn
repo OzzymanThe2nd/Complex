@@ -86,7 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eibuk")
-set_controls = Array[String](["interact"])
+set_controls = Array[String](["interact", "move_jump", "lean_left", "lean_right", "move_forw", "move_left", "move_right", "move_back", "1", "2", "3", "0", "reload"])
 
 [node name="Game" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_tsnph")

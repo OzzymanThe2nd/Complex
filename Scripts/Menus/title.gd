@@ -23,15 +23,7 @@ func _ready() -> void:
 	var config = ConfigFile.new()
 	var conf = config.load("user://settings.cfg")
 	if conf != OK:
-		config.set_value("Control", "crouchtoggle", false)
-		config.set_value("Control", "mouse_sens", 0.0035)
-		config.set_value("Control", "fov", 90)
-		config.set_value("Sound", "vol", 100)
-		config.set_value("Sound", "worldvol", 100)
-		config.set_value("Sound", "gunvol", 100)
-		config.set_value("Sound", "voicevol", 100)
-		config.set_value("Bind", "interact", "F")
-		config.save("user://settings.cfg")
+		set_default_config(config)
 	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
 	$MasterVolume.value = config.get_value("Sound","vol")
 	$WorldVolume.value = config.get_value("Sound","worldvol")
@@ -45,6 +37,22 @@ func _ready() -> void:
 		InputMap.action_add_event(bind, new_bind)
 	update_button_text()
 
+func set_default_config(config : ConfigFile):
+	#config.set_value("Control", "crouchtoggle", false)
+	config.set_value("Control", "mouse_sens", 0.0035)
+	config.set_value("Control", "fov", 90)
+	config.set_value("Sound", "vol", 100)
+	config.set_value("Sound", "worldvol", 100)
+	config.set_value("Sound", "gunvol", 100)
+	config.set_value("Sound", "voicevol", 100)
+	for bind in set_controls:
+		var action = InputMap.action_get_events(bind)[0].as_text()
+		if action.ends_with(" (Physical)"):
+			var delete_from = action.find(" (Physical)")
+			action = action.erase(delete_from, 11)
+		config.set_value("Bind", bind, action)
+	config.save("user://settings.cfg")
+	update_button_text()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
