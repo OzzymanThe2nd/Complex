@@ -1396,6 +1396,25 @@ text = "reload"
 label_settings = SubResource("LabelSettings_dybmh")
 horizontal_alignment = 1
 
+[node name="Default" type="Button" parent="Control_Bindings"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = 392.0
+offset_right = 159.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+theme = ExtResource("14_5rv4y")
+theme_override_font_sizes/font_size = 22
+text = "DEFAULT SETTINGS"
+
 [node name="Back" type="TextureButton" parent="."]
 process_mode = 3
 visible = false
@@ -1454,4 +1473,5 @@ label_settings = ExtResource("10_toa3t")
 [connection signal="pressed" from="Control_Bindings/3/Button" to="." method="_on_3_pressed"]
 [connection signal="pressed" from="Control_Bindings/0/Button" to="." method="_on_0_pressed"]
 [connection signal="pressed" from="Control_Bindings/reload/Button" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="Control_Bindings/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

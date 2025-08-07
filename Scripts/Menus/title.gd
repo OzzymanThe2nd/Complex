@@ -13,7 +13,19 @@ var active_button = null
 @export var set_controls : Array[String] = []
 @onready var settings_ui : Array = [$MouseSens, $MasterVolume, $GunVolume, $WorldVolume, $VoiceVolume, $FOVSlider, $Control_Bindings, $Back]
 @onready var buttons : Array = [$Control_Bindings/interact/Button, $Control_Bindings/move_jump/Button, $Control_Bindings/lean_left/Button, $Control_Bindings/lean_right/Button, $Control_Bindings/move_forw/Button, $Control_Bindings/move_left/Button, $Control_Bindings/move_right/Button, $Control_Bindings/move_back/Button, $"Control_Bindings/1/Button", $"Control_Bindings/2/Button", $"Control_Bindings/3/Button", $"Control_Bindings/0/Button", $Control_Bindings/reload/Button]
-
+var default_values = {"interact" : "F",
+	"move_jump" : "Space",
+	"lean_left" : "Q",
+	"lean_right" : "E",
+	"move_forw" : "W",
+	"move_left" : "A",
+	"move_right" : "D",
+	"move_back" : "S",
+	"1" : "1",
+	"2" : "2",
+	"3" : "3",
+	"0" : "0",
+	"reload" : "R"}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in wobbling_elements:
@@ -24,18 +36,13 @@ func _ready() -> void:
 	var conf = config.load("user://settings.cfg")
 	if conf != OK:
 		set_default_config(config)
-	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
-	$MasterVolume.value = config.get_value("Sound","vol")
-	$WorldVolume.value = config.get_value("Sound","worldvol")
-	$GunVolume.value = config.get_value("Sound","gunvol")
-	$VoiceVolume.value = config.get_value("Sound","voicevol")
-	$FOVSlider.value = config.get_value("Control","fov")
-	for bind in set_controls:
-		var new_bind = InputEventKey.new()
-		new_bind.keycode = OS.find_keycode_from_string(config.get_value("Bind", bind))
-		InputMap.action_erase_events(bind)
-		InputMap.action_add_event(bind, new_bind)
-	update_button_text()
+	else:
+		for bind in set_controls:
+			var new_bind = InputEventKey.new()
+			new_bind.keycode = OS.find_keycode_from_string(config.get_value("Bind", bind))
+			InputMap.action_erase_events(bind)
+			InputMap.action_add_event(bind, new_bind)
+		update_button_text()
 
 func set_default_config(config : ConfigFile):
 	#config.set_value("Control", "crouchtoggle", false)
@@ -46,11 +53,12 @@ func set_default_config(config : ConfigFile):
 	config.set_value("Sound", "gunvol", 100)
 	config.set_value("Sound", "voicevol", 100)
 	for bind in set_controls:
-		var action = InputMap.action_get_events(bind)[0].as_text()
-		if action.ends_with(" (Physical)"):
-			var delete_from = action.find(" (Physical)")
-			action = action.erase(delete_from, 11)
-		config.set_value("Bind", bind, action)
+		config.set_value("Bind", bind, default_values[bind])
+	for bind in set_controls:
+		var new_bind = InputEventKey.new()
+		new_bind.keycode = OS.find_keycode_from_string(config.get_value("Bind", bind))
+		InputMap.action_erase_events(bind)
+		InputMap.action_add_event(bind, new_bind)
 	config.save("user://settings.cfg")
 	update_button_text()
 
@@ -116,6 +124,8 @@ func swap_screen(opening_settings: bool = true):
 		options_open = false
 
 func update_button_text():
+	var config = ConfigFile.new()
+	var conf = config.load("user://settings.cfg")
 	for i in buttons:
 		var action = InputMap.action_get_events(i.get_parent().name)
 		action = action[0].as_text()
@@ -123,7 +133,12 @@ func update_button_text():
 			var delete_from = action.find(" (Physical)")
 			action = action.erase(delete_from, 11)
 		i.text = action
-		
+	$MouseSens.value = config.get_value("Control","mouse_sens") * 10000
+	$MasterVolume.value = config.get_value("Sound","vol")
+	$WorldVolume.value = config.get_value("Sound","worldvol")
+	$GunVolume.value = config.get_value("Sound","gunvol")
+	$VoiceVolume.value = config.get_value("Sound","voicevol")
+	$FOVSlider.value = config.get_value("Control","fov")
 
 func save_options():
 	var config = ConfigFile.new()
@@ -160,7 +175,6 @@ func _input(event):
 			config.set_value("Bind", active_button.get_parent().name, event.as_text())
 			config.save("user://settings.cfg")
 			active_button = null
-
 
 func _on_mouse_sens_value_changed(value: float) -> void:
 	$MouseSens/MouseSensValue.text = str(value)
@@ -223,3 +237,8 @@ func _on_back_pressed() -> void:
 	if active_button != null:
 		active_button = null
 	swap_screen(false)
+
+func _on_default_pressed() -> void:
+	var config = ConfigFile.new()
+	var conf = config.load("user://settings.cfg")
+	set_default_config(config)
