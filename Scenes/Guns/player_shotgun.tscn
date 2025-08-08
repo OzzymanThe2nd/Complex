@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm5cuut7kobo"]
+
+[ext_resource type="Script" path="res://Scripts/Guns/player_shotgun.gd" id="1_gyplu"]
+
+[node name="PlayerShotgun" type="Node3D"]
+script = ExtResource("1_gyplu")
+heavy = true
+max_mag = 2
+heat_generated = 0.0
