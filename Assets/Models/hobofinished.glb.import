@@ -1,0 +1,279 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cef0sdaiitb1p"
+path="res://.godot/imported/hobofinished.glb-4d29e26ebe25de53b996bd42b4ca01a0.scn"
+
+[deps]
+
+source_file="res://Assets/Models/hobofinished.glb"
+dest_files=["res://.godot/imported/hobofinished.glb-4d29e26ebe25de53b996bd42b4ca01a0.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.5
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Empty": {
+"import/skip_import": true
+},
+"PATH:Empty_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_VIS_thigh_ik_pole_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_VIS_thigh_ik_pole_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_VIS_upper_arm_ik_pole_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_VIS_upper_arm_ik_pole_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_chest": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_heel_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_heel_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_spin_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_spin_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_foot_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_tweak_L_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_forearm_tweak_R_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hand_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_head": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_hips": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_neck": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_root": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_tweak_L_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shin_tweak_R_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shoulder_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_shoulder_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_spine_fk": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_spine_fk_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_spine_fk_002": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_spine_fk_003": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_ik_target_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_ik_target_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_parent_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_parent_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_tweak_L_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_thigh_tweak_R_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_toe_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_toe_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_toe_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_toe_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_torso": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine_002": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine_003": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine_004": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_tweak_spine_005": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_fk_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_fk_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_ik_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_ik_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_ik_target_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_ik_target_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_parent_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_parent_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_tweak_L": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_tweak_L_001": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_tweak_R": {
+"import/skip_import": true
+},
+"PATH:WGT-rig_upper_arm_tweak_R_001": {
+"import/skip_import": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
