@@ -163,6 +163,7 @@ quit={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Enemies"
 3d_physics/layer_3="Player"
+3d_physics/layer_5="Headshots"
 
 [rendering]
 
