@@ -207,7 +207,8 @@ one_shot = true
 autostart = true
 
 [node name="Enemy_Pistol" parent="." instance=ExtResource("13_osweq")]
-transform = Transform3D(-0.999919, 0, 0.0126882, 0, 1, 0, -0.0126882, 0, -0.999919, 3.24179, 0, 11.2349)
+transform = Transform3D(-0.999919, 0, 0.0126882, 0, 1, 0, -0.0126882, 0, -0.999919, 3.242, 0, 11.235)
+aiming = true
 
 [connection signal="timeout" from="Elevator Shake" to="." method="_on_elevator_shake_timeout"]
 

@@ -113,7 +113,7 @@ func settings_update():
 		#config.set_value("Sound", "vol", 100)
 		#config.set_value("Sound", "sfxvol", 100)
 		#config.save("user://settings.cfg")
-	crouchtoggle = config.get_value("Control","crouchtoggle")
+	#crouchtoggle = config.get_value("Control","crouchtoggle")
 	mouse_sens = config.get_value("Control","mouse_sens")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	basefov = config.get_value("Control","fov")
