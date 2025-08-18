@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dfjjuc4nvf7p1"]
+[gd_scene load_steps=24 format=4 uid="uid://dfjjuc4nvf7p1"]
 
 [ext_resource type="PackedScene" uid="uid://rpl5amivov5f" path="res://Scenes/Entities/player.tscn" id="1_1oa23"]
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_7w4g4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://gqj18o5d5nlk" path="res://textures/nutspray.png" id="11_npanf"]
 [ext_resource type="PackedScene" uid="uid://d1e18qi50fm2p" path="res://Assets/Models/hobo.glb" id="12_owd34"]
 [ext_resource type="PackedScene" uid="uid://cw5ydqcmaygwe" path="res://Scenes/Entities/enemy_pistol.tscn" id="13_osweq"]
+[ext_resource type="PackedScene" uid="uid://b5xdhe86q34so" path="res://Assets/Models/hobo_gasmask.glb" id="14_egvct"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -209,6 +210,9 @@ autostart = true
 [node name="Enemy_Pistol" parent="." instance=ExtResource("13_osweq")]
 transform = Transform3D(-0.999919, 0, 0.0126882, 0, 1, 0, -0.0126882, 0, -0.999919, 3.242, 0, 11.235)
 aiming = true
+
+[node name="hobo_gasmask" parent="." instance=ExtResource("14_egvct")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.79083, -2.38419e-07, 11.4556)
 
 [connection signal="timeout" from="Elevator Shake" to="." method="_on_elevator_shake_timeout"]
 
