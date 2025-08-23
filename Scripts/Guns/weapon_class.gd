@@ -153,7 +153,7 @@ func shoot():
 			gunshot.finished.connect(_shotsound_finished.bind(gunshot))
 			active_shotsounds.append(gunshot)
 			gunshot.play()
-			if not jammed:
+			if not jammed and not get_groups().has("shotgun"):
 				spawn_casing(true)
 			$ShotRecovery.start()
 			$ShotCooldown.start()

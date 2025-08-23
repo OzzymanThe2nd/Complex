@@ -734,11 +734,11 @@ _data = {
 "unequip": SubResource("Animation_vaepi")
 }
 
-[node name="PlayerShotgun" type="Node3D"]
+[node name="PlayerShotgun" type="Node3D" groups=["shotgun"]]
 script = ExtResource("1_gyplu")
 heavy = true
 shootable = true
-max_mag = 2
+max_mag = 1
 heat_generated = 0.0
 
 [node name="Player_Arms" parent="." instance=ExtResource("2_cxk22")]
@@ -881,11 +881,37 @@ cast_shadow = 0
 [node name="DoubleBarrelShotgun" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001" index="0" instance=ExtResource("5_elr5a")]
 transform = Transform3D(-0.135461, 0, -2.99694, 0, 3, 0, 2.99694, 0, -0.135461, -4.37441, -14.8132, 20.8699)
 
+[node name="Body" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="0"]
+layers = 2
+
+[node name="HandGaurd&Barrel" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="1"]
+layers = 2
+
 [node name="ShellLowPolyGreen_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="2"]
 visible = false
+layers = 2
 
 [node name="ShellLowPolyRed_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="3"]
 visible = false
+layers = 2
+
+[node name="Trigger&Trigger" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="4"]
+layers = 2
+
+[node name="FlashSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
+unique_name_in_owner = true
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 3.7786, 4.60938, 0.0275155)
+
+[node name="ShootCast" type="RayCast3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
+unique_name_in_owner = true
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 0.999999, 0, -1, 0, -4.47035e-08, 0.403703, 4.65352, 0.0773162)
+target_position = Vector3(0, 10, 400)
+collision_mask = 3
+debug_shape_custom_color = Color(0, 1, 0, 1)
+
+[node name="CasingSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
+unique_name_in_owner = true
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -1.70991, 4.49419, 0.0645232)
 
 [node name="Cube_002" parent="Player_Arms/Armature_001/Skeleton3D" index="1"]
 layers = 2

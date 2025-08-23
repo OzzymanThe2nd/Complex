@@ -9,7 +9,7 @@ var player_health : int = 100
 var loaded_level
 var bullets_in_deagle : int = 8
 var bullets_in_rifle : int = 30
-var bullets_in_shotgun : int = 2
+var bullets_in_shotgun : int = 1
 var deagle_jammed : bool = false
 var rifle_jammed : bool = false
 var shotgun_jammed : bool = false
@@ -22,7 +22,7 @@ func reset_to_default():
 	deagle_jammed = false
 	bullets_in_rifle = 30
 	rifle_jammed = false
-	bullets_in_shotgun = 2
+	bullets_in_shotgun = 1
 	shotgun_jammed = false
 
 func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):

@@ -8,6 +8,7 @@ var stored_level
 var stored_coord
 var deagle_load = preload("res://Scenes/Guns/player_deagle.tscn")
 var rifle_load = preload("res://Scenes/Guns/player_ak.tscn")
+var shotgun_load = preload("res://Scenes/Guns/player_shotgun.tscn")
 var stepqueued : bool = false
 var footstep_val : float = 6
 var step_sound_type = "concrete"
@@ -51,11 +52,13 @@ var mouse_location : Vector2
 var zooming : bool = false
 var health_loop_stop : bool = false
 var queued = null
-var call_equip_deagle = Callable(self,"equip_deagle")
-var call_equip_rifle = Callable(self,"equip_rifle")
+var call_equip_deagle = Callable(self, "equip_deagle")
+var call_equip_rifle = Callable(self, "equip_rifle")
+var call_equip_shotgun = Callable(self, "equip_shotgun")
 var queued_help = {
 	"handgun" : call_equip_deagle,
-	"rifle" : call_equip_rifle
+	"rifle" : call_equip_rifle,
+	"shotgun" : call_equip_shotgun
 }
 @warning_ignore("unused_signal")
 signal dead
@@ -363,7 +366,11 @@ func _input(event):
 			else:
 				equip_rifle()
 		elif Input.is_action_just_pressed("3"):
-			pass
+			if current_weapon != null:
+				if not current_weapon.is_in_group("shotgun"): queued = "shotgun"
+				current_weapon.unequip()
+			else:
+				equip_shotgun()
 		elif Input.is_action_just_pressed("4"):
 			pass
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
@@ -527,6 +534,15 @@ func equip_rifle():
 	rifle.ready_to_fire.connect(_gun_readied)
 	current_weapon = rifle
 
+func equip_shotgun():
+	var shotgun = shotgun_load.instantiate()
+	%WeaponBobble.add_child(shotgun)
+	shotgun.unequiped.connect(_on_unequipped)
+	shotgun.just_shot.connect(_gun_shot)
+	shotgun.reload_ended.connect(_gun_reload)
+	shotgun.ready_to_fire.connect(_gun_readied)
+	current_weapon = shotgun
+
 func handgun_ammo_count_update():
 	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
 	var reset_hud = %BulletCounter.get_children()
@@ -547,6 +563,18 @@ func rifle_ammo_count_update():
 		var new_label = Label.new()
 		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
 		new_label.text = "5.45x45 Hollow Point Round"
+		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		new_label.PRESET_CENTER_RIGHT
+		%BulletCounter.add_child(new_label)
+
+func shotgun_ammo_count_update():
+	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	var reset_hud = %BulletCounter.get_children()
+	for i in reset_hud: i.queue_free()
+	for i in range(PlayerStatus.bullets_in_shotgun):
+		var new_label = Label.new()
+		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		new_label.text = "12G Buckshot round"
 		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		new_label.PRESET_CENTER_RIGHT
 		%BulletCounter.add_child(new_label)
@@ -599,12 +627,14 @@ func _gun_shot():
 	%BulletCounter.get_children()[-1].queue_free()
 
 func _gun_reload():
-	if current_weapon.name == "PlayerDeagle": handgun_ammo_count_update()
-	elif current_weapon.name == "PlayerRifle": rifle_ammo_count_update()
+	if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
+	elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
+	elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
 
 func _gun_readied():
-	if current_weapon.name == "PlayerDeagle": handgun_ammo_count_update()
-	elif current_weapon.name == "PlayerRifle": rifle_ammo_count_update()
+	if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
+	elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
+	elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
