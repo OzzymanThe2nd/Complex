@@ -14,3 +14,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		PlayerStatus.shotgun_jammed = jammed
 		PlayerStatus.bullets_in_shotgun = current_bullets
+
+
+func _on_stun_recovery_timeout() -> void:
+	PlayerStatus.shotgun_stunned = false

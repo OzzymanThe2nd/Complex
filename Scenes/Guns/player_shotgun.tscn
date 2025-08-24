@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm5cuut7kobo"]
+[gd_scene load_steps=20 format=3 uid="uid://cm5cuut7kobo"]
 
 [ext_resource type="Script" path="res://Scripts/Guns/player_shotgun.gd" id="1_gyplu"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="2_cxk22"]
 [ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_1acbj"]
 [ext_resource type="Texture2D" uid="uid://dmr5hsw4n6nyr" path="res://Assets/Models/Arms/PlayerArms.png" id="4_ffpis"]
 [ext_resource type="PackedScene" uid="uid://cmoapvx67kgrb" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Fbx/DoubleBarrelShotgun.fbx" id="5_elr5a"]
+[ext_resource type="Texture2D" uid="uid://cngblryq7jp7i" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/DBShotgunText.png" id="6_xxaic"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydcjq"]
 render_priority = 0
@@ -14,6 +15,42 @@ shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
 shader_parameter/albedo = ExtResource("4_ffpis")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31jrf"]
+render_priority = 0
+shader = ExtResource("3_1acbj")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("6_xxaic")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0r8c"]
+render_priority = 0
+shader = ExtResource("3_1acbj")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("6_xxaic")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofvl5"]
+render_priority = 0
+shader = ExtResource("3_1acbj")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("6_xxaic")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lnmw"]
+render_priority = 0
+shader = ExtResource("3_1acbj")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("6_xxaic")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6q4y"]
 render_priority = 0
@@ -726,20 +763,81 @@ tracks/1/keys = {
 "values": [Vector3(-0.10629, -0.0851705, 0.497176), Vector3(-0.10629, -0.247321, 0.497176), Vector3(-0.10629, -0.641116, 0.497176)]
 }
 
+[sub_resource type="Animation" id="Animation_s757j"]
+resource_name = "equip_empty"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player_Arms:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.8),
+"transitions": PackedFloat32Array(1.36604, 0.812252, 1),
+"update": 0,
+"values": [Vector3(1.25359e-06, 1.5708, -0.353621), Vector3(-1.47022e-07, 1.5708, 0.0392728), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Arms:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1.36604, 1),
+"update": 0,
+"values": [Vector3(-0.10629, -0.641116, 0.497176), Vector3(-0.10629, -0.0851705, 0.497176)]
+}
+
+[sub_resource type="Animation" id="Animation_jymqh"]
+resource_name = "unequip_empty"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player_Arms:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(1.25359e-06, 1.5708, -0.353621)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Arms:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.10629, -0.0851705, 0.497176), Vector3(-0.10629, -0.247321, 0.497176), Vector3(-0.10629, -0.641116, 0.497176)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk3d5"]
 _data = {
 "RESET": SubResource("Animation_0qwrb"),
 "equip": SubResource("Animation_1xgam"),
+"equip_empty": SubResource("Animation_s757j"),
 "shoot": SubResource("Animation_ixlbm"),
-"unequip": SubResource("Animation_vaepi")
+"unequip": SubResource("Animation_vaepi"),
+"unequip_empty": SubResource("Animation_jymqh")
 }
 
 [node name="PlayerShotgun" type="Node3D" groups=["shotgun"]]
 script = ExtResource("1_gyplu")
 heavy = true
 shootable = true
+kickback_level = 0.25
 max_mag = 1
 heat_generated = 0.0
+zoom_in_speed = 0.01
+zoom_in_z_speed = 0.01
 
 [node name="Player_Arms" parent="." instance=ExtResource("2_cxk22")]
 transform = Transform3D(-7.23998e-07, 0, 0.2, 0, 0.2, 0, -0.2, 0, -7.23998e-07, -0.10629, -0.0851705, 0.497176)
@@ -883,9 +981,11 @@ transform = Transform3D(-0.135461, 0, -2.99694, 0, 3, 0, 2.99694, 0, -0.135461, 
 
 [node name="Body" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="0"]
 layers = 2
+material_overlay = SubResource("ShaderMaterial_31jrf")
 
 [node name="HandGaurd&Barrel" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="1"]
 layers = 2
+material_overlay = SubResource("ShaderMaterial_x0r8c")
 
 [node name="ShellLowPolyGreen_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="2"]
 visible = false
@@ -894,9 +994,11 @@ layers = 2
 [node name="ShellLowPolyRed_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="3"]
 visible = false
 layers = 2
+material_overlay = SubResource("ShaderMaterial_ofvl5")
 
 [node name="Trigger&Trigger" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="4"]
 layers = 2
+material_overlay = SubResource("ShaderMaterial_3lnmw")
 
 [node name="FlashSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
 unique_name_in_owner = true
@@ -923,7 +1025,11 @@ wait_time = 0.5
 one_shot = true
 
 [node name="ShotRecovery" type="Timer" parent="."]
-wait_time = 0.19
+wait_time = 1.2
+one_shot = true
+
+[node name="StunRecovery" type="Timer" parent="."]
+wait_time = 1.8
 one_shot = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -933,6 +1039,8 @@ fov = 90.0
 libraries = {
 "": SubResource("AnimationLibrary_jk3d5")
 }
+
+[connection signal="timeout" from="StunRecovery" to="." method="_on_stun_recovery_timeout"]
 
 [editable path="Player_Arms"]
 [editable path="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]

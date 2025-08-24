@@ -254,13 +254,17 @@ func _physics_process(delta):
 			$PlayerAnim.play("uncrouch")
 			trying_uncrouch = false
 			crouch = false
-	if Input.is_action_pressed("lean_left") and not cam_locked:
+	if PlayerStatus.shotgun_stunned == true:
+		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 35.0, 0.045)
+		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, sin(Time.get_ticks_msec() / 140) * 30, 0.02)
+	if Input.is_action_pressed("lean_left") and not cam_locked and PlayerStatus.shotgun_stunned == false:
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
 		%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.08)
-	elif Input.is_action_pressed("lean_right") and not cam_locked:
+	elif Input.is_action_pressed("lean_right") and not cam_locked and PlayerStatus.shotgun_stunned == false:
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
 		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
-	elif rumbling == false:
+	elif rumbling == false and PlayerStatus.shotgun_stunned == false:
+		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.04)
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
 	if rumbling:
@@ -620,6 +624,7 @@ func _on_footstep_finished() -> void:
 
 func _on_unequipped():
 	$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = false
+	PlayerStatus.shotgun_stunned = false
 	if queued != null:
 		equip_queued()
 

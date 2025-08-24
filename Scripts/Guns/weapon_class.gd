@@ -155,6 +155,9 @@ func shoot():
 			gunshot.play()
 			if not jammed and not get_groups().has("shotgun"):
 				spawn_casing(true)
+			if get_groups().has("shotgun"):
+				PlayerStatus.shotgun_stunned = true
+				$StunRecovery.start()
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo

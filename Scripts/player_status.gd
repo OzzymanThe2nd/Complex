@@ -15,6 +15,7 @@ var rifle_jammed : bool = false
 var shotgun_jammed : bool = false
 var rifle_unlocked : bool = true
 var shotgun_unlocked : bool = true
+var shotgun_stunned : bool = false
 
 func reset_to_default():
 	player_health = 100
@@ -24,6 +25,7 @@ func reset_to_default():
 	rifle_jammed = false
 	bullets_in_shotgun = 1
 	shotgun_jammed = false
+	shotgun_stunned = false
 
 func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):
 	var load_level = level
