@@ -5379,9 +5379,14 @@ one_shot = true
 [node name="Camera3D" type="Camera3D" parent="."]
 fov = 90.0
 
+[node name="RecoilRecovery" type="Timer" parent="."]
+wait_time = 0.87
+one_shot = true
+
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShotRecovery" to="." method="_on_shot_recovery_timeout"]
+[connection signal="timeout" from="RecoilRecovery" to="." method="_on_recoil_recovery_timeout"]
 
 [editable path="Player_Arms"]
 [editable path="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]

@@ -17,3 +17,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		PlayerStatus.deagle_jammed = jammed
 		PlayerStatus.bullets_in_deagle = current_bullets
+
+
+func _on_recoil_recovery_timeout() -> void:
+	PlayerStatus.pistol_recoil_level = 0

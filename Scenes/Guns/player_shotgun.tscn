@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cm5cuut7kobo"]
+[gd_scene load_steps=21 format=3 uid="uid://cm5cuut7kobo"]
 
 [ext_resource type="Script" path="res://Scripts/Guns/player_shotgun.gd" id="1_gyplu"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="2_cxk22"]
@@ -424,8 +424,37 @@ tracks/1/keys = {
 "values": [Vector3(-0.10629, -0.641116, 0.497176), Vector3(-0.10629, -0.0851705, 0.497176)]
 }
 
+[sub_resource type="Animation" id="Animation_s757j"]
+resource_name = "equip_empty"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player_Arms:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.8),
+"transitions": PackedFloat32Array(1.36604, 0.812252, 1),
+"update": 0,
+"values": [Vector3(1.25359e-06, 1.5708, -0.353621), Vector3(-1.47022e-07, 1.5708, 0.0392728), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Arms:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1.36604, 1),
+"update": 0,
+"values": [Vector3(-0.10629, -0.641116, 0.497176), Vector3(-0.10629, -0.0851705, 0.497176)]
+}
+
 [sub_resource type="Animation" id="Animation_ixlbm"]
 resource_name = "shoot"
+length = 0.8
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -763,34 +792,6 @@ tracks/1/keys = {
 "values": [Vector3(-0.10629, -0.0851705, 0.497176), Vector3(-0.10629, -0.247321, 0.497176), Vector3(-0.10629, -0.641116, 0.497176)]
 }
 
-[sub_resource type="Animation" id="Animation_s757j"]
-resource_name = "equip_empty"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player_Arms:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.666667, 0.8),
-"transitions": PackedFloat32Array(1.36604, 0.812252, 1),
-"update": 0,
-"values": [Vector3(1.25359e-06, 1.5708, -0.353621), Vector3(-1.47022e-07, 1.5708, 0.0392728), Vector3(0, 1.5708, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player_Arms:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.733333),
-"transitions": PackedFloat32Array(1.36604, 1),
-"update": 0,
-"values": [Vector3(-0.10629, -0.641116, 0.497176), Vector3(-0.10629, -0.0851705, 0.497176)]
-}
-
 [sub_resource type="Animation" id="Animation_jymqh"]
 resource_name = "unequip_empty"
 length = 0.8
@@ -819,11 +820,16 @@ tracks/1/keys = {
 "values": [Vector3(-0.10629, -0.0851705, 0.497176), Vector3(-0.10629, -0.247321, 0.497176), Vector3(-0.10629, -0.641116, 0.497176)]
 }
 
+[sub_resource type="Animation" id="Animation_cimqm"]
+resource_name = "reload"
+length = 3.2
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk3d5"]
 _data = {
 "RESET": SubResource("Animation_0qwrb"),
 "equip": SubResource("Animation_1xgam"),
 "equip_empty": SubResource("Animation_s757j"),
+"reload": SubResource("Animation_cimqm"),
 "shoot": SubResource("Animation_ixlbm"),
 "unequip": SubResource("Animation_vaepi"),
 "unequip_empty": SubResource("Animation_jymqh")

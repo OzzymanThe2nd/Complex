@@ -521,6 +521,7 @@ weapon_rotation_amount = 0.03
 [node name="GunLayer" type="CanvasLayer" parent="."]
 
 [node name="CamNode3D" type="Node3D" parent="GunLayer"]
+unique_name_in_owner = true
 script = ExtResource("2_to3yv")
 follow_target = NodePath("../..")
 

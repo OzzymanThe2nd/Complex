@@ -33,6 +33,7 @@ var reloading : bool = false
 var heat : float = 0.0
 var jammed : bool = false
 var current_bullets = 0
+var shotgun_casts = []
 signal unequiped
 signal just_shot
 signal reload_ended
@@ -54,6 +55,17 @@ func _ready() -> void:
 		$AnimationPlayer.play("equip")
 	elif jammed == false:
 		$AnimationPlayer.play("equip_empty")
+	if is_in_group("shotgun"):
+		for i in 25:
+			var new_shot = RayCast3D.new()
+			new_shot.target_position.z = 400
+			new_shot.set_collision_mask_value(1, true)
+			new_shot.set_collision_mask_value(2, true)
+			add_child(new_shot)
+			new_shot.global_position = %ShootCast.global_position
+			new_shot.global_rotation = %ShootCast.global_rotation
+			new_shot.rotation_degrees.x = 0
+			shotgun_casts.append(new_shot)
 	await get_tree().process_frame
 	visible = true
 
@@ -135,17 +147,17 @@ func shoot():
 			else:
 				$AnimationPlayer.play("shoot_final_round")
 			spot_of_last_shot = position
-			var target = %ShootCast.get_collider()
-			if target:
-				if target.get_collision_layer() == 1:
-					var decal = bullet_hole.instantiate()
-					var hit_pos = %ShootCast.get_collision_point()
-					decal.hit_pos = hit_pos
-					decal.global_position = hit_pos
-					decal.normal = Vector3(%ShootCast.get_collision_normal())
-					PlayerStatus.loaded_level.add_child(decal)
-				elif target.get_collision_layer() == 2:
-					pass #Lower enemy health, blood splatter decal
+			if not is_in_group("shotgun"):
+				var target = %ShootCast.get_collider()
+				if target:
+					handle_impact(target, %ShootCast)
+			elif is_in_group("shotgun"):
+				for new_shot in shotgun_casts:
+					new_shot.target_position.y = randf_range(-25.0, 25.0)
+					new_shot.target_position.x = randf_range(-25.0, 25.0)
+					var target = new_shot.get_collider()
+					if target:
+						handle_impact(target, new_shot)
 			var gunshot = AudioStreamPlayer.new()
 			gunshot.set_bus("Guns")
 			gunshot.stream = load(shotsounds[randi_range(0,(shotsounds.size() - 1))])
@@ -158,10 +170,28 @@ func shoot():
 			if get_groups().has("shotgun"):
 				PlayerStatus.shotgun_stunned = true
 				$StunRecovery.start()
+			elif get_groups().has("rifle"):
+				PlayerStatus.rifle_recoil_level += 1
+				$RecoilRecovery.start()
+			elif get_groups().has("handgun"):
+				PlayerStatus.pistol_recoil_level += 1
+				$RecoilRecovery.start()
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		else: #What to do if no ammo
 			pass
+
+func handle_impact(target, raycast):
+	if target.get_collision_layer() == 1:
+		await get_tree().process_frame
+		var decal = bullet_hole.instantiate()
+		var hit_pos = raycast.get_collision_point()
+		decal.hit_pos = hit_pos
+		decal.global_position = hit_pos
+		decal.normal = Vector3(raycast.get_collision_normal())
+		PlayerStatus.loaded_level.add_child(decal)
+	elif target.get_collision_layer() == 2:
+		pass #Lower enemy health, blood splatter decal
 
 func unequip():
 	if $AnimationPlayer.is_playing() == false:

@@ -15,6 +15,8 @@ var rifle_jammed : bool = false
 var shotgun_jammed : bool = false
 var rifle_unlocked : bool = true
 var shotgun_unlocked : bool = true
+var pistol_recoil_level : int = 0
+var rifle_recoil_level : int = 0
 var shotgun_stunned : bool = false
 
 func reset_to_default():
@@ -26,6 +28,8 @@ func reset_to_default():
 	bullets_in_shotgun = 1
 	shotgun_jammed = false
 	shotgun_stunned = false
+	pistol_recoil_level = 0
+	rifle_recoil_level = 0
 
 func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):
 	var load_level = level

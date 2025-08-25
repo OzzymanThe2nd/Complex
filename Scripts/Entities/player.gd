@@ -254,8 +254,13 @@ func _physics_process(delta):
 			$PlayerAnim.play("uncrouch")
 			trying_uncrouch = false
 			crouch = false
+	#if current_weapon:
+		#if current_weapon.name == "PlayerDeagle":
+			#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, clamp(float(PlayerStatus.pistol_recoil_level) * 15.0, 0.0, 75.0), 0.1)
+		#elif current_weapon.name == "PlayerRifle":
+			#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, float(PlayerStatus.rifle_recoil_level) * 2.8, 0.1)
 	if PlayerStatus.shotgun_stunned == true:
-		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 35.0, 0.045)
+		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 35.0, 0.1)
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, sin(Time.get_ticks_msec() / 140) * 30, 0.02)
 	if Input.is_action_pressed("lean_left") and not cam_locked and PlayerStatus.shotgun_stunned == false:
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
@@ -264,7 +269,7 @@ func _physics_process(delta):
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
 		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
 	elif rumbling == false and PlayerStatus.shotgun_stunned == false:
-		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.04)
+		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.02)
 		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
 	if rumbling:
@@ -288,6 +293,7 @@ func _physics_process(delta):
 	weapon_sway(velocity.length())
 	%GunCam.transform = %PCamera.transform
 	%GunCam.transform = %GunCam.transform.rotated(Vector3(0,1,0), self.rotation.y)
+	#%GunCam.transform = %GunCam.transform.rotated(Vector3(1,0,0), -1 * %CamSmooth.rotation.x)
 	%GunCam.global_position = %PCamera.global_position
 
 func cam_tilt(x):
@@ -524,64 +530,64 @@ func equip_deagle():
 	var deagle = deagle_load.instantiate()
 	%WeaponBobble.add_child(deagle)
 	deagle.unequiped.connect(_on_unequipped)
-	deagle.just_shot.connect(_gun_shot)
-	deagle.reload_ended.connect(_gun_reload)
-	deagle.ready_to_fire.connect(_gun_readied)
+	#deagle.just_shot.connect(_gun_shot)
+	#deagle.reload_ended.connect(_gun_reload)
+	#deagle.ready_to_fire.connect(_gun_readied)
 	current_weapon = deagle
 
 func equip_rifle():
 	var rifle = rifle_load.instantiate()
 	%WeaponBobble.add_child(rifle)
 	rifle.unequiped.connect(_on_unequipped)
-	rifle.just_shot.connect(_gun_shot)
-	rifle.reload_ended.connect(_gun_reload)
-	rifle.ready_to_fire.connect(_gun_readied)
+	#rifle.just_shot.connect(_gun_shot)
+	#rifle.reload_ended.connect(_gun_reload)
+	#rifle.ready_to_fire.connect(_gun_readied)
 	current_weapon = rifle
 
 func equip_shotgun():
 	var shotgun = shotgun_load.instantiate()
 	%WeaponBobble.add_child(shotgun)
 	shotgun.unequiped.connect(_on_unequipped)
-	shotgun.just_shot.connect(_gun_shot)
-	shotgun.reload_ended.connect(_gun_reload)
-	shotgun.ready_to_fire.connect(_gun_readied)
+	#shotgun.just_shot.connect(_gun_shot)
+	#shotgun.reload_ended.connect(_gun_reload)
+	#shotgun.ready_to_fire.connect(_gun_readied)
 	current_weapon = shotgun
 
-func handgun_ammo_count_update():
-	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
-	var reset_hud = %BulletCounter.get_children()
-	for i in reset_hud: i.queue_free()
-	for i in range(PlayerStatus.bullets_in_deagle):
-		var new_label = Label.new()
-		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
-		new_label.text = ".357 Hollow Point Round"
-		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		new_label.PRESET_CENTER_RIGHT
-		%BulletCounter.add_child(new_label)
+#func handgun_ammo_count_update():
+	##$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	#var reset_hud = %BulletCounter.get_children()
+	#for i in reset_hud: i.queue_free()
+	#for i in range(PlayerStatus.bullets_in_deagle):
+		#var new_label = Label.new()
+		#new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		#new_label.text = ".357 Hollow Point Round"
+		#new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		#new_label.PRESET_CENTER_RIGHT
+		#%BulletCounter.add_child(new_label)
 
-func rifle_ammo_count_update():
-	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
-	var reset_hud = %BulletCounter.get_children()
-	for i in reset_hud: i.queue_free()
-	for i in range(PlayerStatus.bullets_in_rifle):
-		var new_label = Label.new()
-		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
-		new_label.text = "5.45x45 Hollow Point Round"
-		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		new_label.PRESET_CENTER_RIGHT
-		%BulletCounter.add_child(new_label)
+#func rifle_ammo_count_update():
+	##$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	#var reset_hud = %BulletCounter.get_children()
+	#for i in reset_hud: i.queue_free()
+	#for i in range(PlayerStatus.bullets_in_rifle):
+		#var new_label = Label.new()
+		#new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		#new_label.text = "5.45x45 Hollow Point Round"
+		#new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		#new_label.PRESET_CENTER_RIGHT
+		#%BulletCounter.add_child(new_label)
 
-func shotgun_ammo_count_update():
-	#$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
-	var reset_hud = %BulletCounter.get_children()
-	for i in reset_hud: i.queue_free()
-	for i in range(PlayerStatus.bullets_in_shotgun):
-		var new_label = Label.new()
-		new_label.label_settings = load("res://Resources/ammo_count_label.tres")
-		new_label.text = "12G Buckshot round"
-		new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		new_label.PRESET_CENTER_RIGHT
-		%BulletCounter.add_child(new_label)
+#func shotgun_ammo_count_update():
+	##$GunLayer/CamNode3D/CanvasLayer/ScrollContainer.visible = true
+	#var reset_hud = %BulletCounter.get_children()
+	#for i in reset_hud: i.queue_free()
+	#for i in range(PlayerStatus.bullets_in_shotgun):
+		#var new_label = Label.new()
+		#new_label.label_settings = load("res://Resources/ammo_count_label.tres")
+		#new_label.text = "12G Buckshot round"
+		#new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		#new_label.PRESET_CENTER_RIGHT
+		#%BulletCounter.add_child(new_label)
 
 func check_warp():
 	if PlayerStatus.warp_to != null:
@@ -628,18 +634,18 @@ func _on_unequipped():
 	if queued != null:
 		equip_queued()
 
-func _gun_shot():
-	%BulletCounter.get_children()[-1].queue_free()
+#func _gun_shot():
+	#%BulletCounter.get_children()[-1].queue_free()
 
-func _gun_reload():
-	if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
-	elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
-	elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
-
-func _gun_readied():
-	if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
-	elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
-	elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
+#func _gun_reload():
+	#if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
+	#elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
+	#elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
+#
+#func _gun_readied():
+	#if current_weapon.name == "PlayerDeagle" : handgun_ammo_count_update()
+	#elif current_weapon.name == "PlayerRifle" : rifle_ammo_count_update()
+	#elif current_weapon.name == "PlayerShotgun" : shotgun_ammo_count_update()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
