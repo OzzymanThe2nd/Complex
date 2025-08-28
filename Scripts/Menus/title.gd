@@ -43,6 +43,8 @@ func _ready() -> void:
 			InputMap.action_erase_events(bind)
 			InputMap.action_add_event(bind, new_bind)
 		update_button_text()
+	get_tree().paused = false
+	PlayerStatus.reset_to_default()
 
 func set_default_config(config : ConfigFile):
 	#config.set_value("Control", "crouchtoggle", false)

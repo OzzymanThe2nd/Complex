@@ -44,10 +44,18 @@ shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
 shader_parameter/albedo = ExtResource("7_bve0q")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lnmw"]
+render_priority = 0
+shader = ExtResource("3_1acbj")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("6_xxaic")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8321s"]
 resource_name = "Material.185"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("7_bve0q")
 emission_enabled = true
 
@@ -82,15 +90,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h74so")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lnmw"]
-render_priority = 0
-shader = ExtResource("3_1acbj")
-shader_parameter/affine_mapping = false
-shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.25
-shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("6_xxaic")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6q4y"]
 render_priority = 0
@@ -1540,22 +1539,22 @@ visible = false
 layers = 2
 
 [node name="ShellLowPolyRed_005" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="3"]
-transform = Transform3D(-9.71969, 99.4258, 4.47324, -99.4051, -9.91979, 4.49238, 4.91032, -4.00999, 99.7988, -5.36374, 3.86668, 0.114506)
+transform = Transform3D(-9.71983, 99.4258, 4.47324, -99.4051, -9.91993, 4.49238, 4.91032, -4.00998, 99.7988, -5.36374, 3.86668, 0.114506)
 visible = false
 layers = 2
 material_overlay = SubResource("ShaderMaterial_1humf")
 
+[node name="Trigger&Trigger" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="4"]
+layers = 2
+material_overlay = SubResource("ShaderMaterial_3lnmw")
+
 [node name="ShellLowPolyRed_006" type="MeshInstance3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
-transform = Transform3D(-9.7197, 99.4258, 4.47324, -99.4052, -9.91979, 4.49238, 4.91032, -4.00999, 99.7988, -5.35488, 3.86668, 0.31064)
+transform = Transform3D(-9.71984, 99.4258, 4.47324, -99.4052, -9.91993, 4.49238, 4.91033, -4.00998, 99.7988, -5.35488, 3.86668, 0.31064)
 visible = false
 layers = 2
 material_overlay = SubResource("ShaderMaterial_1humf")
 mesh = SubResource("ArrayMesh_uqqvk")
 skeleton = NodePath("")
-
-[node name="Trigger&Trigger" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun" index="5"]
-layers = 2
-material_overlay = SubResource("ShaderMaterial_3lnmw")
 
 [node name="FlashSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DoubleBarrelShotgun"]
 unique_name_in_owner = true
