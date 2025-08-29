@@ -13,11 +13,12 @@ func _ready() -> void:
 	$Game.size.x = DisplayServer.screen_get_size()[0]
 	$Game.size.y = DisplayServer.screen_get_size()[1]
 	PlayerStatus.viewer = self
-	change_level(PlayerStatus.current_level)
+	change_level(debug_level)
 	enabled = get_material()
 
 func change_level(new_level): 
-	var level = level_numbers[new_level]
+	#var level = level_numbers[new_level]
+	var level = debug_level
 	ResourceLoader.load_threaded_request(level)
 	loading_destination = level
 	

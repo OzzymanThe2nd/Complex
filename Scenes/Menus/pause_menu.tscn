@@ -56,9 +56,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -307.2
-offset_top = -304.8
+offset_top = -205.8
 offset_right = 307.2
-offset_bottom = -151.2
+offset_bottom = -52.2
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("3_lflsv")
@@ -87,4 +87,45 @@ scale = Vector2(3, 3)
 text = "RESIGN"
 label_settings = SubResource("LabelSettings_scnho")
 
+[node name="Retry" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -307.2
+offset_top = -387.8
+offset_right = 307.2
+offset_bottom = -234.2
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_lflsv")
+texture_pressed = ExtResource("3_5kl78")
+texture_hover = ExtResource("5_7dp0t")
+texture_disabled = ExtResource("4_n3wh0")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Retry"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -66.0
+offset_right = 118.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0249976
+scale = Vector2(3, 3)
+text = "RETRY"
+label_settings = SubResource("LabelSettings_scnho")
+
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

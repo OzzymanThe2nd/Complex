@@ -3,7 +3,6 @@ var warp_to = null
 var keepplayer
 var viewer
 var loading_new_game : bool = false
-var current_level : int = 0
 const MAX_HEALTH = 100
 var player_health : int = 100
 var loaded_level

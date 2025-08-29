@@ -13,3 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_close_pressed() -> void:
 	get_tree().change_scene_to_packed(load(title_screen))
+
+func _on_retry_pressed() -> void:
+	get_tree().paused = false
+	visible = false
+	PlayerStatus.level_change(PlayerStatus.loaded_level.scene_file_path)
