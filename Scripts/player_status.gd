@@ -44,6 +44,7 @@ func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):
 		#viewer.get_node("Game").get_children()[0].queue_free()
 		#print(viewer.get_node("Game").get_children())
 		var new_level = (ResourceLoader.load_threaded_get(load_level)).instantiate()
+		viewer.enable_filter()
 		loaded_level = new_level
 		viewer.get_node("Game").add_child(new_level)
 		for i in viewer.get_node("Game").get_children():

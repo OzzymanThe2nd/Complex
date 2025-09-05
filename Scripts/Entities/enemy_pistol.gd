@@ -7,4 +7,9 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	$AnimationPlayer.active = false
-	$hoboattempt/rig/Skeleton3D/PhysicalBoneSimulator3D.physical_bones_start_simulation()
+	$hobo_goodrig/Skeleton3D/PhysicalBoneSimulator3D.physical_bones_start_simulation()
+	$RagdollTimer.start()
+
+func _on_ragdolltimer_timeout() -> void:
+	#$hobo_goodrig/Skeleton3D/PhysicalBoneSimulator3D.influence = 0.1
+	pass
