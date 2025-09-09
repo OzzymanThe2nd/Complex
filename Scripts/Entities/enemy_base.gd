@@ -3,6 +3,7 @@ class_name enemy_base
 @export var casing = "res://Scenes/Guns/casing.tscn"
 signal eject_casing
 @export var aiming : bool = false
+
 func _ready() -> void:
 	casing = load(casing)
 
