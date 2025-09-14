@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name enemy_base
 @export var casing = "res://Scenes/Guns/casing.tscn"
+var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 signal eject_casing
 @export var aiming : bool = false
 
