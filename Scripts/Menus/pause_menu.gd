@@ -3,11 +3,9 @@ var title_screen = "res://Scenes/Menus/title.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_size(DisplayServer.screen_get_size())
-	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	#set_size(DisplayServer.screen_get_size())
+	#set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	$TextureRect.size.y = DisplayServer.screen_get_size().y
-	print(DisplayServer.screen_get_size())
-	print(size)
 
 func _on_close_pressed() -> void:
 	get_tree().change_scene_to_packed(load(title_screen))
