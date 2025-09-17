@@ -5,13 +5,14 @@ class_name enemy_base
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 signal eject_casing
 @export var aiming : bool = false
+@export var dead : bool = false
 
 func _ready() -> void:
 	casing = load(casing)
 
 func take_damage(x : float, headshot : bool = false):
 	health -= x
-	if health <= 0:
+	if health <= 0 and dead == false:
 		death()
 
 func death():

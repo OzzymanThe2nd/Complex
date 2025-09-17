@@ -7,6 +7,7 @@ func _on_timer_timeout() -> void:
 	pass
 
 func death():
+	dead = true
 	for i in $hobogameready/Skeleton3D/PhysicalBoneSimulator3D.get_children():
 		i.set_collision_layer_value(2, false)
 	ragdoll()
