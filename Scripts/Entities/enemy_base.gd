@@ -1,5 +1,6 @@
 extends CharacterBody3D
 class_name enemy_base
+@export var health : float = 8
 @export var casing = "res://Scenes/Guns/casing.tscn"
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 signal eject_casing
@@ -7,6 +8,17 @@ signal eject_casing
 
 func _ready() -> void:
 	casing = load(casing)
+
+func take_damage(x : float, headshot : bool = false):
+	health -= x
+	if health <= 0:
+		death()
+
+func death():
+	pass
+
+func ragdoll():
+	pass
 
 func shoot():
 	spawn_casing(true)

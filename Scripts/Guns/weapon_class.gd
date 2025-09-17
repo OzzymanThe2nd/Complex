@@ -11,6 +11,7 @@ var x_spread :float = 0.0
 @export var shootable : bool = false
 @export var kickback_level : float = 0.1
 @export var max_mag : int = 8
+@export var damage : float = 1
 @export var heat_generated : float = 5.1
 @export var zoom_position : Vector3 = Vector3(-0.258, 0.095, 0.0)
 @export var zoom_in_speed : float = 0.035
@@ -191,6 +192,12 @@ func handle_impact(target, raycast):
 		decal.normal = Vector3(raycast.get_collision_normal())
 		PlayerStatus.loaded_level.add_child(decal)
 	elif target.get_collision_layer() == 2:
+		if target.is_in_group("hobo_bone"):
+			for i in range(4): target = target.get_parent()
+			target.take_damage(damage)
+		elif target.is_in_group("hobo_head"):
+			for i in range(4): target = target.get_parent()
+			target.take_damage(damage * 2)
 		pass #Lower enemy health, blood splatter decal
 
 func unequip():

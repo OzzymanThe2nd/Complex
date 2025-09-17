@@ -36,6 +36,7 @@ handgun=""
 interactable="Interactable objects"
 rifle=""
 shotgun=""
+hobo_bone=""
 
 [input]
 

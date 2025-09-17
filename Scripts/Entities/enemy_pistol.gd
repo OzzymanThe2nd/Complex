@@ -3,6 +3,12 @@ extends enemy_base
 # Called when the node enters the scene tree for the first time.
 
 func _on_timer_timeout() -> void:
+	#ragdoll()
+	pass
+
+func death():
+	for i in $hobogameready/Skeleton3D/PhysicalBoneSimulator3D.get_children():
+		i.set_collision_layer_value(2, false)
 	ragdoll()
 
 func ragdoll():
