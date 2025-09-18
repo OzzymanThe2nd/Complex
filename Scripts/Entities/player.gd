@@ -16,6 +16,7 @@ var step_sound_type = "concrete"
 @export var cam_locked : bool = false
 @export var cam_pan : Vector3 = Vector3(0, 0, 0)
 @export var move_locked : bool = false
+@export var alive : bool = true
 var pause_possible : bool = true
 @export var move_spot : Vector3 = Vector3(0, 0, 0)
 var rumble_x_start : float
@@ -171,130 +172,131 @@ func _snap_up_stairs_check(delta) -> bool:
 	return false
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-		stepqueued = true
-	if cam_locked:
-		if instant_cam_snap:
-			%PCamera.rotation_degrees.x = cam_pan.x
-			rotation_degrees.y = cam_pan.y
-			%PCamera.rotation_degrees.z = cam_pan.z
-		else:
-			%PCamera.rotation_degrees.x = lerp(%PCamera.rotation_degrees.x, cam_pan.x, 0.1)
-			rotation_degrees.y = lerp(rotation_degrees.y, cam_pan.y, 0.1)
-			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, cam_pan.z, 0.1)
-	if move_locked:
-		global_position.x = lerp(global_position.x, move_spot.x, 0.1)
-		global_position.y = lerp(global_position.y, move_spot.y, 0.1)
-		global_position.z = lerp(global_position.z, move_spot.z, 0.1)
-	#!Sprint/Dash code: only one at a time, decide what you'd prefer later
-	#var sprint = Input.is_action_pressed("move_sprint")
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forw", "move_back")
-	var direction = ((self.transform.basis) * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		if crouch == true:
-			velocity.x = direction.x * CROUCHSPEED
-			velocity.z = direction.z * CROUCHSPEED
-		else:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		if zooming:
-			velocity.x = velocity.x / 2
-			velocity.z = velocity.z / 2
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED-1.5)
-		velocity.z = move_toward(velocity.z, 0, SPEED-1.5)
-		footstep_val = 6
-	#if Input.is_action_just_pressed("flashlight"): #Flashlight stuff
-		#if smgready==true:
-			#SMG.flashlight()
-	#if Input.is_action_just_pressed("move_crouch"): #Crouch stuff
-		#if crouch == false:
-			#%PlayerAnim.play("crouch")
-			#crouch = true
-		#elif crouch == true and crouchtoggle == true:
-			#if not %CrouchCheck.is_colliding():
-				#%PlayerAnim.play("uncrouch")
-				#crouch = false
-			#else: trying_uncrouch = true
-	#if Input.is_action_just_released("move_crouch") and crouchtoggle == false:
-		#if crouch == true:
-			#if not %CrouchCheck.is_colliding():
-				#%PlayerAnim.play("uncrouch")
-				#crouch = false
-			#else:
-				#trying_uncrouch = true
-	if Input.is_action_just_pressed("zoom"):
-		if current_weapon != null:
-			if current_weapon.reloading == false:
-				current_weapon.zooming = true
+	if alive:
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+			stepqueued = true
+		if cam_locked:
+			if instant_cam_snap:
+				%PCamera.rotation_degrees.x = cam_pan.x
+				rotation_degrees.y = cam_pan.y
+				%PCamera.rotation_degrees.z = cam_pan.z
 			else:
-				current_weapon.zoom_after_reload = true
-			zooming = true
-	if Input.is_action_just_released("zoom"):
-		if current_weapon != null:
-			current_weapon.zooming = false
-			current_weapon.zoom_after_reload = false
-			zooming = false
-	if Input.is_action_just_pressed("shoot"):
-		if current_weapon != null:
-			if not current_weapon.full_auto:
-				current_weapon.shoot()
-	if Input.is_action_pressed("shoot"):
-		if current_weapon != null:
-			if current_weapon.full_auto:
-				current_weapon.shoot()
-	if Input.is_action_just_pressed("reload"):
-		if current_weapon != null:
-			current_weapon.reload()
-	if trying_uncrouch:
-		if not %CrouchCheck.is_colliding():
-			$PlayerAnim.play("uncrouch")
-			trying_uncrouch = false
-			crouch = false
-	#if current_weapon:
-		#if current_weapon.name == "PlayerDeagle":
-			#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, clamp(float(PlayerStatus.pistol_recoil_level) * 15.0, 0.0, 75.0), 0.1)
-		#elif current_weapon.name == "PlayerRifle":
-			#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, float(PlayerStatus.rifle_recoil_level) * 2.8, 0.1)
-	if PlayerStatus.shotgun_stunned == true:
-		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 35.0, 0.1)
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, sin(Time.get_ticks_msec() / 140) * 30, 0.02)
-	if Input.is_action_pressed("lean_left") and not cam_locked and PlayerStatus.shotgun_stunned == false:
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
-		%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.08)
-	elif Input.is_action_pressed("lean_right") and not cam_locked and PlayerStatus.shotgun_stunned == false:
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
-		%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
-	elif rumbling == false and PlayerStatus.shotgun_stunned == false:
-		%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.02)
-		%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
-		%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
-	if rumbling:
-		rumble()
-	if is_on_floor():
-		if stepqueued:
-			footstep()
-			stepqueued = false
-		doublejump_free = true
-		if velocity.x != 0 or velocity.z != 0:
-			footstep_val -= 1
-			if footstep_val <= 0:
+				%PCamera.rotation_degrees.x = lerp(%PCamera.rotation_degrees.x, cam_pan.x, 0.1)
+				rotation_degrees.y = lerp(rotation_degrees.y, cam_pan.y, 0.1)
+				%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, cam_pan.z, 0.1)
+		if move_locked:
+			global_position.x = lerp(global_position.x, move_spot.x, 0.1)
+			global_position.y = lerp(global_position.y, move_spot.y, 0.1)
+			global_position.z = lerp(global_position.z, move_spot.z, 0.1)
+		#!Sprint/Dash code: only one at a time, decide what you'd prefer later
+		#var sprint = Input.is_action_pressed("move_sprint")
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir = Input.get_vector("move_left", "move_right", "move_forw", "move_back")
+		var direction = ((self.transform.basis) * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			if crouch == true:
+				velocity.x = direction.x * CROUCHSPEED
+				velocity.z = direction.z * CROUCHSPEED
+			else:
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			if zooming:
+				velocity.x = velocity.x / 2
+				velocity.z = velocity.z / 2
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED-1.5)
+			velocity.z = move_toward(velocity.z, 0, SPEED-1.5)
+			footstep_val = 6
+		#if Input.is_action_just_pressed("flashlight"): #Flashlight stuff
+			#if smgready==true:
+				#SMG.flashlight()
+		#if Input.is_action_just_pressed("move_crouch"): #Crouch stuff
+			#if crouch == false:
+				#%PlayerAnim.play("crouch")
+				#crouch = true
+			#elif crouch == true and crouchtoggle == true:
+				#if not %CrouchCheck.is_colliding():
+					#%PlayerAnim.play("uncrouch")
+					#crouch = false
+				#else: trying_uncrouch = true
+		#if Input.is_action_just_released("move_crouch") and crouchtoggle == false:
+			#if crouch == true:
+				#if not %CrouchCheck.is_colliding():
+					#%PlayerAnim.play("uncrouch")
+					#crouch = false
+				#else:
+					#trying_uncrouch = true
+		if Input.is_action_just_pressed("zoom"):
+			if current_weapon != null:
+				if current_weapon.reloading == false:
+					current_weapon.zooming = true
+				else:
+					current_weapon.zoom_after_reload = true
+				zooming = true
+		if Input.is_action_just_released("zoom"):
+			if current_weapon != null:
+				current_weapon.zooming = false
+				current_weapon.zoom_after_reload = false
+				zooming = false
+		if Input.is_action_just_pressed("shoot"):
+			if current_weapon != null:
+				if not current_weapon.full_auto:
+					current_weapon.shoot()
+		if Input.is_action_pressed("shoot"):
+			if current_weapon != null:
+				if current_weapon.full_auto:
+					current_weapon.shoot()
+		if Input.is_action_just_pressed("reload"):
+			if current_weapon != null:
+				current_weapon.reload()
+		if trying_uncrouch:
+			if not %CrouchCheck.is_colliding():
+				$PlayerAnim.play("uncrouch")
+				trying_uncrouch = false
+				crouch = false
+		#if current_weapon:
+			#if current_weapon.name == "PlayerDeagle":
+				#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, clamp(float(PlayerStatus.pistol_recoil_level) * 15.0, 0.0, 75.0), 0.1)
+			#elif current_weapon.name == "PlayerRifle":
+				#%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, float(PlayerStatus.rifle_recoil_level) * 2.8, 0.1)
+		if PlayerStatus.shotgun_stunned == true:
+			%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 35.0, 0.1)
+			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, sin(Time.get_ticks_msec() / 140) * 30, 0.02)
+		if Input.is_action_pressed("lean_left") and not cam_locked and PlayerStatus.shotgun_stunned == false:
+			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
+			%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.08)
+		elif Input.is_action_pressed("lean_right") and not cam_locked and PlayerStatus.shotgun_stunned == false:
+			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
+			%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
+		elif rumbling == false and PlayerStatus.shotgun_stunned == false:
+			%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.02)
+			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
+			%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
+		if rumbling:
+			rumble()
+		if is_on_floor():
+			if stepqueued:
 				footstep()
-	#weaponbobble()
-	if not _snap_up_stairs_check(delta) and not move_locked:
-		move_and_slide()
-	slide_cam_back(delta)
-	cam_tilt(input_dir.x)
-	weapon_tilt(input_dir.x)
-	weapon_wobble()
-	weapon_sway(velocity.length())
-	%GunCam.transform = %PCamera.transform
-	%GunCam.transform = %GunCam.transform.rotated(Vector3(0,1,0), self.rotation.y)
-	#%GunCam.transform = %GunCam.transform.rotated(Vector3(1,0,0), -1 * %CamSmooth.rotation.x)
-	%GunCam.global_position = %PCamera.global_position
+				stepqueued = false
+			doublejump_free = true
+			if velocity.x != 0 or velocity.z != 0:
+				footstep_val -= 1
+				if footstep_val <= 0:
+					footstep()
+		#weaponbobble()
+		if not _snap_up_stairs_check(delta) and not move_locked:
+			move_and_slide()
+		slide_cam_back(delta)
+		cam_tilt(input_dir.x)
+		weapon_tilt(input_dir.x)
+		weapon_wobble()
+		weapon_sway(velocity.length())
+		%GunCam.transform = %PCamera.transform
+		%GunCam.transform = %GunCam.transform.rotated(Vector3(0,1,0), self.rotation.y)
+		#%GunCam.transform = %GunCam.transform.rotated(Vector3(1,0,0), -1 * %CamSmooth.rotation.x)
+		%GunCam.global_position = %PCamera.global_position
 
 func cam_tilt(x):
 	%CamSmooth.rotation.z = lerp(%CamSmooth.rotation.z, -x * weapon_rotation_amount, 0.1)
@@ -345,7 +347,7 @@ func footstep():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		if cam_locked == false:
+		if cam_locked == false and alive:
 			var rot_z = %PCamera.rotation.z
 			rot_x -= event.relative.x * mouse_sens
 			self.transform.basis = Basis()
@@ -357,7 +359,7 @@ func _input(event):
 			%PCamera.rotate_object_local(Vector3(0, 0, 1), rot_z)
 			mouse_location = event.relative
 
-	if event is InputEventKey:
+	if event is InputEventKey and alive:
 		if Input.is_action_just_pressed("move_jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			checkpoint = self.global_position
@@ -382,7 +384,8 @@ func _input(event):
 			else:
 				equip_shotgun()
 		elif Input.is_action_just_pressed("4"):
-			pass
+			take_damage(40)
+			print("Ouch!")
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
 		elif Input.is_action_just_pressed("5"):
 			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
@@ -429,7 +432,10 @@ func move_to_pos(pos : Vector3):
 	
 
 func game_over():
-	emit_signal("dead")
+	%WeaponBobble.visible = false
+	$PlayerAnim.play("death")
+	alive = false
+	#emit_signal("dead")
 
 func weaponbobble():
 	if velocity.x != 0 or velocity.z != 0:
@@ -486,13 +492,15 @@ func travel_with_fade(level, coord):
 	$HudAnim.play("FadeToBlack")
 
 func heal():
-	if not (PlayerStatus.player_health + 1) > PlayerStatus.MAX_HEALTH and $HealthRegen.time_left == 0:
-		PlayerStatus.player_health += 1
-		await get_tree().create_timer(0.05).timeout
-		heal()
-	else:
-		PlayerStatus.player_health = 100
-	%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
+	if alive:
+		if not (PlayerStatus.player_health + 1) > PlayerStatus.MAX_HEALTH and $HealthRegen.time_left == 0:
+			PlayerStatus.player_health += 1
+			await get_tree().create_timer(0.05).timeout
+			heal()
+		else:
+			PlayerStatus.player_health = 100
+	if PlayerStatus.player_health > 0:
+		%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
 	if PlayerStatus.player_health > 40:
 		health_loop_stop = true
 
@@ -504,6 +512,8 @@ func endlevel():
 func _on_player_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "FadeToBlack":
 		emit_signal("levelend")
+	if anim_name == "death":
+		emit_signal("dead")
 
 func pixelatetoggle():
 	if %Pixelate.visible == true:

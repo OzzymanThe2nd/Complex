@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://rpl5amivov5f"]
+[gd_scene load_steps=37 format=3 uid="uid://rpl5amivov5f"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7gcer"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/CamNode3D.gd" id="2_to3yv"]
@@ -243,6 +243,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector3(0, 0.840963, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.10543e-15, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_m67pr"]
 resource_name = "crouch"
@@ -412,11 +424,40 @@ tracks/5/keys = {
 "values": [Vector3(0, -0.124535, 0), Vector3(0, -0.124535, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_oksjw"]
+resource_name = "death"
+length = 3.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(0.450625, 1),
+"update": 0,
+"values": [Vector3(0, 0.796454, -0.396346), Vector3(0, -1, -0.396)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunLayer/CamNode3D/CamSmooth/PCamera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2),
+"transitions": PackedFloat32Array(0.63728, 0.535887, 1),
+"update": 0,
+"values": [Vector3(7.10543e-15, 0, 0), Vector3(0.203558, 0, 0), Vector3(1.39626, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ase6f"]
 _data = {
 "FadeToBlack": SubResource("Animation_j7bud"),
 "RESET": SubResource("Animation_pvhom"),
 "crouch": SubResource("Animation_m67pr"),
+"death": SubResource("Animation_oksjw"),
 "shield_recoil": SubResource("Animation_awhfe"),
 "uncrouch": SubResource("Animation_m131b")
 }
