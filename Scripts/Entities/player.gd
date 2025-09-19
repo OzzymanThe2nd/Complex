@@ -88,6 +88,7 @@ func _ready():
 	#%PCamera.transform.basis = Basis() # reset rotation
 	#%PCamera.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 	PlayerStatus.keepplayer = self
+	PlayerStatus.viewer.connect_player_dead(self)
 
 func is_too_steep(normal : Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
@@ -385,7 +386,7 @@ func _input(event):
 				equip_shotgun()
 		elif Input.is_action_just_pressed("4"):
 			take_damage(40)
-			print("Ouch!")
+			print(PlayerStatus.player_health)
 		#Remove 5 to F9 for general release, these are cheats/debug tools.
 		elif Input.is_action_just_pressed("5"):
 			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")

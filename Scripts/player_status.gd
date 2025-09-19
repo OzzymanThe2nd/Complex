@@ -51,3 +51,4 @@ func level_change(level, warp_position : Vector3 = Vector3(0,0,0)):
 			if i != new_level:
 				i.queue_free()
 		#loading_image_clear()
+	reset_to_default()

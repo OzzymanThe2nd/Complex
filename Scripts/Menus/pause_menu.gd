@@ -8,9 +8,11 @@ func _ready() -> void:
 	$TextureRect.size.y = DisplayServer.screen_get_size().y
 
 func _on_close_pressed() -> void:
+	PlayerStatus.viewer.closeable = true
 	get_tree().change_scene_to_packed(load(title_screen))
 
 func _on_retry_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	PlayerStatus.viewer.closeable = true
 	PlayerStatus.level_change(PlayerStatus.loaded_level.scene_file_path)

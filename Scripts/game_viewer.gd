@@ -8,6 +8,7 @@ var level_numbers = {
 	1 : first_level
 }
 var enabled 
+@export var closeable : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Game.size.x = DisplayServer.screen_get_size()[0]
@@ -39,17 +40,29 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event is InputEventKey:
-		if Input.is_action_just_pressed("quit"):
+		if Input.is_action_just_pressed("quit") and closeable == true:
 			if not loading and not PlayerStatus.keepplayer.pause_possible == false:
 				if get_tree().paused == false:
-					get_tree().paused = true
-					PlayerStatus.keepplayer.make_guns_visible(false)
-					$PauseMenu.visible = true
-					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-					PlayerStatus.viewer.enable_filter(false)
+					open_pause_menu()
 				else:
-					get_tree().paused = false
-					PlayerStatus.keepplayer.make_guns_visible()
-					$PauseMenu.visible = false
-					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-					PlayerStatus.viewer.enable_filter()
+					close_pause_menu()
+
+func open_pause_menu():
+	get_tree().paused = true
+	PlayerStatus.keepplayer.make_guns_visible(false)
+	$PauseMenu.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	PlayerStatus.viewer.enable_filter(false)
+
+func close_pause_menu():
+	get_tree().paused = false
+	PlayerStatus.keepplayer.make_guns_visible()
+	$PauseMenu.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	PlayerStatus.viewer.enable_filter()
+
+func connect_player_dead(player):
+	player.dead.connect(_on_player_dead)
+func _on_player_dead():
+	closeable = false
+	open_pause_menu()
