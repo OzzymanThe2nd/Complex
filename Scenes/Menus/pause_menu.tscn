@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drdba6hjmhbb"]
+[gd_scene load_steps=12 format=3 uid="uid://drdba6hjmhbb"]
 
 [ext_resource type="Texture2D" uid="uid://c0lqns70hs5ff" path="res://textures/1920muckwall.png" id="1_j6r5f"]
 [ext_resource type="Script" path="res://Scripts/Menus/pause_menu.gd" id="1_pwou3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://5mw1t7551smq" path="res://textures/button4x1.png" id="4_n3wh0"]
 [ext_resource type="Texture2D" uid="uid://df4ex32yksl0v" path="res://textures/button4x1brownselected.png" id="5_7dp0t"]
 [ext_resource type="FontFile" uid="uid://chmmoxarhiqij" path="res://Assets/Fonts/Neothic.ttf" id="7_o1582"]
+[ext_resource type="Texture2D" uid="uid://coq1025p0h4om" path="res://textures/complex_title.png" id="9_nafgp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8gheh"]
 shader = ExtResource("2_xv2xy")
@@ -131,6 +132,19 @@ rotation = -0.0249976
 scale = Vector2(3, 3)
 text = "RETRY"
 label_settings = SubResource("LabelSettings_scnho")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -524.0
+offset_top = 60.0
+offset_right = 524.0
+offset_bottom = 459.0
+grow_horizontal = 2
+texture = ExtResource("9_nafgp")
+stretch_mode = 4
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
