@@ -197,7 +197,7 @@ func handle_impact(target, raycast):
 			target.take_damage(damage)
 		elif target.is_in_group("hobo_head"):
 			for i in range(4): target = target.get_parent()
-			target.take_damage(damage * 2)
+			target.take_damage(damage * 2.1)
 		pass #Lower enemy health, blood splatter decal
 
 func unequip():

@@ -5101,7 +5101,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258242, 0.0951049, 0)
 script = ExtResource("1_m8v0d")
 shootable = true
-damage = 4.0
+damage = 3.9
 
 [node name="Player_Arms" parent="." instance=ExtResource("1_8hqox")]
 transform = Transform3D(-7.23998e-07, 0, 0.2, 0, 0.2, 0, -0.2, 0, -7.23998e-07, -0.10629, -0.0851705, 0.28595)
