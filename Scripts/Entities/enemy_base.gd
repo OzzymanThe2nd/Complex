@@ -3,12 +3,15 @@ class_name enemy_base
 @export var health : float = 8
 @export var casing = "res://Scenes/Guns/casing.tscn"
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
+@export var player : Node3D
 signal eject_casing
 @export var aiming : bool = false
 @export var dead : bool = false
 
 func _ready() -> void:
 	casing = load(casing)
+	if player == null:
+		player = PlayerStatus.keepplayer
 
 func take_damage(x : float, headshot : bool = false):
 	health -= x

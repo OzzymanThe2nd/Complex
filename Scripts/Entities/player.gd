@@ -391,7 +391,9 @@ func _input(event):
 		elif Input.is_action_just_pressed("5"):
 			PlayerStatus.level_change("res://Scenes/Levels/rust_floor.tscn")
 		elif Input.is_action_just_pressed("6"):
-			pass
+			var discard = load("res://Scenes/Entities/enemy_pistol.tscn").instantiate()
+			get_parent_node_3d().add_child(discard)
+			discard.global_position = Vector3(0, 0, 0)
 		elif Input.is_action_just_pressed("7"):
 			pass
 		elif Input.is_action_just_pressed("8"):
