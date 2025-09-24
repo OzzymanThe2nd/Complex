@@ -7,6 +7,9 @@ var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 signal eject_casing
 @export var aiming : bool = false
 @export var dead : bool = false
+@export var navi_agent : NavigationAgent3D
+@export var SPEED : float = 0.01
+@export var agro : bool = true
 
 func _ready() -> void:
 	casing = load(casing)
@@ -39,4 +42,11 @@ func spawn_casing(energy : bool = false):
 	%CasingSpawner.add_child(spawned_casing)
 
 func _process(delta: float) -> void:
-	pass
+	if agro:
+		velocity = Vector3.ZERO
+		navi_agent.target_position = player.global_transform.origin
+		var next_point = navi_agent.get_next_path_position()
+		var new_velocity = (next_point - global_transform.origin).normalized() * SPEED
+		velocity = new_velocity
+		move_and_slide()
+		#Some collision issue here fucks with things

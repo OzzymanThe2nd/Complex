@@ -216,7 +216,7 @@ autostart = true
 
 [node name="Enemy_Pistol" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_osweq")]
 transform = Transform3D(-0.999919, 0, 0.0126882, 0, 1, 0, -0.0126882, 0, -0.999919, 3.242, 1, 11.235)
-player = NodePath(".")
+player = NodePath("../Player")
 aiming = true
 
 [node name="hobo_gasmask" parent="." instance=ExtResource("14_egvct")]
