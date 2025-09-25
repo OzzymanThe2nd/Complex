@@ -8,7 +8,8 @@ signal eject_casing
 @export var aiming : bool = false
 @export var dead : bool = false
 @export var navi_agent : NavigationAgent3D
-@export var SPEED : float = 0.01
+@export var SPEED : float = 0.3
+@export var ROTATION_SPEED : float = 0.1
 @export var agro : bool = true
 
 func _ready() -> void:
@@ -41,12 +42,21 @@ func spawn_casing(energy : bool = false):
 	spawned_casing.rotation = rotation
 	%CasingSpawner.add_child(spawned_casing)
 
+func move_to_player():
+	velocity = Vector3.ZERO
+	navi_agent.target_position = player.global_transform.origin
+	var next_point = navi_agent.get_next_path_position()
+	var new_velocity = (next_point - global_transform.origin).normalized() * SPEED
+	velocity = new_velocity
+	if aiming: $AnimationPlayer.play("aim_walk")
+	else: $AnimationPlayer.play("walk")
+	var global_pos = global_transform.origin
+	var player_pos = player.global_transform.origin
+	var wtransform = global_transform.looking_at(Vector3(player_pos.x,global_pos.y,player_pos.z),Vector3(0,1,0))
+	var wrotation = Quaternion(global_transform.basis).slerp(Quaternion(wtransform.basis), ROTATION_SPEED)
+	global_transform = Transform3D(Basis(wrotation), global_transform.origin)
+	move_and_slide()
+
 func _process(delta: float) -> void:
-	if agro:
-		velocity = Vector3.ZERO
-		navi_agent.target_position = player.global_transform.origin
-		var next_point = navi_agent.get_next_path_position()
-		var new_velocity = (next_point - global_transform.origin).normalized() * SPEED
-		velocity = new_velocity
-		move_and_slide()
-		#Some collision issue here fucks with things
+	if agro and not dead:
+		move_to_player()
