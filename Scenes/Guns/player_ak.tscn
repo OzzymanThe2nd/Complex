@@ -4395,8 +4395,10 @@ zoom_position = Vector3(-0.29, 0.102, 0)
 zoom_in_speed = 0.02
 zoom_in_z_speed = 0.01
 full_auto = true
-left_recoil_minimum = -0.105
-left_recoil_maximum = -0.085
+left_recoil_minimum = -0.052
+left_recoil_maximum = -0.042
+right_recoil_minimum = -0.052
+right_recoil_maximum = -0.042
 y_spread_minimum = -0.3
 y_spread_maximum = 0.4
 
@@ -4581,7 +4583,7 @@ material_overlay = SubResource("ShaderMaterial_ijuac")
 [node name="ShootCast" type="RayCast3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/boltmoving"]
 unique_name_in_owner = true
 transform = Transform3D(0.0277423, 0.0311777, 0.999131, -0.0165873, 0.999391, -0.030725, -0.99948, -0.0157205, 0.0282425, 1.42535, 1.66827, -0.0226544)
-target_position = Vector3(0, 10, 400)
+target_position = Vector3(0, -10, 400)
 collision_mask = 3
 debug_shape_custom_color = Color(0, 1, 0, 1)
 

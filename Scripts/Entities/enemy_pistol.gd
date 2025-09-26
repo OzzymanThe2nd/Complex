@@ -33,3 +33,7 @@ func _on_ragdolltimer_timeout() -> void:
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_detect_player_body_entered(body: Node3D) -> void:
+	agro = true
