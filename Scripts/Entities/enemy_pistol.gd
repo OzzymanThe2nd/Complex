@@ -3,8 +3,8 @@ extends enemy_base
 # Called when the node enters the scene tree for the first time.
 
 func _on_timer_timeout() -> void:
-	#ragdoll()
-	pass
+	if agro:
+		shoot()
 
 func death():
 	dead = true
@@ -33,7 +33,6 @@ func _on_ragdolltimer_timeout() -> void:
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()
-
 
 func _on_detect_player_body_entered(body: Node3D) -> void:
 	agro = true

@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name enemy_base
 @export var health : float = 8
 @export var casing = "res://Scenes/Guns/casing.tscn"
+@export var muzzle_flash = "res://Scenes/Guns/muzzle_flash.tscn"
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 @export var player : Node3D
 signal eject_casing
@@ -32,6 +33,13 @@ func shoot():
 	spawn_casing(true)
 	if aiming == true:
 		$AnimationPlayer.play("aim_shoot")
+	var target = %ShootCast.get_collider()
+	if target == player:
+		player.take_damage(randi_range(31,34))
+	var flash = load(muzzle_flash).instantiate()
+	%FlashSpawner.add_child(flash)
+	flash.follow_point = %FlashSpawner
+	flash.position = %FlashSpawner.position
 
 func spawn_casing(energy : bool = false):
 	var spawned_casing = casing.instantiate()
@@ -58,5 +66,5 @@ func move_to_player():
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if agro and not dead:
+	if agro and not dead and $AnimationPlayer.current_animation != "aim_shoot":
 		move_to_player()
