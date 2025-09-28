@@ -12,6 +12,7 @@ signal eject_casing
 @export var SPEED : float = 0.3
 @export var ROTATION_SPEED : float = 0.1
 @export var agro : bool = true
+@export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
 
 func _ready() -> void:
 	casing = load(casing)
@@ -33,6 +34,10 @@ func shoot():
 	spawn_casing(true)
 	if aiming == true:
 		$AnimationPlayer.play("aim_shoot")
+	%ShootCast.target_position = shootcast_default_target
+	%ShootCast.target_position.x += randf_range(-15, 15)
+	%ShootCast.target_position.y += randf_range(-15, 15)
+	%ShootCast.target_position.z += randf_range(-5, 5)
 	var target = %ShootCast.get_collider()
 	if target == player:
 		player.take_damage(randi_range(31,34))
