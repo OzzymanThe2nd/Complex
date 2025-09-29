@@ -5344,6 +5344,10 @@ target_position = Vector3(0, 10, 400)
 collision_mask = 3
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
+[node name="TrailGuide" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1/ShootCast"]
+unique_name_in_owner = true
+transform = Transform3D(1, 2.32831e-10, 3.72529e-09, 4.42378e-09, 1, -1.67638e-08, 0, 0, 1, -0.0254997, 9.94273, 400.04)
+
 [node name="CasingSpawner" type="Marker3D" parent="Player_Arms/Armature_001/Skeleton3D/Cube_001/DesertEaglePS1"]
 unique_name_in_owner = true
 transform = Transform3D(-0.999483, -1.44355e-08, -0.0321361, -0.0157235, 0.872129, 0.489023, 0.0280269, 0.489276, -0.87168, -0.00772795, 0.46913, -0.0124025)

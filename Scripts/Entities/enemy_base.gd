@@ -20,6 +20,7 @@ func _ready() -> void:
 		player = PlayerStatus.keepplayer
 
 func take_damage(x : float, headshot : bool = false):
+	agro = true
 	health -= x
 	if health <= 0 and dead == false:
 		death()

@@ -24,6 +24,7 @@ var x_spread :float = 0.0
 @export var y_spread_minimum : float = -0.5
 @export var y_spread_maximum : float = 0.5
 @export var shotsounds = ["res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot1.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot2.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot3.wav","res://Assets/Sounds/Weapons/Heavy Pistol/Shooting/HeavyPistolShot4.wav"]
+@export var trail = "res://Scenes/Guns/projectile_trail.tscn"
 var active_shotsounds = []
 var spot_of_last_shot : Vector3
 var default_arm_pos : Vector3
@@ -42,6 +43,7 @@ signal ready_to_fire
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	casing = load(casing)
+	trail = load(trail)
 	player = PlayerStatus.keepplayer
 	default_cast_rot = rotation
 	y_spread = rotation.y
@@ -117,6 +119,12 @@ func heat_cool():
 		await get_tree().create_timer(0.05).timeout
 		heat_cool()
 
+func trail_spawn():
+	var new_trail = trail.instantiate()
+	%FlashSpawner.add_child(new_trail)
+	new_trail.global_position = %FlashSpawner.global_position
+	new_trail.look_at(%TrailGuide.global_position)
+
 func shoot():
 	if current_bullets > 0:
 		if shootable and not jammed:
@@ -152,6 +160,7 @@ func shoot():
 				var target = %ShootCast.get_collider()
 				if target:
 					handle_impact(target, %ShootCast)
+				trail_spawn()
 			elif is_in_group("shotgun"):
 				for new_shot in shotgun_casts:
 					new_shot.target_position.y = randf_range(-25.0, 25.0)
