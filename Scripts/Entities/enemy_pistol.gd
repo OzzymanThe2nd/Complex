@@ -12,6 +12,9 @@ func death():
 		i.set_collision_layer_value(2, false)
 	ragdoll()
 
+func swap_to_damaged_mesh():
+	$hobogameready/Skeleton3D/Hobomesh.material_override = load("res://Resources/hobo_blooded.tres")
+
 func ragdoll():
 	var velocity_dir = global_basis * Vector3.MODEL_FRONT
 	$AnimationPlayer.active = false
@@ -29,7 +32,6 @@ func _on_ragdolltimer_timeout() -> void:
 	$"hobogameready/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck".linear_velocity = Vector3(0,0,0)
 	$"hobogameready/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck".angular_velocity.x = 0
 	$DespawnTimer.start()
-
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()

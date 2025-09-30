@@ -13,6 +13,7 @@ signal eject_casing
 @export var ROTATION_SPEED : float = 0.1
 @export var agro : bool = true
 @export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
+@export var change_mesh_threshold : float = 2
 
 func _ready() -> void:
 	casing = load(casing)
@@ -22,6 +23,8 @@ func _ready() -> void:
 func take_damage(x : float, headshot : bool = false):
 	agro = true
 	health -= x
+	if health <= change_mesh_threshold:
+		swap_to_damaged_mesh()
 	if health <= 0 and dead == false:
 		death()
 
@@ -55,6 +58,9 @@ func spawn_casing(energy : bool = false):
 	spawned_casing.global_position = %CasingSpawner.global_position
 	spawned_casing.rotation = rotation
 	%CasingSpawner.add_child(spawned_casing)
+
+func swap_to_damaged_mesh():
+	pass
 
 func move_to_player():
 	velocity = Vector3.ZERO
