@@ -60,10 +60,7 @@ func _ready() -> void:
 		$AnimationPlayer.play("equip_empty")
 	if is_in_group("shotgun"):
 		for i in 25:
-			var new_shot = RayCast3D.new()
-			new_shot.target_position.z = 400
-			new_shot.set_collision_mask_value(1, true)
-			new_shot.set_collision_mask_value(2, true)
+			var new_shot = load("res://Scenes/Guns/shotgun_cast.tscn").instantiate()
 			add_child(new_shot)
 			new_shot.global_position = %ShootCast.global_position
 			new_shot.global_rotation = %ShootCast.global_rotation
@@ -125,6 +122,13 @@ func trail_spawn():
 	new_trail.global_position = %FlashSpawner.global_position
 	new_trail.look_at(%TrailGuide.global_position)
 
+func shotgun_trail_spawn(shotcast):
+	var marker = shotcast.get_node("Marker3D")
+	var new_trail = trail.instantiate()
+	%FlashSpawner.add_child(new_trail)
+	new_trail.global_position = %FlashSpawner.global_position
+	new_trail.look_at(marker.global_position)
+
 func shoot():
 	if current_bullets > 0:
 		if shootable and not jammed:
@@ -163,11 +167,12 @@ func shoot():
 				trail_spawn()
 			elif is_in_group("shotgun"):
 				for new_shot in shotgun_casts:
-					new_shot.target_position.y = randf_range(-25.0, 25.0)
-					new_shot.target_position.x = randf_range(-25.0, 25.0)
+					new_shot.rotation_degrees.y = randf_range(175.0, 185.0)
+					new_shot.rotation_degrees.x = randf_range(-25.0, 25.0)
 					var target = new_shot.get_collider()
 					if target:
 						handle_impact(target, new_shot)
+					shotgun_trail_spawn(new_shot)
 			var gunshot = AudioStreamPlayer.new()
 			gunshot.set_bus("Guns")
 			gunshot.stream = load(shotsounds[randi_range(0,(shotsounds.size() - 1))])
