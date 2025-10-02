@@ -118,8 +118,8 @@ func heat_cool():
 
 func trail_spawn():
 	var new_trail = trail.instantiate()
+	new_trail.position = %FlashSpawner.global_position
 	%FlashSpawner.add_child(new_trail)
-	new_trail.global_position = %FlashSpawner.global_position
 	new_trail.look_at(%TrailGuide.global_position)
 
 func shotgun_trail_spawn(shotcast):

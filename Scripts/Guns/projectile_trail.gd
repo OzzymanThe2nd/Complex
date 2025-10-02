@@ -3,8 +3,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Area3D/MeshInstance3D.mesh.height += randf_range(-1.5, 1.5)
-	$Area3D/CollisionShape3D.shape.height = $Area3D/MeshInstance3D.mesh.height
+	pass
+	#global_scale(Vector3(1, 1, 1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

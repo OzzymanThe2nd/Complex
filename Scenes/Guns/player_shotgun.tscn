@@ -1774,7 +1774,6 @@ _data = {
 [node name="PlayerShotgun" type="Node3D" groups=["shotgun"]]
 script = ExtResource("1_gyplu")
 heavy = true
-shootable = true
 kickback_level = 0.3
 max_mag = 1
 damage = 0.5

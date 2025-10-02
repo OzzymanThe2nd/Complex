@@ -26,7 +26,6 @@ collision_layer = 0
 collision_mask = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-layers = 2
 mesh = SubResource("CapsuleMesh_y2jkc")
 skeleton = NodePath("../..")
 
