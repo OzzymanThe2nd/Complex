@@ -125,8 +125,8 @@ func trail_spawn():
 func shotgun_trail_spawn(shotcast):
 	var marker = shotcast.get_node("Marker3D")
 	var new_trail = trail.instantiate()
-	%FlashSpawner.add_child(new_trail)
 	new_trail.global_position = %FlashSpawner.global_position
+	%FlashSpawner.add_child(new_trail)
 	new_trail.look_at(marker.global_position)
 
 func shoot():
@@ -167,8 +167,8 @@ func shoot():
 				trail_spawn()
 			elif is_in_group("shotgun"):
 				for new_shot in shotgun_casts:
-					new_shot.rotation_degrees.y = randf_range(175.0, 185.0)
-					new_shot.rotation_degrees.x = randf_range(-25.0, 25.0)
+					new_shot.rotation_degrees.y = randf_range(170.0, 190.0)
+					new_shot.rotation_degrees.x = randf_range(-15.0, 15.0)
 					var target = new_shot.get_collider()
 					if target:
 						handle_impact(target, new_shot)
