@@ -2,6 +2,11 @@ extends enemy_base
 
 # Called when the node enters the scene tree for the first time.
 
+func set_connections():
+	#$DespawnTimer.timeout.connect(_on_despawn_timer_timeout)
+	#$DetectPlayer.body_entered.connect(_on_detect_player_body_entered)
+	pass
+
 func _on_timer_timeout() -> void:
 	if agro and not dead:
 		shoot()
@@ -32,9 +37,3 @@ func _on_ragdolltimer_timeout() -> void:
 	$"hobogameready/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck".linear_velocity = Vector3(0,0,0)
 	$"hobogameready/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck".angular_velocity.x = 0
 	$DespawnTimer.start()
-
-func _on_despawn_timer_timeout() -> void:
-	queue_free()
-
-func _on_detect_player_body_entered(body: Node3D) -> void:
-	agro = true

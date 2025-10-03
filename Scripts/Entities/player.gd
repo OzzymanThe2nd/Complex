@@ -17,6 +17,7 @@ var step_sound_type = "concrete"
 @export var cam_pan : Vector3 = Vector3(0, 0, 0)
 @export var move_locked : bool = false
 @export var alive : bool = true
+@export var invincible : bool = false
 var pause_possible : bool = true
 @export var move_spot : Vector3 = Vector3(0, 0, 0)
 var rumble_x_start : float
@@ -454,16 +455,17 @@ func make_guns_visible(make_visible : bool = true):
 
 func take_damage(x):
 	#255 - (2.55 * PlayerStatus.player_health)
-	PlayerStatus.player_health -= x
-	if PlayerStatus.player_health > 0:
-		%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
-		$HealthRegen.start()
-		if PlayerStatus.player_health <= 40:
-			%HealthAnims.play("HP bar shake")
-	if PlayerStatus.player_health <= 0:
-		PlayerStatus.player_health = 0
-		#%heltext.text = "%s" % str(PlayerStatus.healthcurrent)
-		game_over()
+	if not invincible:
+		PlayerStatus.player_health -= x
+		if PlayerStatus.player_health > 0:
+			%Health.modulate = Color(1, 1, 1, 1.0 - (float(PlayerStatus.player_health) / 100))
+			$HealthRegen.start()
+			if PlayerStatus.player_health <= 40:
+				%HealthAnims.play("HP bar shake")
+		if PlayerStatus.player_health <= 0:
+			PlayerStatus.player_health = 0
+			#%heltext.text = "%s" % str(PlayerStatus.healthcurrent)
+			game_over()
 
 func hud_pixelate(on : bool = false):
 	if on == true:

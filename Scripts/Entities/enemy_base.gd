@@ -14,11 +14,14 @@ signal eject_casing
 @export var agro : bool = true
 @export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
 @export var change_mesh_threshold : float = 2
+@export var moving : bool = true
 
 func _ready() -> void:
 	casing = load(casing)
 	if player == null:
 		player = PlayerStatus.keepplayer
+	set_connections()
+	$MovementTimer.wait_time = randf_range(8.0, 11.85)
 
 func take_damage(x : float, headshot : bool = false):
 	agro = true
@@ -27,6 +30,9 @@ func take_damage(x : float, headshot : bool = false):
 		swap_to_damaged_mesh()
 	if health <= 0 and dead == false:
 		death()
+
+func set_connections():
+	pass
 
 func death():
 	pass
@@ -70,13 +76,30 @@ func move_to_player():
 	velocity = new_velocity
 	if aiming: $AnimationPlayer.play("aim_walk")
 	else: $AnimationPlayer.play("walk")
+	turn_to_player()
+	move_and_slide()
+
+func _process(delta: float) -> void:
+	if agro and not dead and $AnimationPlayer.current_animation != "aim_shoot" and moving:
+		move_to_player()
+	elif agro and not dead and $AnimationPlayer.current_animation != "aim_shoot":
+		turn_to_player()
+
+func turn_to_player():
 	var global_pos = global_transform.origin
 	var player_pos = player.global_transform.origin
 	var wtransform = global_transform.looking_at(Vector3(player_pos.x,global_pos.y,player_pos.z),Vector3(0,1,0))
 	var wrotation = Quaternion(global_transform.basis).slerp(Quaternion(wtransform.basis), ROTATION_SPEED)
 	global_transform = Transform3D(Basis(wrotation), global_transform.origin)
-	move_and_slide()
 
-func _process(delta: float) -> void:
-	if agro and not dead and $AnimationPlayer.current_animation != "aim_shoot":
-		move_to_player()
+func _on_despawn_timer_timeout() -> void:
+	queue_free()
+
+func _on_detect_player_body_entered(body: Node3D) -> void:
+	agro = true
+
+func _on_movement_timer_timeout() -> void:
+	if moving == true:
+		moving = false
+	else:
+		moving = true
