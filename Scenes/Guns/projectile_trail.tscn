@@ -11,9 +11,11 @@ emission = Color(1, 0.8, 0.321569, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y2jkc"]
 material = SubResource("StandardMaterial3D_qcag8")
 radius = 0.0125
+height = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qgwpo"]
 radius = 0.0125
+height = 5.0
 
 [node name="ProjectileTrail" type="Node3D"]
 top_level = true

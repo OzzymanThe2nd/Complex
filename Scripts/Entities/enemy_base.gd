@@ -15,6 +15,7 @@ signal eject_casing
 @export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
 @export var change_mesh_threshold : float = 2
 @export var moving : bool = true
+var trail = "res://Scenes/Guns/projectile_trail.tscn"
 
 func _ready() -> void:
 	casing = load(casing)
@@ -22,6 +23,7 @@ func _ready() -> void:
 		player = PlayerStatus.keepplayer
 	set_connections()
 	$MovementTimer.wait_time = randf_range(8.0, 11.85)
+	trail = load(trail)
 
 func take_damage(x : float, headshot : bool = false):
 	agro = true
@@ -40,6 +42,12 @@ func death():
 func ragdoll():
 	pass
 
+func trail_spawn():
+	var new_trail = trail.instantiate()
+	new_trail.position = %FlashSpawner.global_position
+	%FlashSpawner.add_child(new_trail)
+	new_trail.look_at(%TrailGuide.global_position)
+
 func shoot():
 	spawn_casing(true)
 	if aiming == true:
@@ -52,6 +60,7 @@ func shoot():
 	if target == player:
 		player.take_damage(randi_range(31,34))
 	var flash = load(muzzle_flash).instantiate()
+	trail_spawn()
 	%FlashSpawner.add_child(flash)
 	flash.follow_point = %FlashSpawner
 	flash.position = %FlashSpawner.position
