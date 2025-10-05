@@ -5,7 +5,7 @@ extends enemy_base
 func set_connections():
 	#$DespawnTimer.timeout.connect(_on_despawn_timer_timeout)
 	#$DetectPlayer.body_entered.connect(_on_detect_player_body_entered)
-	pass
+	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
 
 func _on_timer_timeout() -> void:
 	if agro and not dead:

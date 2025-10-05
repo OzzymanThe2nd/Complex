@@ -15,6 +15,7 @@ signal eject_casing
 @export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
 @export var change_mesh_threshold : float = 2
 @export var moving : bool = true
+@export var busy : bool = false
 var trail = "res://Scenes/Guns/projectile_trail.tscn"
 
 func _ready() -> void:
@@ -49,6 +50,7 @@ func trail_spawn():
 	new_trail.look_at(%TrailGuide.global_position)
 
 func shoot():
+	busy = true
 	spawn_casing(true)
 	if aiming == true:
 		$AnimationPlayer.play("aim_shoot")
@@ -88,10 +90,13 @@ func move_to_player():
 	turn_to_player()
 	move_and_slide()
 
+func raise_aim():
+	$AnimationPlayer.play("aiming")
+
 func _process(delta: float) -> void:
-	if agro and not dead and $AnimationPlayer.current_animation != "aim_shoot" and moving:
+	if agro and not dead and busy == false and moving:
 		move_to_player()
-	elif agro and not dead and $AnimationPlayer.current_animation != "aim_shoot":
+	elif agro and not dead and busy == false:
 		turn_to_player()
 
 func turn_to_player():
@@ -112,3 +117,10 @@ func _on_movement_timer_timeout() -> void:
 		moving = false
 	else:
 		moving = true
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "aiming":
+		busy = false
+		aiming = true
+	elif anim_name == "aim_shoot":
+		busy = false
