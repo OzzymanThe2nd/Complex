@@ -556,7 +556,6 @@ collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_7gcer")
-invincible = true
 weapon_wobble_amount = 0.1
 weapon_rotation_amount = 0.03
 

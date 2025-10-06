@@ -24,6 +24,8 @@ func _ready() -> void:
 		player = PlayerStatus.keepplayer
 	set_connections()
 	$MovementTimer.wait_time = randf_range(8.0, 11.85)
+	if not aiming:
+		$AnimationPlayer.play("idle")
 	trail = load(trail)
 
 func take_damage(x : float, headshot : bool = false):
@@ -45,27 +47,29 @@ func ragdoll():
 
 func trail_spawn():
 	var new_trail = trail.instantiate()
-	new_trail.position = %FlashSpawner.global_position
+	new_trail.position = %TrailSpawner.global_position
 	%FlashSpawner.add_child(new_trail)
 	new_trail.look_at(%TrailGuide.global_position)
 
 func shoot():
-	busy = true
-	spawn_casing(true)
 	if aiming == true:
 		$AnimationPlayer.play("aim_shoot")
-	%ShootCast.target_position = shootcast_default_target
-	%ShootCast.target_position.x += randf_range(-15, 15)
-	%ShootCast.target_position.y += randf_range(-15, 15)
-	%ShootCast.target_position.z += randf_range(-5, 5)
-	var target = %ShootCast.get_collider()
-	if target == player:
-		player.take_damage(randi_range(31,34))
-	var flash = load(muzzle_flash).instantiate()
-	trail_spawn()
-	%FlashSpawner.add_child(flash)
-	flash.follow_point = %FlashSpawner
-	flash.position = %FlashSpawner.position
+		busy = true
+		spawn_casing(true)
+		%ShootCast.target_position = shootcast_default_target
+		%ShootCast.target_position.x += randf_range(-15, 15)
+		%ShootCast.target_position.y += randf_range(-15, 15)
+		%ShootCast.target_position.z += randf_range(-5, 5)
+		var target = %ShootCast.get_collider()
+		if target == player:
+			player.take_damage(randi_range(31,34))
+		var flash = load(muzzle_flash).instantiate()
+		trail_spawn()
+		%FlashSpawner.add_child(flash)
+		flash.follow_point = %FlashSpawner
+		flash.position = %FlashSpawner.position
+	else:
+		raise_aim()
 
 func spawn_casing(energy : bool = false):
 	var spawned_casing = casing.instantiate()
@@ -91,7 +95,8 @@ func move_to_player():
 	move_and_slide()
 
 func raise_aim():
-	$AnimationPlayer.play("aiming")
+	if not aiming:
+		$AnimationPlayer.play("aiming")
 
 func _process(delta: float) -> void:
 	if agro and not dead and busy == false and moving:
@@ -111,6 +116,7 @@ func _on_despawn_timer_timeout() -> void:
 
 func _on_detect_player_body_entered(body: Node3D) -> void:
 	agro = true
+	raise_aim()
 
 func _on_movement_timer_timeout() -> void:
 	if moving == true:
