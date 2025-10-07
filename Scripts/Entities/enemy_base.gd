@@ -17,6 +17,9 @@ signal eject_casing
 @export var moving : bool = true
 @export var busy : bool = false
 var trail = "res://Scenes/Guns/projectile_trail.tscn"
+var rotate_to : String
+var DIRECTIONS = ["north", "south", "west", "east"]
+var markers = []
 
 func _ready() -> void:
 	casing = load(casing)
@@ -26,6 +29,20 @@ func _ready() -> void:
 	$MovementTimer.wait_time = randf_range(8.0, 11.85)
 	if not aiming:
 		$AnimationPlayer.play("idle")
+	if PlayerStatus.loaded_level is Node:
+		if PlayerStatus.loaded_level.has_node("MarkerNorth"):
+			markers.append(PlayerStatus.loaded_level.get_node("MarkerNorth"))
+		if PlayerStatus.loaded_level.has_node("MarkerSouth"):
+			markers.append(PlayerStatus.loaded_level.get_node("MarkerSouth"))
+		if PlayerStatus.loaded_level.has_node("MarkerWest"):
+			markers.append(PlayerStatus.loaded_level.get_node("MarkerWest"))
+		if PlayerStatus.loaded_level.has_node("MarkerEast"):
+			markers.append(PlayerStatus.loaded_level.get_node("MarkerEast"))
+	else:
+		markers.append($MarkerNorth)
+		markers.append($MarkerSouth)
+		markers.append($MarkerWest)
+		markers.append($MarkerEast)
 	trail = load(trail)
 
 func take_damage(x : float, headshot : bool = false):
@@ -57,8 +74,8 @@ func shoot():
 		busy = true
 		spawn_casing(true)
 		%ShootCast.target_position = shootcast_default_target
-		%ShootCast.target_position.x += randf_range(-15, 15)
-		%ShootCast.target_position.y += randf_range(-15, 15)
+		%ShootCast.target_position.x += randf_range(-5, 5)
+		%ShootCast.target_position.y += randf_range(-10, 10)
 		%ShootCast.target_position.z += randf_range(-5, 5)
 		var target = %ShootCast.get_collider()
 		if target == player:
@@ -94,6 +111,34 @@ func move_to_player():
 	turn_to_player()
 	move_and_slide()
 
+func wander():
+	var current_point
+	if rotate_to == DIRECTIONS[0]:
+		current_point = markers[0]
+	elif rotate_to == DIRECTIONS[1]:
+		current_point = markers[1]
+	elif rotate_to == DIRECTIONS[2]:
+		current_point = markers[2]
+	else:
+		current_point = markers[3]
+	velocity = Vector3.ZERO
+	navi_agent.target_position = current_point.global_transform.origin
+	var next_point = navi_agent.get_next_path_position()
+	var new_velocity = (next_point - global_transform.origin).normalized() * SPEED
+	velocity = new_velocity
+	var global_pos = global_transform.origin
+	var point_pos = current_point.global_transform.origin
+	var wtransform = global_transform.looking_at(Vector3(point_pos.x,global_pos.y,point_pos.z),Vector3(0,1,0))
+	var wrotation = Quaternion(global_transform.basis).slerp(Quaternion(wtransform.basis), ROTATION_SPEED)
+	global_transform = Transform3D(Basis(wrotation), global_transform.origin)
+	if aiming: $AnimationPlayer.play("aim_walk")
+	else: $AnimationPlayer.play("walk")
+	move_and_slide()
+
+
+func idle():
+	$AnimationPlayer.play("idle")
+
 func raise_aim():
 	if not aiming:
 		$AnimationPlayer.play("aiming")
@@ -103,6 +148,10 @@ func _process(delta: float) -> void:
 		move_to_player()
 	elif agro and not dead and busy == false:
 		turn_to_player()
+	elif not agro and moving:
+		wander()
+	elif not aiming:
+		idle()
 
 func turn_to_player():
 	var global_pos = global_transform.origin
@@ -123,6 +172,7 @@ func _on_movement_timer_timeout() -> void:
 		moving = false
 	else:
 		moving = true
+	rotate_to = DIRECTIONS[randi_range(0,3)]
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "aiming":

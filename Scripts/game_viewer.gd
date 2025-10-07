@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 	if loading:
 		if ResourceLoader.THREAD_LOAD_LOADED:
 			var loaded_zone = ResourceLoader.load_threaded_get(loading_destination).instantiate()
-			$Game.add_child(loaded_zone)
 			PlayerStatus.loaded_level = loaded_zone
+			$Game.add_child(loaded_zone)
 			loading = false
 
 func _input(event):

@@ -221,6 +221,22 @@ player = NodePath("../Player")
 [node name="hobo_gasmask" parent="." instance=ExtResource("14_egvct")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.79083, -2.38419e-07, 11.4556)
 
+[node name="MarkerNorth" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.2504)
+
+[node name="MarkerEast" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.772, 0, 20.0864)
+
+[node name="MarkerSouth" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.84486)
+
+[node name="MarkerWest" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6911, 0, 32.2326)
+
 [connection signal="timeout" from="Elevator Shake" to="." method="_on_elevator_shake_timeout"]
 
 [editable path="elevator"]
