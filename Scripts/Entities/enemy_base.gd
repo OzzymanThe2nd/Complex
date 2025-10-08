@@ -48,6 +48,7 @@ func _ready() -> void:
 func take_damage(x : float, headshot : bool = false):
 	agro = true
 	health -= x
+	agro_nearby()
 	if health <= change_mesh_threshold:
 		swap_to_damaged_mesh()
 	if health <= 0 and dead == false:
@@ -99,6 +100,11 @@ func spawn_casing(energy : bool = false):
 
 func swap_to_damaged_mesh():
 	pass
+
+func agro_nearby():
+	for enemy in $AgroNearby.get_overlapping_bodies():
+		if enemy.is_in_group("agroable_enemy"):
+			enemy.agro = true
 
 func move_to_player():
 	velocity = Vector3.ZERO

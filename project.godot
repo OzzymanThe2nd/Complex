@@ -37,6 +37,7 @@ interactable="Interactable objects"
 rifle=""
 shotgun=""
 hobo_bone=""
+agroable_enemy=""
 
 [input]
 
@@ -168,6 +169,7 @@ quit={
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Enemy Worlddet"
 3d_physics/layer_5="Headshots"
+3d_physics/layer_6="enemy_base"
 
 [rendering]
 
