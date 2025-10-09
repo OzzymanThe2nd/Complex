@@ -147,6 +147,7 @@ func idle():
 
 func raise_aim():
 	if not aiming:
+		moving = false
 		$AnimationPlayer.play("aiming")
 
 func _process(delta: float) -> void:

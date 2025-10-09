@@ -9,7 +9,8 @@ func set_connections():
 
 func _on_timer_timeout() -> void:
 	if agro and not dead:
-		shoot()
+		if $DetectPlayer.overlaps_body(player):
+			shoot()
 
 func death():
 	dead = true
