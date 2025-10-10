@@ -589,6 +589,12 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect"]
 shape = SubResource("BoxShape3D_q3558")
 
+[node name="DirectlyAhead" type="RayCast3D" parent="GunLayer/CamNode3D/CamSmooth/PCamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00645399, 0.396346)
+target_position = Vector3(0, 0, -200)
+collision_mask = 3
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="GunLayer/CamNode3D"]
 anchors_preset = 15
 anchor_right = 1.0
