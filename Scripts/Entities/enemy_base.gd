@@ -16,6 +16,9 @@ signal eject_casing
 @export var change_mesh_threshold : float = 2
 @export var moving : bool = true
 @export var busy : bool = false
+@export var MAG_MAX : int = 0
+var mag_current : int = 0
+var reloading : bool = false
 var trail = "res://Scenes/Guns/projectile_trail.tscn"
 var rotate_to : String
 var DIRECTIONS = ["north", "south", "west", "east"]
@@ -25,6 +28,7 @@ func _ready() -> void:
 	casing = load(casing)
 	if player == null:
 		player = PlayerStatus.keepplayer
+	mag_current = MAG_MAX
 	set_connections()
 	$MovementTimer.wait_time = randf_range(8.0, 11.85)
 	if not aiming:
@@ -69,23 +73,34 @@ func trail_spawn():
 	%FlashSpawner.add_child(new_trail)
 	new_trail.look_at(%TrailGuide.global_position)
 
+func reload():
+	$AnimationPlayer.play("reload")
+	reloading = true
+	busy = true
+
 func shoot():
-	if aiming == true:
-		$AnimationPlayer.play("aim_shoot")
-		busy = true
-		spawn_casing(true)
-		%ShootCast.target_position = shootcast_default_target
-		%ShootCast.target_position.x += randf_range(-5, 5)
-		%ShootCast.target_position.y += randf_range(-10, 10)
-		%ShootCast.target_position.z += randf_range(-5, 5)
-		var target = %ShootCast.get_collider()
-		if target == player:
-			player.take_damage(randi_range(31,34))
-		var flash = load(muzzle_flash).instantiate()
-		trail_spawn()
-		%FlashSpawner.add_child(flash)
-		flash.follow_point = %FlashSpawner
-		flash.position = %FlashSpawner.position
+	if aiming == true and not reloading:
+		var reload_threshold : float = float(mag_current) / float(MAG_MAX)
+		print(reload_threshold)
+		if randf_range(0, 1) > reload_threshold or mag_current == 0:
+			reload()
+		else:
+			mag_current -= 1
+			$AnimationPlayer.play("aim_shoot")
+			busy = true
+			spawn_casing(true)
+			%ShootCast.target_position = shootcast_default_target
+			%ShootCast.target_position.x += randf_range(-5, 5)
+			%ShootCast.target_position.y += randf_range(-10, 10)
+			%ShootCast.target_position.z += randf_range(-5, 5)
+			var target = %ShootCast.get_collider()
+			if target == player:
+				player.take_damage(randi_range(31,34))
+			var flash = load(muzzle_flash).instantiate()
+			trail_spawn()
+			%FlashSpawner.add_child(flash)
+			flash.follow_point = %FlashSpawner
+			flash.position = %FlashSpawner.position
 	else:
 		raise_aim()
 
@@ -187,3 +202,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		aiming = true
 	elif anim_name == "aim_shoot":
 		busy = false
+	elif anim_name == "reload":
+		reloading = false
+		mag_current = MAG_MAX
