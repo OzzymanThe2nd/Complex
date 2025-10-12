@@ -90,9 +90,9 @@ func shoot():
 			busy = true
 			spawn_casing(true)
 			%ShootCast.target_position = shootcast_default_target
-			%ShootCast.target_position.x += randf_range(-5, 5)
+			%ShootCast.target_position.x += randf_range(-10, 10)
 			%ShootCast.target_position.y += randf_range(-10, 10)
-			%ShootCast.target_position.z += randf_range(-5, 5)
+			%ShootCast.target_position.z += randf_range(-10, 10)
 			var target = %ShootCast.get_collider()
 			if target == player:
 				player.take_damage(randi_range(31,34))
