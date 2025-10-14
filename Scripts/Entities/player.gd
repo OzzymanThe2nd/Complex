@@ -43,7 +43,7 @@ var crouch = false
 var crouchtoggle = true
 var camerapos = null
 var basefov = null
-var zoomfov = null
+var currentfov = null
 @onready var checkpoint = self.global_position
 var doublejump_free = true
 @onready var magtext = %magtext
@@ -123,7 +123,7 @@ func settings_update():
 	mouse_sens = config.get_value("Control","mouse_sens")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	basefov = config.get_value("Control","fov")
-	zoomfov = basefov * 0.7
+	currentfov = basefov
 	var volpercent = config.get_value("Sound","vol")
 	var gunvolpercent = config.get_value("Sound","gunvol")
 	var voicevolpercent = config.get_value("Sound","voicevol")
@@ -276,6 +276,12 @@ func _physics_process(delta):
 			%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.02)
 			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 			%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
+		if zooming:
+			%PCamera.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec()) + basefov - 5, 0.01)
+			%GunCam.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec()) + basefov - 5, 0.01)
+		else:
+			%PCamera.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec() / 280) * 2 + basefov, 0.005)
+			%GunCam.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec() / 280) * 2 + basefov, 0.005)
 		if rumbling:
 			rumble()
 		if is_on_floor():
