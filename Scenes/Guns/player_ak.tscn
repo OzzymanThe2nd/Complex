@@ -893,10 +893,10 @@ tracks/48/path = NodePath("Player_Arms/Armature_001/Skeleton3D/Cube_001/boltmovi
 tracks/48/interp = 1
 tracks/48/loop_wrap = true
 tracks/48/keys = {
-"times": PackedFloat32Array(0.933333, 1.13333, 1.43333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.933333, 1.13333, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.319137, -0.00339031, -0.00998275), Vector3(0, 0, 0)]
+"values": [Vector3(-0.136159, -0.0120092, -0.0047558), Vector3(-0.136159, -0.0120092, -0.0047558), Vector3(-0.319137, -0.00339031, -0.00998275), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_du5rs"]
@@ -4387,12 +4387,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258242, 0.0951049, 0)
 script = ExtResource("1_1mpfk")
 heavy = true
 casing = "res://Scenes/Guns/ak_casing.tscn"
-kickback_level = 0.15
+kickback_level = 0.075
 max_mag = 30
 damage = 2.8
 heat_generated = 2.1
 zoom_position = Vector3(-0.33, 0.102, 0)
-zoom_in_speed = 0.03
+zoom_in_speed = 0.025
 zoom_in_z_speed = 0.01
 full_auto = true
 left_recoil_minimum = -0.052
