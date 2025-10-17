@@ -3,6 +3,8 @@ var debug_level = "res://Scenes/Levels/debug_level.tscn"
 var first_level = "res://Scenes/Levels/first_area.tscn"
 var loading : bool = true
 var loading_destination 
+@onready var move_sound = preload("res://Assets/Sounds/World/Elevator/ElevatorSoundsMove.wav")
+@onready var move_end_sound = preload("res://Assets/Sounds/World/Elevator/ElevatorSoundsEndMove.wav")
 var level_numbers = {
 	0 : debug_level,
 	1 : first_level
@@ -28,6 +30,16 @@ func enable_filter(enable : bool = true):
 		enabled.set_shader_parameter("enabled", true)
 	else:
 		enabled.set_shader_parameter("enabled", false)
+
+func play_elevator_move():
+	$ElevatorMove.stop()
+	$ElevatorMove.stream = move_sound
+	$ElevatorMove.play()
+
+func play_elevator_move_stop():
+	$ElevatorMove.stop()
+	$ElevatorMove.stream = move_end_sound
+	$ElevatorMove.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

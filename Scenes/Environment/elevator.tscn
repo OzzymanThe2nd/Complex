@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://l03xx1ji2akj"]
+[gd_scene load_steps=17 format=3 uid="uid://l03xx1ji2akj"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/elevator.gd" id="1_vsv3s"]
 [ext_resource type="PackedScene" uid="uid://cn8dhoq1c1owk" path="res://Assets/Models/elevator.glb" id="2_nvwic"]
 [ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_nik3f"]
 [ext_resource type="Texture2D" uid="uid://bqavna05mbeqg" path="res://Assets/Models/elevator_elevatortext128.png" id="4_xdcpa"]
+[ext_resource type="AudioStream" uid="uid://bwx3sscji5cv7" path="res://Assets/Sounds/World/Elevator/ElevatorSoundsDoorClose.wav" id="5_5cvsj"]
+[ext_resource type="AudioStream" uid="uid://3fp4bla1dw1l" path="res://Assets/Sounds/World/Elevator/ElevatorSoundsDoorOpen.wav" id="6_gohb5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7lw2"]
 size = Vector3(9.8457, 1.95123, 9.90649)
@@ -115,7 +117,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_fabbo"]
 resource_name = "closing"
-length = 1.8
+length = 3.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,7 +125,7 @@ tracks/0/path = NodePath("elevator/Cube_001:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.16667, 1.3, 1.43333, 1.8),
+"times": PackedFloat32Array(0, 2.0334, 2.3, 2.5666, 3.3),
 "transitions": PackedFloat32Array(1, 0.217638, 0.217638, 1, 1),
 "update": 0,
 "values": [Vector3(-3.75, 3, 2.45), Vector3(-2.12963, 3, 2.45), Vector3(-2.12963, 3, 2.45), Vector3(-1.98421, 3, 2.45), Vector3(-1.25, 3, 2.45)]
@@ -135,7 +137,7 @@ tracks/1/path = NodePath("elevator/Cube_002:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.8),
+"times": PackedFloat32Array(0, 0.6, 3.3),
 "transitions": PackedFloat32Array(0.812252, 1, 1),
 "update": 0,
 "values": [Vector3(3.75, 3, 2.45), Vector3(3.00926, 3, 2.45), Vector3(1.25, 3, 2.45)]
@@ -147,7 +149,7 @@ tracks/2/path = NodePath("elevator/Cube/StaticBody3D2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.8),
+"times": PackedFloat32Array(3.3),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-2.93302, 6, 4.9)]
@@ -159,11 +161,26 @@ tracks/3/path = NodePath("elevator/Cube/StaticBody3D3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.8),
+"times": PackedFloat32Array(3.3),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(2.27928, 6, 4.9)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_5cvsj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fwo8a"]
 resource_name = "opening"
@@ -219,7 +236,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ycwjq"]
 resource_name = "opening_shut_lights"
-length = 3.8
+length = 4.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -227,7 +244,7 @@ tracks/0/path = NodePath("elevator/Cube_001:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.8),
+"times": PackedFloat32Array(0, 1.6, 3.6),
 "transitions": PackedFloat32Array(0.812253, 1.36604, 1),
 "update": 0,
 "values": [Vector3(-1.25, 3, 2.45), Vector3(-2.53755, 3, 2.45), Vector3(-3.75, 3, 2.45)]
@@ -239,7 +256,7 @@ tracks/1/path = NodePath("elevator/Cube_002:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.3, 1.53333, 1.8),
+"times": PackedFloat32Array(0, 2.6, 3.0666, 3.6),
 "transitions": PackedFloat32Array(1, 5.27803, 1, 1),
 "update": 0,
 "values": [Vector3(1.25, 3, 2.45), Vector3(3.05556, 3, 2.45), Vector3(3.06799, 3, 2.45), Vector3(3.75, 3, 2.45)]
@@ -251,7 +268,7 @@ tracks/2/path = NodePath("elevator/Cube/StaticBody3D2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.8),
+"times": PackedFloat32Array(0, 3.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-2.93302, 6, 4.9), Vector3(-7.73607, 6, 4.9)]
@@ -263,7 +280,7 @@ tracks/3/path = NodePath("elevator/Cube/StaticBody3D3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.3, 1.53333, 1.8),
+"times": PackedFloat32Array(0, 2.6, 3.0666, 3.6),
 "transitions": PackedFloat32Array(1, 5.27, 1, 1),
 "update": 0,
 "values": [Vector3(2.27928, 6, 4.9), Vector3(5.85836, 6, 4.9), Vector3(5.88316, 6, 4.9), Vector3(7.23493, 6, 4.9)]
@@ -304,6 +321,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.4, 0.0]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.4116,
+"stream": ExtResource("6_gohb5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ftwpj"]
 _data = {
@@ -378,6 +410,9 @@ light_energy = 0.4
 light_indirect_energy = 0.1
 omni_range = 1.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"World"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ftwpj")
@@ -387,7 +422,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.610749)
 
 [node name="LevelTransitionTimer" type="Timer" parent="."]
-wait_time = 11.0
+wait_time = 13.0
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

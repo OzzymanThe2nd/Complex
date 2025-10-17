@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2q1andwdfnly"]
+[gd_scene load_steps=6 format=3 uid="uid://d2q1andwdfnly"]
 
 [ext_resource type="Shader" path="res://Shaders/post_processing.gdshader" id="1_mnhso"]
 [ext_resource type="Script" path="res://Scripts/game_viewer.gd" id="2_dyw14"]
 [ext_resource type="PackedScene" uid="uid://drdba6hjmhbb" path="res://Scenes/Menus/pause_menu.tscn" id="3_w1sjo"]
+[ext_resource type="AudioStream" uid="uid://xy1kiikvvnnq" path="res://Assets/Sounds/World/Elevator/ElevatorSoundsMove.wav" id="4_hfhq4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gqt83"]
 shader = ExtResource("1_mnhso")
@@ -34,3 +35,7 @@ render_target_update_mode = 4
 [node name="PauseMenu" parent="." instance=ExtResource("3_w1sjo")]
 visible = false
 layout_mode = 2
+
+[node name="ElevatorMove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hfhq4")
+bus = &"World"
