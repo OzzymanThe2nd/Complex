@@ -17,6 +17,8 @@ signal eject_casing
 @export var moving : bool = true
 @export var busy : bool = false
 @export var MAG_MAX : int = 0
+@export var MIN_DMG : int = 31
+@export var MAX_DMG : int = 34
 var mag_current : int = 0
 var reloading : bool = false
 var trail = "res://Scenes/Guns/projectile_trail.tscn"
@@ -95,7 +97,7 @@ func shoot():
 			%ShootCast.target_position.z += randf_range(-10, 10)
 			var target = %ShootCast.get_collider()
 			if target == player:
-				player.take_damage(randi_range(31,34))
+				player.take_damage(randi_range(MIN_DMG, MAX_DMG))
 			var flash = load(muzzle_flash).instantiate()
 			trail_spawn()
 			%FlashSpawner.add_child(flash)
