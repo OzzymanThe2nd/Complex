@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bhyk8j3g3ppro"]
+[gd_scene load_steps=28 format=3 uid="uid://bhyk8j3g3ppro"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/enemy_rifle.gd" id="1_jtjgr"]
 [ext_resource type="PackedScene" uid="uid://2ld73ktuvsqi" path="res://Assets/Models/hobogameready.glb" id="2_m51va"]
@@ -867,12 +867,207 @@ tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = PackedFloat32Array(0, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08, 2.23333, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08)
 
+[sub_resource type="Animation" id="Animation_4i3so"]
+resource_name = "walk"
+length = 2.3
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hobogameready/Skeleton3D:Armature")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.7, 1, 0, 0, 0, 1, 1.7, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hobogameready/Skeleton3D:Base")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.7, 1, 0, 0, 0, 1, 1.7, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hobogameready/Skeleton3D:Hip")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.999111, -1.03306e-07, -1.03339e-07, -0.0421676, 0.7, 1, 0.999111, -1.03306e-07, -1.03339e-07, -0.0421676, 1.7, 1, 0.999111, -1.03306e-07, -1.03339e-07, -0.0421676)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hobogameready/Skeleton3D:Leg_Upper.L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.154369, -0.68682, -0.105047, 0.702434, 0.7, 1, -0.0998369, -0.676695, -0.157607, 0.712233, 1.7, 1, -0.232372, -0.694276, -0.0271551, 0.680622)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hobogameready/Skeleton3D:Leg_Lower.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.162047, 0.0211971, 0.014535, 0.986448, 0.7, 1, 0.162047, 0.0211971, 0.014535, 0.986448, 1.7, 1, 0.162047, 0.0211971, 0.014535, 0.986448)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hobogameready/Skeleton3D:Leg_IK.L")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.5307, 0.488881, -0.469129, 0.509186, 0.7, 1, 0.5307, 0.488881, -0.469129, 0.509186, 1.7, 1, 0.5307, 0.488881, -0.469129, 0.509186)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hobogameready/Skeleton3D:Foot.L")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.284683, 0.762121, 0.0537979, 0.578993, 0.7, 1, -0.284683, 0.762121, 0.0537979, 0.578993, 1.7, 1, -0.284683, 0.762121, 0.0537979, 0.578993)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hobogameready/Skeleton3D:Toes.L")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -0.347775, 0.323915, -0.292012, 0.829976, 0.7, 1, -0.347775, 0.323915, -0.292012, 0.829976, 1.7, 1, -0.347775, 0.323915, -0.292012, 0.829976)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hobogameready/Skeleton3D:Leg_Upper.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.154369, 0.68682, 0.105048, 0.702434, 0.7, 1, -0.24759, 0.694711, 0.0115662, 0.675235, 1.7, 1, -0.0595501, 0.66674, 0.195484, 0.716727)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("hobogameready/Skeleton3D:Leg_Lower.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.162049, -0.0211972, -0.0145352, 0.986448, 0.7, 1, 0.171306, -0.0211759, -0.0150891, 0.984875, 1.7, 1, 0.175929, -0.0211645, -0.0153656, 0.984055)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("hobogameready/Skeleton3D:Leg_IK.R")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.5307, -0.48888, 0.46913, 0.509187, 0.7, 1, 0.5307, -0.48888, 0.46913, 0.509187, 1.7, 1, 0.5307, -0.48888, 0.46913, 0.509187)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("hobogameready/Skeleton3D:Foot.R")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.284683, -0.762121, -0.0537969, 0.578993, 0.7, 1, -0.284683, -0.762121, -0.0537969, 0.578993, 1.7, 1, -0.284683, -0.762121, -0.0537969, 0.578993)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("hobogameready/Skeleton3D:Toes.R")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.347775, -0.323915, 0.292012, 0.829976, 0.7, 1, -0.347775, -0.323915, 0.292012, 0.829976, 1.7, 1, -0.347775, -0.323915, 0.292012, 0.829976)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("hobogameready/Skeleton3D:Spine")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.996932, -9.95016e-08, -1.06978e-07, 0.078268, 0.7, 1, 0.996932, -9.95016e-08, -1.06978e-07, 0.078268, 1.7, 1, 0.996932, -9.95016e-08, -1.06978e-07, 0.078268)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("hobogameready/Skeleton3D:Chest")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.00577128, -1.56101e-11, 1.07857e-13, 0.999983, 0.7, 1, 0.00577128, -1.56101e-11, 1.07857e-13, 0.999983, 1.7, 1, 0.00577128, -1.56101e-11, 1.07857e-13, 0.999983)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("hobogameready/Skeleton3D:Neck")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, 0.167611, 0.00157816, 0.00167714, 0.985851, 0.7, 1, 0.167611, 0.00157816, 0.00167714, 0.985851, 1.7, 1, 0.167611, 0.00157816, 0.00167714, 0.985851)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("hobogameready/Skeleton3D:Head")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, -0.0945107, -0.0192517, -0.014829, 0.995227, 0.7, 1, -0.0936684, -0.0650908, -0.00640148, 0.993453, 1.7, 1, -0.0931707, -0.0879634, -0.00218136, 0.991754)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("hobogameready/Skeleton3D:Arm_Upper.L")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.146592, 0.261224, 0.953601, 0.030293, 0.7, 1, 0.147072, 0.245437, 0.957786, 0.0278675, 1.7, 1, 0.147297, 0.237519, 0.95978, 0.0266518)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("hobogameready/Skeleton3D:Arm_Lower.L")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, 0.0709345, -0.0937367, -0.405667, 0.90643, 0.7, 1, 0.0709345, -0.0937367, -0.405667, 0.90643, 1.7, 1, 0.0709345, -0.0937367, -0.405667, 0.90643)
+tracks/19/type = "rotation_3d"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("hobogameready/Skeleton3D:Hand_IK.L")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(0, 1, 0.372673, 0.610282, 0.531958, 0.453532, 0.7, 1, 0.372673, 0.610282, 0.531958, 0.453532, 1.7, 1, 0.372673, 0.610282, 0.531958, 0.453532)
+tracks/20/type = "rotation_3d"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("hobogameready/Skeleton3D:Hand.L")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(0, 1, -0.156662, -0.662849, 0.189732, 0.70717, 0.7, 1, -0.156662, -0.662849, 0.189732, 0.70717, 1.7, 1, -0.156662, -0.662849, 0.189732, 0.70717)
+tracks/21/type = "rotation_3d"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("hobogameready/Skeleton3D:Arm_Upper.R")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = PackedFloat32Array(0, 1, -0.622578, 0.268971, 0.399879, 0.616562, 0.7, 1, 0.610424, -0.261114, -0.405053, -0.628597, 1.7, 1, 0.60426, -0.257148, -0.407582, -0.634525)
+tracks/22/type = "rotation_3d"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("hobogameready/Skeleton3D:Arm_Lower.R")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = PackedFloat32Array(0, 1, -0.278037, -0.251047, 0.856712, 0.354565, 0.7, 1, -0.278037, -0.251047, 0.856712, 0.354565, 1.7, 1, -0.278037, -0.251047, 0.856712, 0.354565)
+tracks/23/type = "rotation_3d"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("hobogameready/Skeleton3D:Hand_IK.R")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = PackedFloat32Array(0, 1, 0.433337, -0.620834, -0.642393, 0.11881, 0.7, 1, 0.433337, -0.620834, -0.642393, 0.11881, 1.7, 1, 0.433337, -0.620834, -0.642393, 0.11881)
+tracks/24/type = "rotation_3d"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("hobogameready/Skeleton3D:Hand.R")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = PackedFloat32Array(0, 1, 0.0319381, 0.116653, -0.120075, 0.98537, 0.7, 1, 0.0319381, 0.116653, -0.120075, 0.98537, 1.7, 1, 0.0319381, 0.116653, -0.120075, 0.98537)
+tracks/25/type = "rotation_3d"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("hobogameready/Skeleton3D:Leg_Target.L")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = PackedFloat32Array(0, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08, 0.7, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08, 1.7, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08)
+tracks/26/type = "rotation_3d"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("hobogameready/Skeleton3D:Leg_Target.R")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = PackedFloat32Array(0, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08, 0.7, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08, 1.7, 1, 5.33851e-08, 0.707107, 0.707107, 5.33851e-08)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d1fm3"]
 _data = {
 "RESET": SubResource("Animation_0p32i"),
 "aim_raise": SubResource("Animation_hsk1x"),
 "aim_shoot": SubResource("Animation_050mc"),
-"idle": SubResource("Animation_hyv2k")
+"idle": SubResource("Animation_hyv2k"),
+"walk": SubResource("Animation_4i3so")
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["agroable_enemy"]]
@@ -901,14 +1096,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1,
 [node name="Skeleton3D" parent="hobogameready" index="0"]
 bones/2/rotation = Quaternion(0.999111, -1.03306e-07, -1.03339e-07, -0.0421676)
 bones/3/rotation = Quaternion(-0.154369, -0.68682, -0.105047, 0.702434)
-bones/3/scale = Vector3(1, 0.999995, 0.999999)
+bones/3/scale = Vector3(1, 0.999992, 0.999998)
 bones/4/rotation = Quaternion(0.162047, 0.0211971, 0.014535, 0.986448)
 bones/4/scale = Vector3(1, 0.999996, 1)
 bones/5/rotation = Quaternion(0.5307, 0.488881, -0.469129, 0.509186)
 bones/6/rotation = Quaternion(-0.284683, 0.762121, 0.0537979, 0.578993)
 bones/7/rotation = Quaternion(-0.347775, 0.323915, -0.292012, 0.829976)
 bones/8/rotation = Quaternion(-0.154369, 0.68682, 0.105048, 0.702434)
-bones/8/scale = Vector3(1, 0.999998, 1)
+bones/8/scale = Vector3(1, 0.999995, 0.999999)
 bones/9/rotation = Quaternion(0.162049, -0.0211972, -0.0145352, 0.986448)
 bones/9/scale = Vector3(1, 0.999996, 1)
 bones/10/rotation = Quaternion(0.5307, -0.48888, 0.46913, 0.509187)
@@ -942,7 +1137,7 @@ bones/25/rotation = Quaternion(5.33851e-08, 0.707107, 0.707107, 5.33851e-08)
 bones/26/rotation = Quaternion(5.33851e-08, 0.707107, 0.707107, 5.33851e-08)
 
 [node name="Gun" type="BoneAttachment3D" parent="hobogameready/Skeleton3D" index="1"]
-transform = Transform3D(-0.856152, 0.131575, -0.499697, -0.445907, -0.676754, 0.58579, -0.261115, 0.724416, 0.638024, -0.223143, 1.3797, 0.11681)
+transform = Transform3D(-0.856152, 0.131575, -0.499697, -0.44236, -0.686423, 0.577167, -0.267081, 0.71526, 0.645834, -0.223143, 1.37769, 0.112868)
 bone_name = "Hand.R"
 bone_idx = 24
 
@@ -986,10 +1181,10 @@ transform = Transform3D(-0.0725452, -0.121046, 0.206362, 0.0179723, 0.212274, 0.
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="hobogameready/Skeleton3D" index="2"]
 
 [node name="Physical Bone Hip" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.0361627, -0.999343, 0.00234793, 0.0776009, 0.00515046, 0.996971, -0.996329, -0.035871, 0.0777362, 0.000543064, 0.999285, -0.0125264)
+transform = Transform3D(0.0361627, -0.999343, 0.00234793, 0.0776009, 0.00515046, 0.996971, -0.996328, -0.035871, 0.0777362, 0.000543064, 0.999285, -0.0125264)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6426e-05, -0.00904878, 0.155985)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.64259e-05, -0.00904878, 0.155985)
 body_offset = Transform3D(0.0361629, -0.999343, 0.00234772, 0.00662581, -0.00210944, -0.999976, 0.999312, 0.0361771, 0.00654509, -0.00940628, 0.155963, -0.000617206)
 mass = 9.74
 bone_name = "Hip"
@@ -1005,8 +1200,8 @@ shape = SubResource("CapsuleShape3D_jq004")
 transform = Transform3D(0.0344862, -0.93246, -0.359624, 0.0197945, -0.359131, 0.933077, -0.999209, -0.0392969, 0.00607248, 0.156779, 0.673225, -0.0261631)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17459e-07, 9.1102e-07, 0.182843)
-body_offset = Transform3D(0.999988, -2.12342e-07, -1.77696e-06, -1.07102e-08, -1.45301e-07, -1.00001, -2.98023e-08, 1, -9.27103e-08, 7.45058e-09, 0.182844, -8.9407e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23164e-07, 9.05523e-07, 0.182843)
+body_offset = Transform3D(0.999988, -2.04891e-07, -1.80816e-06, -1.21072e-08, -1.45534e-07, -1.00001, -2.98023e-08, 1, -6.2646e-08, 7.45058e-09, 0.182844, -8.9407e-07)
 mass = 14.55
 bone_name = "Leg_Upper.L"
 joint_constraints/bias = 0.3
@@ -1018,11 +1213,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_54fir")
 
 [node name="Physical Bone Leg_Lower_L" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.0818241, -0.995797, -0.0411595, -5.98633e-05, -0.0413029, 0.999147, -0.996647, -0.0817518, -0.00343919, 0.22861, 0.355158, -0.0267653)
+transform = Transform3D(0.0818241, -0.995797, -0.0411595, -5.98726e-05, -0.0413029, 0.999147, -0.996647, -0.0817518, -0.00343919, 0.22861, 0.355158, -0.0267653)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.22437e-07, -1.70097e-06, 0.147577)
-body_offset = Transform3D(0.999988, -3.29316e-06, -1.40665e-05, -1.16241e-05, 7.68836e-06, -1.00001, 1.17719e-06, 1, 9.91047e-06, 1.55345e-06, 0.147578, 2.38419e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.30802e-07, -1.70381e-06, 0.147577)
+body_offset = Transform3D(0.999988, -3.31551e-06, -1.40979e-05, -1.16241e-05, 7.68778e-06, -1.00001, 1.19954e-06, 1, 9.92967e-06, 1.54972e-06, 0.147578, 2.38419e-07)
 mass = 14.55
 bone_name = "Leg_Lower.L"
 joint_constraints/bias = 0.3
@@ -1037,8 +1232,8 @@ shape = SubResource("CapsuleShape3D_r3gxf")
 transform = Transform3D(0.880324, 0.409032, -0.240254, 0.40903, -0.397996, 0.821154, 0.240258, -0.821153, -0.517672, 0.251942, 0.148743, 0.0109268)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01114e-07, 3.98616e-07, 0.0718288)
-body_offset = Transform3D(1, 2.68221e-06, 5.7593e-06, -3.27826e-07, 2.6226e-06, -1, 1.93715e-07, 0.999995, -1.5974e-05, 3.8743e-07, 0.071829, 7.48783e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02185e-07, 4.03371e-07, 0.0718289)
+body_offset = Transform3D(1, 2.66731e-06, 5.7742e-06, -2.98023e-07, 2.71201e-06, -1, 2.08616e-07, 0.999994, -1.58846e-05, 3.8743e-07, 0.071829, 7.37607e-07)
 mass = 14.55
 bone_name = "Foot.L"
 joint_constraints/bias = 0.3
@@ -1050,11 +1245,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_8d18o")
 
 [node name="Physical Bone Leg_Upper_R" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.0344864, 0.932458, 0.359628, -0.0197959, -0.359134, 0.933076, 0.999209, -0.0392976, 0.00607362, -0.136885, 0.673214, -0.0261636)
+transform = Transform3D(0.0344864, 0.932458, 0.359628, -0.0197959, -0.359134, 0.933076, 0.999209, -0.0392976, 0.00607357, -0.136884, 0.673214, -0.0261636)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51478e-07, -1.4149e-07, 0.182855)
-body_offset = Transform3D(0.999988, 1.86265e-07, 1.8063e-06, 2.09548e-08, 1.57277e-06, -1, 4.47035e-08, 1, 1.58871e-06, -1.78814e-07, 0.182855, -1.49012e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41643e-07, -1.85103e-07, 0.182855)
+body_offset = Transform3D(0.999988, 2.01166e-07, 1.79326e-06, 2.28174e-08, 1.57069e-06, -1, 4.47035e-08, 1, 1.50125e-06, -1.86265e-07, 0.182855, -8.9407e-08)
 mass = 14.55
 bone_name = "Leg_Upper.R"
 joint_constraints/bias = 0.3
@@ -1066,11 +1261,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_yl12r")
 
 [node name="Physical Bone Leg_Lower_R" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.0818254, 0.995797, 0.0411572, 5.8817e-05, -0.0413005, 0.999147, 0.996647, -0.0817532, -0.003438, -0.208713, 0.355153, -0.0267662)
+transform = Transform3D(0.0818254, 0.995797, 0.0411572, 5.88694e-05, -0.0413005, 0.999147, 0.996647, -0.0817532, -0.00343805, -0.208713, 0.355153, -0.0267661)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6374e-07, -6.8139e-07, 0.147581)
-body_offset = Transform3D(0.999988, 2.36928e-06, 1.39326e-05, 1.16574e-05, 8.02972e-06, -1.00001, -3.94881e-07, 1, 9.0597e-06, -1.89245e-06, 0.147582, -6.55651e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54158e-07, -7.27313e-07, 0.147581)
+body_offset = Transform3D(0.999988, 2.38419e-06, 1.39182e-05, 1.16578e-05, 8.02899e-06, -1.00001, -4.09782e-07, 1, 9.06797e-06, -1.8999e-06, 0.147582, -6.10948e-07)
 mass = 14.55
 bone_name = "Leg_Lower.R"
 joint_constraints/bias = 0.3
@@ -1082,11 +1277,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_lvgp7")
 
 [node name="Physical Bone Foot_R" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.880324, -0.409032, 0.240255, -0.409029, -0.397993, 0.821156, -0.240259, -0.821155, -0.517669, -0.232044, 0.14874, 0.0109274)
+transform = Transform3D(0.880324, -0.409031, 0.240255, -0.409029, -0.397993, 0.821156, -0.240259, -0.821155, -0.517669, -0.232044, 0.14874, 0.0109274)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13214e-07, 1.60639e-06, 0.0718301)
-body_offset = Transform3D(1, -2.83122e-06, -5.63264e-06, 2.23517e-08, -5.96046e-08, -1, 2.08616e-07, 0.999993, -1.58548e-05, -2.08616e-07, 0.0718301, -4.67524e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0251e-07, 1.60881e-06, 0.0718301)
+body_offset = Transform3D(1, -2.90573e-06, -5.48363e-06, 3.72529e-08, -5.96046e-08, -1, 2.38419e-07, 0.999994, -1.59144e-05, -2.08616e-07, 0.0718301, -4.65661e-07)
 mass = 14.55
 bone_name = "Foot.R"
 joint_constraints/bias = 0.3
@@ -1098,11 +1293,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_5abfh")
 
 [node name="Physical Bone Spine" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(1, 5.51452e-11, 1.70015e-11, 1.29719e-11, 0.0722709, -0.997385, -5.62252e-11, 0.997385, 0.0722709, 0.00994938, 1.25773, -0.00746219)
+transform = Transform3D(1, 5.51452e-11, 1.69904e-11, 1.29604e-11, 0.072271, -0.997385, -5.62324e-11, 0.997385, 0.072271, 0.00994938, 1.25773, -0.00746221)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25247e-12, 1.40511e-07, 0.103251)
-body_offset = Transform3D(1, -4.93827e-12, 1.21303e-11, 1.28693e-11, -2.16067e-07, -1, 4.26326e-14, 0.999989, -4.03076e-06, 0, 0.103251, 2.75671e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24884e-12, 1.55412e-07, 0.103251)
+body_offset = Transform3D(1, -4.87432e-12, 1.20952e-11, 1.28697e-11, -2.23517e-07, -1, 4.9738e-14, 0.999989, -4.03076e-06, 0, 0.103251, 2.6077e-07)
 mass = 9.74
 bone_name = "Spine"
 joint_constraints/bias = 0.3
@@ -1114,11 +1309,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_t4icq")
 
 [node name="Physical Bone Chest" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(1, 2.40163e-11, 3.87645e-12, 2.41e-12, 0.0607543, -0.998153, -2.42082e-11, 0.998153, 0.0607543, 0.00994938, 1.53232, -0.0253708)
+transform = Transform3D(1, 2.40377e-11, 3.86491e-12, 2.39714e-12, 0.0607543, -0.998153, -2.42295e-11, 0.998153, 0.0607543, 0.00994938, 1.53232, -0.0253708)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19655e-13, 2.70275e-07, 0.171944)
-body_offset = Transform3D(1, -4.90985e-12, -6.95888e-13, -1.46549e-14, 0, -1, -7.10543e-15, 0.999989, -3.5651e-06, 0, 0.171944, 3.42727e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26145e-13, 2.77084e-07, 0.171944)
+body_offset = Transform3D(1, -4.8459e-12, -7.33635e-13, -1.46549e-14, 0, -1, -1.42109e-14, 0.999989, -3.56138e-06, 0, 0.171944, 3.35276e-07)
 mass = 9.74
 bone_name = "Chest"
 joint_constraints/bias = 0.3
@@ -1133,8 +1328,8 @@ shape = SubResource("CapsuleShape3D_iw1pg")
 transform = Transform3D(0.999989, 0.0036739, 0.00277778, 0.00367387, -0.272519, -0.962143, -0.00277782, 0.962143, -0.272529, 0.00984091, 1.7415, -0.0251864)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91781e-08, 4.01307e-06, 0.0390251)
-body_offset = Transform3D(1, 6.77537e-08, -1.92085e-08, -6.34464e-09, 5.96046e-08, -1.00001, 3.25963e-09, 0.999979, 4.08292e-06, -4.84288e-08, 0.0390253, -4.17233e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.10885e-08, 4.04055e-06, 0.0390252)
+body_offset = Transform3D(1, 6.65896e-08, -2.04309e-08, -6.51926e-09, 5.96046e-08, -1.00001, 3.49246e-09, 0.999979, 4.14252e-06, -5.02914e-08, 0.0390254, -4.20213e-06)
 mass = 0.39
 friction = 0.24
 gravity_scale = 0.1
@@ -1150,11 +1345,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ahanf")
 
 [node name="Physical Bone Arm_Upper_L" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(-0.955186, 0.295409, -0.0188137, 0.260395, 0.868793, 0.42118, 0.140766, 0.397406, -0.906782, 0.191625, 1.61424, 0.0897589)
+transform = Transform3D(-0.955186, 0.29541, -0.0188125, 0.150137, 0.53827, 0.829292, 0.255107, 0.789303, -0.5585, 0.191625, 1.55814, 0.0418813)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.13543e-07, -2.61529e-06, 0.13747)
-body_offset = Transform3D(0.99999, -1.05426e-06, 3.21865e-06, 7.00355e-07, 2.68221e-07, -0.99999, 3.50177e-07, 1.00001, 6.88434e-06, -1.35601e-06, 0.137469, 1.66893e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68837e-07, -3.11287e-06, 0.13747)
+body_offset = Transform3D(0.999989, -4.33624e-06, 4.21703e-06, 7.00355e-07, 2.08616e-07, -0.999996, 3.72529e-07, 1.00001, 1.09375e-05, -1.34856e-06, 0.137469, 1.60933e-06)
 angular_damp = 15.287
 bone_name = "Arm_Upper.L"
 joint_constraints/bias = 0.3
@@ -1166,11 +1361,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7pefk")
 
 [node name="Physical Bone Arm_Lower_L" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(-0.604908, 0.503544, 0.616872, 0.583088, 0.807681, -0.0875194, -0.542305, 0.306749, -0.782183, 0.0615892, 1.57515, 0.382581)
+transform = Transform3D(-0.604909, 0.50354, 0.616873, 0.779474, 0.532821, 0.329426, -0.162803, 0.680109, -0.714805, 0.0615886, 1.3733, 0.272334)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39963e-06, 6.4311e-06, 0.214986)
-body_offset = Transform3D(0.999972, 9.07481e-06, -1.51992e-06, 2.08616e-07, -2.68221e-07, -0.999997, -1.3411e-07, 1.00002, -4.96209e-06, -1.07288e-06, 0.214985, -5.36442e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75806e-08, 5.17602e-06, 0.214985)
+body_offset = Transform3D(0.999975, 9.65595e-06, 5.11855e-06, 1.3411e-07, -2.98023e-07, -0.999998, -7.45058e-08, 1.00001, 1.43051e-06, -1.07288e-06, 0.214985, -5.48363e-06)
 angular_damp = 15.287
 bone_name = "Arm_Lower.L"
 joint_constraints/bias = 0.3
@@ -1182,11 +1377,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_rm4u7")
 
 [node name="Physical Bone Arm_Upper_R" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(0.535499, -0.166241, 0.828013, -0.358364, 0.843062, 0.401026, -0.764733, -0.511479, 0.391884, -0.26805, 1.61701, -0.0887713)
+transform = Transform3D(0.535499, -0.166238, 0.828013, 0.107495, 0.985878, 0.128413, -0.837667, 0.0202426, 0.545806, -0.26805, 1.65449, -0.109931)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38565e-06, -2.50307e-06, 0.137477)
-body_offset = Transform3D(0.999999, -1.00732e-05, 5.72205e-06, -1.49012e-07, 5.06639e-07, -0.999979, 2.38419e-07, 1.00001, 5.20051e-06, -4.17233e-06, 0.137474, 1.78814e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8065e-06, -1.98901e-06, 0.137477)
+body_offset = Transform3D(0.999997, -1.72295e-06, 1.00434e-05, -1.49012e-07, 4.76837e-07, -0.999977, 2.27243e-07, 1.00001, 1.46125e-06, -4.18723e-06, 0.137474, 1.78814e-06)
 angular_damp = 15.287
 bone_name = "Arm_Upper.R"
 joint_constraints/bias = 0.3
@@ -1198,11 +1393,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_s1oce")
 
 [node name="Physical Bone Arm_Lower_R" type="PhysicalBone3D" parent="hobogameready/Skeleton3D/PhysicalBoneSimulator3D" groups=["hobo_bone"]]
-transform = Transform3D(-0.890994, -0.334481, -0.307005, -0.378701, 0.920508, 0.0961783, 0.250431, 0.201957, -0.946836, -0.315875, 1.54121, 0.0609123)
+transform = Transform3D(-0.887093, -0.277108, -0.369158, -0.453938, 0.668746, 0.588829, 0.083704, 0.689921, -0.719029, -0.302512, 1.51025, -0.0303815)
 collision_layer = 2
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46619e-06, -6.40926e-06, 0.214992)
-body_offset = Transform3D(0.999989, 3.28198e-06, -1.66148e-05, 2.5332e-06, 1.87755e-06, -0.999968, -1.49012e-08, 1.00003, 1.48416e-05, -8.9407e-07, 0.214985, 3.21865e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.47727e-06, -8.83504e-06, 0.214991)
+body_offset = Transform3D(0.999991, 4.28408e-06, -2.10404e-05, 2.52202e-06, 1.81794e-06, -0.999971, -3.72529e-09, 1.00003, 2.55704e-05, -9.53674e-07, 0.214985, 3.33786e-06)
 angular_damp = 15.287
 bone_name = "Arm_Lower.R"
 joint_constraints/bias = 0.3
@@ -1214,7 +1409,7 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_beenl")
 
 [node name="HeadHitbox" type="BoneAttachment3D" parent="hobogameready/Skeleton3D" index="3"]
-transform = Transform3D(0.995374, 0.0243941, -0.0929171, -0.032435, 0.995759, -0.0860386, 0.0904268, 0.0886461, 0.99197, 0.00973257, 1.77904, -0.0145472)
+transform = Transform3D(0.991959, 0.0215362, -0.124705, -0.0324351, 0.995759, -0.0860386, 0.122327, 0.0893833, 0.988477, 0.00973257, 1.77904, -0.0145472)
 bone_name = "Head"
 bone_idx = 16
 
