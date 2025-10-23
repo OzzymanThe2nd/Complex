@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0lbly0pq4en8"
+path="res://.godot/imported/FootstepMetal3.wav-8bbd6462e6839114dbdb94a89cc5b221.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player/Footstep/Footstep Metal/FootstepMetal3.wav"
+dest_files=["res://.godot/imported/FootstepMetal3.wav-8bbd6462e6839114dbdb94a89cc5b221.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

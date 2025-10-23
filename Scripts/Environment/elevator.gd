@@ -3,6 +3,7 @@ extends Node3D
 @export var busy : bool = false
 @export var destination : String = "res://Scenes/Levels/debug_level.tscn"
 @export var player_look_to : Vector3 = Vector3(-2,180,0)
+@export var set_step_on_exit : String = "concrete"
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
@@ -44,3 +45,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_level_transition_timer_timeout() -> void:
 	PlayerStatus.level_change(destination)
+
+
+func _on_set_elevator_footstep_body_entered(body: Node3D) -> void:
+	body.step_sound_type = "elevator"
+
+func _on_set_footstep_back_body_entered(body: Node3D) -> void:
+	body.step_sound_type = set_step_on_exit
