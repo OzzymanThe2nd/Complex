@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7li6eahkjc4v"]
+[gd_scene load_steps=23 format=3 uid="uid://c7li6eahkjc4v"]
 
 [ext_resource type="Script" path="res://Scripts/Guns/player_ak.gd" id="1_1mpfk"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="2_ma3mt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmr5hsw4n6nyr" path="res://Assets/Models/Arms/PlayerArms.png" id="4_u7why"]
 [ext_resource type="PackedScene" uid="uid://bxmf5xyrpmcxf" path="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/AK74U/boltmoving.glb" id="5_h6bgy"]
 [ext_resource type="Texture2D" uid="uid://biavvsxftklm2" path="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/Textures/AKU_Texture_240_mucked.png" id="6_hpj66"]
+[ext_resource type="AudioStream" uid="uid://b6uvi3y83uwa" path="res://Assets/Sounds/Weapons/DryFireClick.wav" id="7_6i5x8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbipc"]
 render_priority = 0
@@ -4629,6 +4630,10 @@ fov = 90.0
 libraries = {
 "": SubResource("AnimationLibrary_t0r3k")
 }
+
+[node name="GunClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6i5x8")
+bus = &"Guns"
 
 [connection signal="timeout" from="RecoilRecovery" to="." method="_on_recoil_recovery_timeout"]
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]

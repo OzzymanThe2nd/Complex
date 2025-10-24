@@ -193,8 +193,10 @@ func shoot():
 				$RecoilRecovery.start()
 			$ShotRecovery.start()
 			$ShotCooldown.start()
-		else: #What to do if no ammo
-			pass
+		elif shootable and jammed and not $GunClick.playing:
+			$GunClick.play()
+	elif shootable and not $GunClick.playing: #What to do if no ammo
+		$GunClick.play()
 
 func handle_impact(target, raycast):
 	if target.get_collision_layer() == 1:

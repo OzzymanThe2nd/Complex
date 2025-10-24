@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cm5cuut7kobo"]
+[gd_scene load_steps=27 format=4 uid="uid://cm5cuut7kobo"]
 
 [ext_resource type="Script" path="res://Scripts/Guns/player_shotgun.gd" id="1_gyplu"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="2_cxk22"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmoapvx67kgrb" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Fbx/DoubleBarrelShotgun.fbx" id="5_elr5a"]
 [ext_resource type="Texture2D" uid="uid://cngblryq7jp7i" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/DBShotgunText.png" id="6_xxaic"]
 [ext_resource type="Texture2D" uid="uid://dyc0g0ekoab1m" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/shotgunShellTexture.jpg" id="7_bve0q"]
+[ext_resource type="AudioStream" uid="uid://b6uvi3y83uwa" path="res://Assets/Sounds/Weapons/DryFireClick.wav" id="8_pvbon"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydcjq"]
 render_priority = 0
@@ -1992,6 +1993,10 @@ fov = 90.0
 libraries = {
 "": SubResource("AnimationLibrary_jk3d5")
 }
+
+[node name="GunClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pvbon")
+bus = &"Guns"
 
 [connection signal="timeout" from="StunRecovery" to="." method="_on_stun_recovery_timeout"]
 
