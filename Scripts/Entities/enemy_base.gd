@@ -6,16 +6,16 @@ class_name enemy_base
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 @export var player : Node3D
 signal eject_casing
-@export var aiming : bool = false
-@export var dead : bool = false
+var aiming : bool = false
+var dead : bool = false
 @export var navi_agent : NavigationAgent3D
 @export var SPEED : float = 0.3
 @export var ROTATION_SPEED : float = 0.1
 @export var agro : bool = true
 @export var shootcast_default_target : Vector3 = Vector3(0, -1, 90)
 @export var change_mesh_threshold : float = 2
-@export var moving : bool = true
-@export var busy : bool = false
+var moving : bool = true
+var busy : bool = false
 @export var MAG_MAX : int = 0
 @export var MIN_DMG : int = 31
 @export var MAX_DMG : int = 34
