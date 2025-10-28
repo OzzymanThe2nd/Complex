@@ -3,6 +3,7 @@ class_name enemy_base
 @export var health : float = 8
 @export var casing = "res://Scenes/Guns/casing.tscn"
 @export var muzzle_flash = "res://Scenes/Guns/muzzle_flash.tscn"
+@export var full_auto : bool = false
 var travel_guide : Vector3 = Vector3(1, 1, 0) #Used for ragdoll
 @export var player : Node3D
 signal eject_casing
@@ -83,8 +84,7 @@ func reload():
 func shoot():
 	if aiming == true and not reloading:
 		var reload_threshold : float = float(mag_current) / float(MAG_MAX)
-		print(reload_threshold)
-		if randf_range(0, 1) > reload_threshold or mag_current == 0:
+		if randf_range(0, 1) > reload_threshold and not full_auto or mag_current == 0 and not full_auto:
 			reload()
 		else:
 			mag_current -= 1
