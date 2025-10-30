@@ -402,7 +402,7 @@ func _input(event):
 		elif Input.is_action_just_pressed("6"):
 			if %DirectlyAhead.is_colliding():
 				var spawn_point = %DirectlyAhead.get_collision_point()
-				var discard = load("res://Scenes/Entities/enemy_pistol.tscn").instantiate()
+				var discard = load("res://Scenes/Entities/enemy_rifle.tscn").instantiate()
 				get_parent_node_3d().add_child(discard)
 				discard.global_position = Vector3(spawn_point)
 		elif Input.is_action_just_pressed("7"):
