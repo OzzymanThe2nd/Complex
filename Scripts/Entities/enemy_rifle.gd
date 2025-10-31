@@ -5,10 +5,9 @@ var shot_burst_remaining : int = 0
 
 func _on_timer_timeout() -> void:
 	if agro and not dead and $BurstCooldown.time_left == 0:
-		var reload_threshold : float = float(mag_current) / float(MAG_MAX)
-		if randf_range(0, 1) > reload_threshold:
+		if mag_current == 0:
 			reload()
-		elif not reloading:
+		elif not busy:
 			if shot_burst_remaining == 0:
 				shot_burst_remaining = randi_range(shot_burst_range[0], shot_burst_range[1])
 			if $DetectPlayer.overlaps_body(player):
@@ -16,6 +15,9 @@ func _on_timer_timeout() -> void:
 				shot_burst_remaining -= 1
 				if shot_burst_remaining == 0:
 					$BurstCooldown.start()
+					var reload_threshold : float = float(mag_current) / float(MAG_MAX)
+					if randf_range(0, 1) > reload_threshold:
+						reload()
 
 func set_connections():
 	#$DespawnTimer.timeout.connect(_on_despawn_timer_timeout)
