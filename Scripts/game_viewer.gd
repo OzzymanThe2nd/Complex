@@ -1,6 +1,6 @@
 extends SubViewportContainer
 var debug_level = "res://Scenes/Levels/debug_level.tscn"
-var first_level = "res://Scenes/Levels/first_area.tscn"
+var first_level = "res://Scenes/Levels/1_outside.tscn"
 var loading : bool = true
 var loading_destination 
 @onready var move_sound = preload("res://Assets/Sounds/World/Elevator/ElevatorSoundsMove.wav")
@@ -16,12 +16,11 @@ func _ready() -> void:
 	$Game.size.x = DisplayServer.screen_get_size()[0]
 	$Game.size.y = DisplayServer.screen_get_size()[1]
 	PlayerStatus.viewer = self
-	change_level(debug_level)
+	change_level(1)
 	enabled = get_material()
 
 func change_level(new_level): 
-	#var level = level_numbers[new_level]
-	var level = debug_level
+	var level = level_numbers[new_level]
 	ResourceLoader.load_threaded_request(level)
 	loading_destination = level
 	
