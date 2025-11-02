@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3giooi8enxoh"]
+
+[ext_resource type="Script" path="res://Scripts/Guns/shotgun_pickup.gd" id="1_xqja6"]
+[ext_resource type="PackedScene" uid="uid://cmoapvx67kgrb" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Fbx/DoubleBarrelShotgun.fbx" id="2_7d8jk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gosw5"]
+size = Vector3(2.22611, 2, 1)
+
+[node name="Shotgun Pickup" type="Node3D"]
+script = ExtResource("1_xqja6")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.524703, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168924, 0.497884, 0)
+shape = SubResource("BoxShape3D_gosw5")
+
+[node name="DoubleBarrelShotgun" parent="." instance=ExtResource("2_7d8jk")]
+transform = Transform3D(0.105459, 7.42815e-09, -0.169936, 0.169936, -4.60978e-09, 0.105459, 4.87908e-16, -0.2, -8.74228e-09, 0.564574, 0.953521, 0.965608)
+
+[node name="ShellLowPolyGreen_005" parent="DoubleBarrelShotgun" index="2"]
+visible = false
+
+[node name="ShellLowPolyRed_005" parent="DoubleBarrelShotgun" index="3"]
+visible = false
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="DoubleBarrelShotgun"]

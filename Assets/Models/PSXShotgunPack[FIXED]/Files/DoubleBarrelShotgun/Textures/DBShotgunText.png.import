@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cngblryq7jp7i"
-path.s3tc="res://.godot/imported/DBShotgunText.png-a4beeadea9c068f8098f1620082617a4.s3tc.ctex"
+uid="uid://dj3fqfovt846v"
+path.s3tc="res://.godot/imported/DBShotgunText.png-f01b3d5029df2a66be034c0b779cc3ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/DBShotgunText.png"
-dest_files=["res://.godot/imported/DBShotgunText.png-a4beeadea9c068f8098f1620082617a4.s3tc.ctex"]
+source_file="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/textures/DBShotgunText.png"
+dest_files=["res://.godot/imported/DBShotgunText.png-f01b3d5029df2a66be034c0b779cc3ff.s3tc.ctex"]
 
 [params]
 

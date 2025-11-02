@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_1acbj"]
 [ext_resource type="Texture2D" uid="uid://dmr5hsw4n6nyr" path="res://Assets/Models/Arms/PlayerArms.png" id="4_ffpis"]
 [ext_resource type="PackedScene" uid="uid://cmoapvx67kgrb" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Fbx/DoubleBarrelShotgun.fbx" id="5_elr5a"]
-[ext_resource type="Texture2D" uid="uid://cngblryq7jp7i" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/DBShotgunText.png" id="6_xxaic"]
+[ext_resource type="Texture2D" uid="uid://dj3fqfovt846v" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/DBShotgunText.png" id="6_xxaic"]
 [ext_resource type="Texture2D" uid="uid://dyc0g0ekoab1m" path="res://Assets/Models/PSXShotgunPack[FIXED]/Files/DoubleBarrelShotgun/Textures/shotgunShellTexture.jpg" id="7_bve0q"]
 [ext_resource type="AudioStream" uid="uid://b6uvi3y83uwa" path="res://Assets/Sounds/Weapons/DryFireClick.wav" id="8_pvbon"]
 
