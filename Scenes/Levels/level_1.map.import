@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://7b8nblqs0y8c"
+path="res://.godot/imported/level_1.map-b02d38d71d1f4f0288c9c7ca9bdd66d5.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/level_1.map"
+dest_files=["res://.godot/imported/level_1.map-b02d38d71d1f4f0288c9c7ca9bdd66d5.tres"]
+
+[params]
+
