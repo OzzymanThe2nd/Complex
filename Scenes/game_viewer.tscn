@@ -10,7 +10,7 @@ shader = ExtResource("1_mnhso")
 shader_parameter/enabled = true
 shader_parameter/dithering = true
 shader_parameter/colors = 16
-shader_parameter/dither_size = 3
+shader_parameter/dither_size = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
 process_mode = 3

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bl4xk4jo8f7pj"]
+
+[ext_resource type="Texture2D" uid="uid://d2287bd1o8mnc" path="res://textures/paved_tiles_smooth_256.png" id="1_d33bl"]
+
+[resource]
+albedo_texture = ExtResource("1_d33bl")
+metallic_specular = 0.0
+texture_filter = 2
