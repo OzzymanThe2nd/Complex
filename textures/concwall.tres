@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgytnrmsu5ke3"]
+
+[ext_resource type="Texture2D" uid="uid://cd3kvqm606bin" path="res://textures/concwall.png" id="1_0ek8r"]
+
+[resource]
+albedo_texture = ExtResource("1_0ek8r")
+metallic_specular = 0.0
+texture_filter = 2
