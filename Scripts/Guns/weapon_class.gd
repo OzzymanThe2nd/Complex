@@ -4,6 +4,8 @@ var player : Node3D
 var default_cast_rot : Vector3 
 var y_spread : float = 0.0
 var x_spread :float = 0.0
+@onready var mag_empty_sound = preload("res://Assets/Sounds/Weapons/DryFireClick.wav")
+@onready var mag_click_sound = preload("res://Assets/Sounds/Weapons/JamClick.wav")
 @onready var muzzle_flash = preload("res://Scenes/Guns/muzzle_flash.tscn")
 @onready var bullet_hole = preload("res://Scenes/Guns/bullet_hole.tscn")
 @export var heavy : bool = false
@@ -194,8 +196,10 @@ func shoot():
 			$ShotRecovery.start()
 			$ShotCooldown.start()
 		elif shootable and jammed and not $GunClick.playing:
+			$GunClick.stream = mag_click_sound
 			$GunClick.play()
 	elif shootable and not $GunClick.playing: #What to do if no ammo
+		$GunClick.stream = mag_empty_sound
 		$GunClick.play()
 
 func handle_impact(target, raycast):
