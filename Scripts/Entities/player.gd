@@ -271,13 +271,19 @@ func _physics_process(delta):
 		if Input.is_action_pressed("lean_left") and not cam_locked and PlayerStatus.shotgun_stunned == false:
 			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 15.0, 0.08)
 			%PCamera.position.x = lerp(%PCamera.position.x, -0.4, 0.08)
+			$Lean_Collision.rotation_degrees.z = lerp($Lean_Collision.rotation_degrees.z, 15.0, 0.08)
+			$Lean_Collision.position.x = lerp($Lean_Collision.position.x, -0.4, 0.08)
 		elif Input.is_action_pressed("lean_right") and not cam_locked and PlayerStatus.shotgun_stunned == false:
 			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, -15.0, 0.08)
 			%PCamera.position.x = lerp(%PCamera.position.x, 0.4, 0.08)
+			$Lean_Collision.rotation_degrees.z = lerp($Lean_Collision.rotation_degrees.z, -15.0, 0.08)
+			$Lean_Collision.position.x = lerp($Lean_Collision.position.x, 0.4, 0.08)
 		elif rumbling == false and PlayerStatus.shotgun_stunned == false:
 			%CamSmooth.rotation_degrees.x = lerp(%CamSmooth.rotation_degrees.x, 0.0, 0.02)
 			%PCamera.rotation_degrees.z = lerp(%PCamera.rotation_degrees.z, 0.0, 0.05)
 			%PCamera.position.x = lerp(%PCamera.position.x, 0.0, 0.1)
+			$Lean_Collision.rotation_degrees.z = lerp($Lean_Collision.rotation_degrees.z, 0.0, 0.08)
+			$Lean_Collision.position.x = lerp($Lean_Collision.position.x, 0.0, 0.01)
 		if zooming:
 			%PCamera.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec()) + basefov - 5, 0.01)
 			%GunCam.fov = lerp(%PCamera.fov, sin(Time.get_ticks_msec()) + basefov - 5, 0.01)

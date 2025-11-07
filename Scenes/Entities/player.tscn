@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://rpl5amivov5f"]
+[gd_scene load_steps=38 format=3 uid="uid://rpl5amivov5f"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7gcer"]
 [ext_resource type="Script" path="res://Scripts/Player Functions/CamNode3D.gd" id="2_to3yv"]
@@ -550,6 +550,9 @@ _data = {
 
 [sub_resource type="AudioStream" id="AudioStream_7mvji"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4atr"]
+size = Vector3(0.449837, 0.319153, 0.210327)
+
 [node name="Player" type="CharacterBody3D" groups=["Persist", "player"]]
 collision_layer = 4
 collision_mask = 7
@@ -956,6 +959,10 @@ one_shot = true
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 volume_db = -14.0
 bus = &"World"
+
+[node name="Lean_Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -7.10543e-15, 0, 7.10543e-15, 1, 0.000530243, 0.742468, -0.409591)
+shape = SubResource("BoxShape3D_d4atr")
 
 [connection signal="body_entered" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_entered"]
 [connection signal="body_exited" from="GunLayer/CamNode3D/CamSmooth/PCamera/InteractWindowDetect" to="." method="_on_interact_window_detect_body_exited"]
