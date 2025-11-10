@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4t7xh6ric5id"
-path.s3tc="res://.godot/imported/rustwall_2.png-7f178cdf69ca042f1da5c8148ae3a1f5.s3tc.ctex"
+uid="uid://crymc8inby76y"
+path.s3tc="res://.godot/imported/asphalt_256.png-b72c38bcd7c1259838699ba2e59e2e04.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/rustwall_2.png"
-dest_files=["res://.godot/imported/rustwall_2.png-7f178cdf69ca042f1da5c8148ae3a1f5.s3tc.ctex"]
+source_file="res://textures/asphalt_256.png"
+dest_files=["res://.godot/imported/asphalt_256.png-b72c38bcd7c1259838699ba2e59e2e04.s3tc.ctex"]
 
 [params]
 
