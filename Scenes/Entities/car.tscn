@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://uq3ojw5mfv6o"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/car.gd" id="1_yib0g"]
+[ext_resource type="PackedScene" uid="uid://cogbcss4o4u1a" path="res://Assets/Models/cardrivable.glb" id="2_h4liu"]
+[ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_hndv5"]
+[ext_resource type="Texture2D" uid="uid://cj0vt843mjmh0" path="res://Assets/Models/cardrivable_cartext_256_2.png" id="4_81qb0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f560"]
+render_priority = 0
+shader = ExtResource("3_hndv5")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("4_81qb0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_se3ox"]
+render_priority = 0
+shader = ExtResource("3_hndv5")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("4_81qb0")
+
+[sub_resource type="Animation" id="Animation_x4ipv"]
+resource_name = "drive"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cardrivable/Wheel_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cardrivable/Wheel_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cardrivable/Wheel_003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cardrivable/Wheel_004:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lkx25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cardrivable/Wheel_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cardrivable/Wheel_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cardrivable/Wheel_003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cardrivable/Wheel_004:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53jci"]
+_data = {
+"RESET": SubResource("Animation_lkx25"),
+"drive": SubResource("Animation_x4ipv")
+}
+
+[node name="Car" type="Node3D"]
+script = ExtResource("1_yib0g")
+
+[node name="cardrivable" parent="." instance=ExtResource("2_h4liu")]
+
+[node name="Cube" parent="cardrivable" index="0"]
+material_override = SubResource("ShaderMaterial_2f560")
+
+[node name="Wheel_001" parent="cardrivable" index="1"]
+material_override = SubResource("ShaderMaterial_se3ox")
+
+[node name="Wheel_002" parent="cardrivable" index="2"]
+material_override = SubResource("ShaderMaterial_se3ox")
+
+[node name="Wheel_003" parent="cardrivable" index="3"]
+material_override = SubResource("ShaderMaterial_se3ox")
+
+[node name="Wheel_004" parent="cardrivable" index="4"]
+material_override = SubResource("ShaderMaterial_se3ox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_53jci")
+}
+
+[editable path="cardrivable"]
