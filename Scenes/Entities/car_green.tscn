@@ -1,27 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://uq3ojw5mfv6o"]
+[gd_scene load_steps=11 format=3 uid="uid://bokloq1pin2kn"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/car.gd" id="1_yib0g"]
-[ext_resource type="PackedScene" uid="uid://cogbcss4o4u1a" path="res://Assets/Models/cardrivable.glb" id="2_h4liu"]
-[ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_hndv5"]
-[ext_resource type="Texture2D" uid="uid://cj0vt843mjmh0" path="res://Assets/Models/cardrivable_cartext_256_2.png" id="4_81qb0"]
+[ext_resource type="Script" path="res://Scripts/Entities/car.gd" id="1_sf5cr"]
+[ext_resource type="PackedScene" uid="uid://cogbcss4o4u1a" path="res://Assets/Models/cardrivable.glb" id="2_24qpr"]
+[ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_1wt1g"]
+[ext_resource type="Texture2D" uid="uid://cp2w7hf7ottcc" path="res://Assets/Models/cardrivable_cartext_256_2_green.png" id="4_bn0v5"]
+[ext_resource type="Texture2D" uid="uid://cj0vt843mjmh0" path="res://Assets/Models/cardrivable_cartext_256_2.png" id="5_furim"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f560"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evaf0"]
 render_priority = 0
-shader = ExtResource("3_hndv5")
+shader = ExtResource("3_1wt1g")
 shader_parameter/affine_mapping = false
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("4_81qb0")
+shader_parameter/albedo = ExtResource("4_bn0v5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_se3ox"]
 render_priority = 0
-shader = ExtResource("3_hndv5")
+shader = ExtResource("3_1wt1g")
 shader_parameter/affine_mapping = false
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("4_81qb0")
+shader_parameter/albedo = ExtResource("5_furim")
 
 [sub_resource type="Animation" id="Animation_lkx25"]
 length = 0.001
@@ -134,12 +135,12 @@ _data = {
 }
 
 [node name="Car" type="Node3D"]
-script = ExtResource("1_yib0g")
+script = ExtResource("1_sf5cr")
 
-[node name="cardrivable" parent="." instance=ExtResource("2_h4liu")]
+[node name="cardrivable" parent="." instance=ExtResource("2_24qpr")]
 
 [node name="Cube" parent="cardrivable" index="0"]
-material_override = SubResource("ShaderMaterial_2f560")
+material_override = SubResource("ShaderMaterial_evaf0")
 
 [node name="Wheel_001" parent="cardrivable" index="1"]
 material_override = SubResource("ShaderMaterial_se3ox")

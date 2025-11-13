@@ -1,4 +1,4 @@
-[gd_scene load_steps=537 format=4 uid="uid://co70se7ei1y53"]
+[gd_scene load_steps=541 format=4 uid="uid://co70se7ei1y53"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/debug_level.gd" id="1_iee4q"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_fe1nf"]
@@ -22,6 +22,7 @@
 [ext_resource type="Material" uid="uid://qkwrxfqrxcbq" path="res://textures/window3.tres" id="11_g2s1d"]
 [ext_resource type="Material" uid="uid://5b4r7sggyjxr" path="res://textures/window2.tres" id="14_7s54h"]
 [ext_resource type="PackedScene" uid="uid://uq3ojw5mfv6o" path="res://Scenes/Entities/car.tscn" id="22_w0vik"]
+[ext_resource type="PackedScene" uid="uid://bokloq1pin2kn" path="res://Scenes/Entities/car_green.tscn" id="23_pjp1t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxq87"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -1719,6 +1720,21 @@ points = PackedVector3Array(-30, 20.5, -25.5, -30, 18.5, -25.5, -29.9375, 18.5, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jmqaj"]
 points = PackedVector3Array(-40, 21, -31.5, -40, 0, -31.5, -30.5, 0, -31.5, -30.5, 21, -31.5, -40, 21, -31, -40, 0, -31, -30.5, 0, -31, -30.5, 21, -31)
 
+[sub_resource type="Animation" id="Animation_kwlfl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-57.7617, 0.5, -34.9589)]
+}
+
 [sub_resource type="Animation" id="Animation_u7jl1"]
 resource_name = "driving_path"
 length = 18.0
@@ -1736,7 +1752,30 @@ tracks/0/keys = {
 "values": [Vector3(-57.7617, 0.5, -34.9589), Vector3(98.0375, 0.5, -34.9589), Vector3(98.0375, 0.5, -34.9589)]
 }
 
-[sub_resource type="Animation" id="Animation_kwlfl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0a5jq"]
+_data = {
+"RESET": SubResource("Animation_kwlfl"),
+"driving_path": SubResource("Animation_u7jl1")
+}
+
+[sub_resource type="Animation" id="Animation_1wfj7"]
+resource_name = "driving_path"
+length = 23.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.1, 23),
+"transitions": PackedFloat32Array(1.51, 1, 1),
+"update": 0,
+"values": [Vector3(106.24, 0.5, -43.0911), Vector3(-51.0137, 0.5, -43.0911), Vector3(-51.0137, 0.5, -43.0911)]
+}
+
+[sub_resource type="Animation" id="Animation_4c40r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1748,13 +1787,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-57.7617, 0.5, -34.9589)]
+"values": [Vector3(106.24, 0.5, -43.0911)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0a5jq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2huwj"]
 _data = {
-"RESET": SubResource("Animation_kwlfl"),
-"driving_path": SubResource("Animation_u7jl1")
+"RESET": SubResource("Animation_4c40r"),
+"driving_path": SubResource("Animation_1wfj7")
 }
 
 [node name="Debug Level" type="Node3D"]
@@ -3354,4 +3393,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -57.76
 [node name="driving_path" type="AnimationPlayer" parent="Car"]
 libraries = {
 "": SubResource("AnimationLibrary_0a5jq")
+}
+
+[node name="Car2" parent="." instance=ExtResource("23_pjp1t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 106.24, 0.5, -43.0911)
+
+[node name="driving_path" type="AnimationPlayer" parent="Car2"]
+libraries = {
+"": SubResource("AnimationLibrary_2huwj")
 }
