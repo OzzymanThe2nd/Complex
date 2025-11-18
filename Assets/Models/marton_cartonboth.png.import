@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrf7gg7kub6d"
+uid="uid://bax3aov8xkba3"
 path.s3tc="res://.godot/imported/marton_cartonboth.png-8f5265dc28278acc183faa48a8a9a84b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "dfb64878415239c66966f11cb139b1c3"
 }
 
 [deps]

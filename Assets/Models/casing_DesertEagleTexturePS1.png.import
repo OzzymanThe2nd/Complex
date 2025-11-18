@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmr2vpbarfo52"
+uid="uid://c7a8dsa6ulwx"
 path.s3tc="res://.godot/imported/casing_DesertEagleTexturePS1.png-d3d015ffe07931cdaf85e66422dda0e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "f29748a7c47f0168c7a16a2cd5be0bcd"
 }
 
 [deps]
