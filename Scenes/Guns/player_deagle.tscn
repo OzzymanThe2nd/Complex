@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/Guns/deagle.gd" id="1_m8v0d"]
 [ext_resource type="PackedScene" uid="uid://bhucncys8uksm" path="res://Assets/Models/ps1-psx-style-desert-eagle-lowpoly/source/DesertEaglePS1.glb" id="2_8l1gc"]
 [ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="2_m784l"]
-[ext_resource type="Texture2D" uid="uid://dmr5hsw4n6nyr" path="res://Assets/Models/Arms/PlayerArms.png" id="3_hco2j"]
+[ext_resource type="Texture2D" uid="uid://b2n40k20q4vvo" path="res://Assets/Models/Arms/PlayerArms.png" id="3_hco2j"]
 [ext_resource type="Texture2D" uid="uid://drt5g2nlfoqif" path="res://Assets/Models/ps1-psx-style-desert-eagle-lowpoly/source/DesertEaglePS1_DesertEagleTexturePS1.png" id="5_atybj"]
 [ext_resource type="AudioStream" uid="uid://b6uvi3y83uwa" path="res://Assets/Sounds/Weapons/DryFireClick.wav" id="8_6pk12"]
-[ext_resource type="Texture2D" uid="uid://dmr2vpbarfo52" path="res://Assets/Models/casing_DesertEagleTexturePS1.png" id="8_l0xyl"]
+[ext_resource type="Texture2D" uid="uid://c7a8dsa6ulwx" path="res://Assets/Models/casing_DesertEagleTexturePS1.png" id="8_l0xyl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbipc"]
 render_priority = 0

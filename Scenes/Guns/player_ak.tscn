@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Guns/player_ak.gd" id="1_1mpfk"]
 [ext_resource type="PackedScene" uid="uid://dp1obylcr1k1c" path="res://Assets/Models/Arms/Player_Arms.blend" id="2_ma3mt"]
 [ext_resource type="Shader" path="res://Shaders/ps1model.gdshader" id="3_fc2cq"]
-[ext_resource type="Texture2D" uid="uid://dmr5hsw4n6nyr" path="res://Assets/Models/Arms/PlayerArms.png" id="4_u7why"]
+[ext_resource type="Texture2D" uid="uid://b2n40k20q4vvo" path="res://Assets/Models/Arms/PlayerArms.png" id="4_u7why"]
 [ext_resource type="PackedScene" uid="uid://bxmf5xyrpmcxf" path="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/AK74U/boltmoving.glb" id="5_h6bgy"]
 [ext_resource type="Texture2D" uid="uid://biavvsxftklm2" path="res://Assets/Models/PSXAssaultRifle[FIXED]/AK/Textures/AKU_Texture_240_mucked.png" id="6_hpj66"]
 [ext_resource type="AudioStream" uid="uid://b6uvi3y83uwa" path="res://Assets/Sounds/Weapons/DryFireClick.wav" id="7_6i5x8"]
