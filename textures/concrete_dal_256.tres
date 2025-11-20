@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://emk374qq1m6w"]
+
+[ext_resource type="Texture2D" uid="uid://bkvg10gkqrqti" path="res://textures/concrete_dal_256.png" id="1_4kvkt"]
+
+[resource]
+albedo_texture = ExtResource("1_4kvkt")
+metallic_specular = 0.0
+texture_filter = 2
